@@ -152,7 +152,7 @@ int32_t readS32(uint16_t bufIndex) {
 // gibi cihaz-yonetimi konulari (urun turunden bagimsiz) icin backend'e AYRI
 // bir relay/+/... abonelik seti eklenmesi gerekiyor (bkz. README.md).
 String deviceId;
-String liveTopic, statusTopic, cmdTopic, otaTopic, wifiTopic, infoTopic;
+String liveTopic, statusTopic, cmdTopic, otaTopic, wifiTopic, infoTopic, kademelerTopic;
 int wifiDegisimSonucu = 0;
 
 // OTA guvenlik agi: yeni firmware yazildiktan hemen sonra "pending" olarak
@@ -171,12 +171,13 @@ void setupDeviceId() {
   char idBuf[20];
   snprintf(idBuf, sizeof(idBuf), "ga1202-%02x%02x%02x", mac[3], mac[4], mac[5]);
   deviceId = String(idBuf);
-  liveTopic   = "relay/" + deviceId + "/live";
-  statusTopic = "relay/" + deviceId + "/status";
-  cmdTopic    = "relay/" + deviceId + "/cmd";
-  otaTopic    = "relay/" + deviceId + "/ota";
-  wifiTopic   = "relay/" + deviceId + "/wifi";
-  infoTopic   = "relay/" + deviceId + "/info";
+  liveTopic      = "relay/" + deviceId + "/live";
+  statusTopic    = "relay/" + deviceId + "/status";
+  cmdTopic       = "relay/" + deviceId + "/cmd";
+  otaTopic       = "relay/" + deviceId + "/ota";
+  wifiTopic      = "relay/" + deviceId + "/wifi";
+  infoTopic      = "relay/" + deviceId + "/info";
+  kademelerTopic = "relay/" + deviceId + "/kademeler";
 }
 
 void preTransmission()  { digitalWrite(RE_DE_PIN, HIGH); }
@@ -194,10 +195,9 @@ static void hatBekle(uint32_t ms) {
 }
 
 // ==================== Cihaz Bilgileri (sadece aciliste bir kez) ====================
-// Grup Arge'nin diger cihazlarinda (ANL13/ANL21) bu blok hep ayni adreste
-// (100-125, "Ozel" sayfasi) -- ayni marka/aile oldugu icin GA1202'de de ayni
-// yerde olma ihtimali yuksek, ama BU DOGRULANMADI. Register haritasi gelince
-// once burasi test edilmeli.
+// Grup Arge'nin resmi Modbus tablosuyla (Reaktif-Kontrol-Rolesi-RKRS-Modbus-
+// Tablosu.pdf, sayfa 51) DOGRULANDI: ANL13/ANL21 ile BIREBIR AYNI adreste
+// (100-125, "Ozel" sayfasi).
 struct DeviceInfo {
   int32_t seriNo, urunId, kartId, sistemVersiyon, ulkeKodu, firmaKodu;
   int32_t beslemeTipi, ekranTipi, keyboardTipi, kutuTipi, klemensTipi, connections, storage;
@@ -227,24 +227,304 @@ bool readDeviceInfo() {
   return true;
 }
 
-// ==================== ROLE VERISI / ROLE KOMUTLARI (BEKLIYOR) ====================
+// ==================== ANLIK DEGERLER (2sn) ====================
+// Kaynak: Reaktif-Kontrol-Rolesi-RKRS-Modbus-Tablosu.pdf, "Anlik Degerler"
+// sayfasi, 10002-10124 araligi (62 alan x 2 register = 124 register).
+// ModbusMaster'in 64 register'lik sabit tampon siniri (ANL21'de de ayni
+// sinira takilmisti) yuzunden iki parcaya bolundu: ilk parca tam 64 register
+// (10002-10064, "1. Faz Akim"a kadar), ikinci parca kalan 60 register.
 //
-// BURASI, GA1202'nin Modbus register haritasi elde edilene kadar
-// TAMAMLANAMAZ. Bir reaktif guc kontrol rolesinin tipik olarak rapor edecegi
-// ve kontrol edecegi seyler (kesin adresler haritadan gelecek):
-//   - Olculen cosfi (guc faktoru) ve/veya reaktif guc (kVAr)
-//   - Her kademenin (kapasitor banki adimi) o an ac�k/kapali durumu
-//   - Hedef cosfi ayari (yazilabilir register)
-//   - Alarm/hata durumlari (asiri gerilim, harmonik, kontaktor arizasi vb.)
-//   - Kademe anahtarlama sayaci / kademe saglik durumu
+// BELIRSIZLIKLER (ilk gercek okumada dogrulanmali):
+//   - "Common V1/V2/V3" ve "Ek Guc L1/L2/L3" (10006-10016) etiketleri PDF'te
+//     bu sekilde geciyor ama tam anlamlari acik degil -- ham deger olarak
+//     tasiniyor, yorumlanmiyor.
+//   - PDF'te bu satirlarin yaninda ayrica "0: Termik Devre Disi / 1: Termik
+//     Normal / 2: Termik Yuksek Sicaklik / 3: Termik Hatasi / 4: Termik
+//     Pasif / 5: Termik Uygulanabilir Degil" seklinde bir 6 degerli enum
+//     legend'i var, ama PDF'teki tablo duzeni bu legend'in TAM OLARAK hangi
+//     register'a ait oldugunu net ayirt ettirmiyor (yan yana iki tablo
+//     PDF->metin donusumunde birbirine karismis olabilir). Bu yuzden bu enum
+//     kodda YORUMLANMADI, sadece bu yorumda not dusuldu.
+#define LIVE_BLOCK1_START 10002
+#define LIVE_BLOCK1_COUNT 32  // 10002..10064, 32 alan x 2 = 64 register
+#define LIVE_BLOCK2_START 10066
+#define LIVE_BLOCK2_COUNT 30  // 10066..10124, 30 alan x 2 = 60 register
+
+struct RelayLiveData {
+  // --- Blok 1 ---
+  int32_t remote1, svcDurumBit;
+  int32_t commonV1, commonV2, commonV3;   // bkz. yukaridaki belirsizlik notu
+  float ekGucL1, ekGucL2, ekGucL3;        // VAr, carpan 1
+  float hedefCosL1, hedefCosL2, hedefCosL3;
+  int32_t baglantiDetayi;                 // index (0:Off 1:On -- Kademe Ortak Kontrolu ile ayni Table-1 mi net degil)
+  int32_t akimGucHassasiyeti;
+  int32_t akimTrafoOrani;                 // index
+  float nominalHatGerilimi, nominalOlcmeGerilimi; // V
+  int32_t jeneratorDurumu;                // 0:Off 1:On
+  float sicaklik;                         // Santigrat, carpan 0.1
+  float cihazIcBeslemeGerilim;            // Volt
+  float pilGerilimi;                      // Volt, carpan 0.001
+  int32_t tarihSaatUtc;                   // Unix timestamp
+  int32_t seriNumarasi;
+  // --- Blok 2 ---
+  float vLN1, vLN2, vLN3, vN;             // Volt, carpan 0.1
+  float vL12, vL23, vL31;                 // Volt, carpan 0.1
+  float i1, i2, i3;                       // Amper, carpan 0.001
+  float p1, p2, p3;                       // Watt
+  float q1, q2, q3;                       // VAr
+  float s1, s2, s3;                       // VA
+  float f1, f2, f3;                       // Hz, carpan 0.01
+  float cos1, cos2, cos3;                 // carpan 0.001
+  float tan1, tan2, tan3;                 // carpan 0.001
+  float pf1, pf2, pf3;                    // carpan 0.001
+  float thdv1, thdv2, thdv3;              // %, carpan 0.1
+  float thdi1, thdi2, thdi3;              // %, carpan 0.1
+};
+RelayLiveData live;
+
+bool readRelayLive() {
+  uint8_t result = node.readHoldingRegisters(LIVE_BLOCK1_START, LIVE_BLOCK1_COUNT * 2);
+  if (result != node.ku8MBSuccess) return false;
+  #define B1(off) readS32(off)
+  live.remote1      = B1(0);
+  live.svcDurumBit  = B1(2);
+  live.commonV1     = B1(4);
+  live.commonV2     = B1(6);
+  live.commonV3     = B1(8);
+  live.ekGucL1      = B1(10) * 1.0;
+  live.ekGucL2      = B1(12) * 1.0;
+  live.ekGucL3      = B1(14) * 1.0;
+  live.hedefCosL1   = B1(16) * 0.001;
+  live.hedefCosL2   = B1(18) * 0.001;
+  live.hedefCosL3   = B1(20) * 0.001;
+  live.baglantiDetayi     = B1(22);
+  live.akimGucHassasiyeti = B1(24);
+  live.akimTrafoOrani     = B1(26);
+  live.nominalHatGerilimi   = B1(28) * 1.0;
+  live.nominalOlcmeGerilimi = B1(30) * 1.0;
+  live.jeneratorDurumu = B1(32);
+  live.sicaklik = B1(34) * 0.1;
+  // B1(36),(38) = Dummy,Dummy (10038,10040)
+  live.cihazIcBeslemeGerilim = B1(40) * 1.0;
+  live.pilGerilimi = B1(42) * 0.001;
+  live.tarihSaatUtc = B1(44);
+  live.seriNumarasi = B1(46);
+  live.vLN1 = B1(48) * 0.1;
+  live.vLN2 = B1(50) * 0.1;
+  live.vLN3 = B1(52) * 0.1;
+  live.vN   = B1(54) * 0.1;
+  live.vL12 = B1(56) * 0.1;
+  live.vL23 = B1(58) * 0.1;
+  live.vL31 = B1(60) * 0.1;
+  live.i1   = B1(62) * 0.001;
+  #undef B1
+
+  delay(30);
+  result = node.readHoldingRegisters(LIVE_BLOCK2_START, LIVE_BLOCK2_COUNT * 2);
+  if (result != node.ku8MBSuccess) return false;
+  #define B2(off) readS32(off)
+  live.i2 = B2(0) * 0.001;
+  live.i3 = B2(2) * 0.001;
+  live.p1 = B2(4) * 1.0;
+  live.p2 = B2(6) * 1.0;
+  live.p3 = B2(8) * 1.0;
+  live.q1 = B2(10) * 1.0;
+  live.q2 = B2(12) * 1.0;
+  live.q3 = B2(14) * 1.0;
+  live.s1 = B2(16) * 1.0;
+  live.s2 = B2(18) * 1.0;
+  live.s3 = B2(20) * 1.0;
+  live.f1 = B2(22) * 0.01;
+  live.f2 = B2(24) * 0.01;
+  live.f3 = B2(26) * 0.01;
+  live.cos1 = B2(28) * 0.001;
+  live.cos2 = B2(30) * 0.001;
+  live.cos3 = B2(32) * 0.001;
+  live.tan1 = B2(34) * 0.001;
+  live.tan2 = B2(36) * 0.001;
+  live.tan3 = B2(38) * 0.001;
+  live.pf1 = B2(40) * 0.001;
+  live.pf2 = B2(42) * 0.001;
+  live.pf3 = B2(44) * 0.001;
+  live.thdv1 = B2(46) * 0.1;
+  live.thdv2 = B2(48) * 0.1;
+  live.thdv3 = B2(50) * 0.1;
+  live.thdi1 = B2(52) * 0.1;
+  live.thdi2 = B2(54) * 0.1;
+  live.thdi3 = B2(56) * 0.1;
+  #undef B2
+  return true;
+}
+
+void buildLiveJson(char *buf, size_t bufSize) {
+  snprintf(buf, bufSize,
+    "{\"svc_durum\":%ld,\"jenerator_durumu\":%ld,\"sicaklik\":%.1f,"
+    "\"cihaz_ic_besleme\":%.0f,\"pil_gerilimi\":%.3f,"
+    "\"hedef_cos_l1\":%.3f,\"hedef_cos_l2\":%.3f,\"hedef_cos_l3\":%.3f,"
+    "\"v1\":%.1f,\"i1\":%.3f,\"p1\":%.0f,\"q1\":%.0f,\"s1\":%.0f,\"f1\":%.2f,\"cos1\":%.3f,\"tan1\":%.3f,\"pf1\":%.3f,\"thdv1\":%.1f,\"thdi1\":%.1f,"
+    "\"v2\":%.1f,\"i2\":%.3f,\"p2\":%.0f,\"q2\":%.0f,\"s2\":%.0f,\"f2\":%.2f,\"cos2\":%.3f,\"tan2\":%.3f,\"pf2\":%.3f,\"thdv2\":%.1f,\"thdi2\":%.1f,"
+    "\"v3\":%.1f,\"i3\":%.3f,\"p3\":%.0f,\"q3\":%.0f,\"s3\":%.0f,\"f3\":%.2f,\"cos3\":%.3f,\"tan3\":%.3f,\"pf3\":%.3f,\"thdv3\":%.1f,\"thdi3\":%.1f,"
+    "\"vN\":%.1f,\"iN\":0,\"vL12\":%.1f,\"vL23\":%.1f,\"vL31\":%.1f}",
+    (long)live.svcDurumBit, (long)live.jeneratorDurumu, live.sicaklik,
+    live.cihazIcBeslemeGerilim, live.pilGerilimi,
+    live.hedefCosL1, live.hedefCosL2, live.hedefCosL3,
+    live.vLN1, live.i1, live.p1, live.q1, live.s1, live.f1, live.cos1, live.tan1, live.pf1, live.thdv1, live.thdi1,
+    live.vLN2, live.i2, live.p2, live.q2, live.s2, live.f2, live.cos2, live.tan2, live.pf2, live.thdv2, live.thdi2,
+    live.vLN3, live.i3, live.p3, live.q3, live.s3, live.f3, live.cos3, live.tan3, live.pf3, live.thdv3, live.thdi3,
+    live.vN, live.vL12, live.vL23, live.vL31);
+}
+
+// ==================== KADEMELER (10sn) ====================
+// Kaynak: "Kademeler" sayfasi, 40000-40470+ araligi. Bir kademe (kapasitor
+// banki adimi) basina 5 alan x 2 register = 10 register, 1. kademe 40160'ta
+// basliyor, her kademe +10 register (2. kademe 40170, 3. kademe 40180, ...).
+// PDF'te 32. kademeye kadar (40470) yer var -- bu, cihazin DESTEKLEDIGI ust
+// sinir, gercek kurulu kademe sayisi "Cihaz Kademe Sayisi" (40128) ile
+// okunuyor ve sadece o kadari okunuyor (MAX_KADEME ile sinirli, guvenlik
+// icin -- cihaz bozuk/asiri buyuk bir sayi donerse sonsuz okumaya girmesin).
+#define MAX_KADEME 12
+#define KADEME_BASE 40160
+#define KADEME_STRIDE 10 // register cinsinden (5 alan x 2)
+
+struct KademeData {
+  float gucL1, gucL2, gucL3; // VAr
+  int32_t calismaSuresi;     // Saniye
+  int32_t anahtarlamaSayisi;
+};
+
+struct KademelerData {
+  int32_t cihazDurumu;        // Table-1: 0 Bosta,1 ServisDisi,2 Kurulumda,3 Kompanzasyonda,4 Kademe Ogrenmede,5 Uygulanamaz
+  int32_t kademeSayisi;
+  int32_t kademeDurumlari;    // bitfield -- her bit bir kademenin acik/kapali durumu (PDF'te bit sirasi ayrica dokumante degil)
+  int32_t kademeOgrenmeDurumu;
+  int32_t hataliKademeDurumu;
+  int32_t kademeIptalDurumu;
+  int32_t kademeManuelAuto;
+  float toplamOnlineGucL1, toplamOnlineGucL2, toplamOnlineGucL3; // Watt
+  float toplamKondansatorGucL1, toplamKondansatorGucL2, toplamKondansatorGucL3; // VAr
+  int32_t kademeCount; // gercekten okunan kademe sayisi (min(kademeSayisi, MAX_KADEME))
+  KademeData kademe[MAX_KADEME];
+};
+KademelerData kademeler;
+
+bool readKademelerOzet() {
+  // Cihaz Durumu (40006) + Toplam Online Kademe Gucu (40014-40018) + Toplam
+  // Kondansator Gucu (40026-40030) -- tek okumada sigmiyor (40006'dan
+  // 40030'a 25 register, ama araya "Dummy" degil gercek baska alanlar
+  // giriyor: 40020-24 Toplam Islerme Yuk Gucu). Tek seferde 40006-40030
+  // arasi (13 alan x 2 = 26 register) okunup gerekenler cikartiliyor.
+  uint8_t result = node.readHoldingRegisters(40006, 26);
+  if (result != node.ku8MBSuccess) return false;
+  #define K(off) readS32(off)
+  kademeler.cihazDurumu = K(0); // 40006
+  kademeler.toplamOnlineGucL1 = K(8) * 1.0;  // 40014
+  kademeler.toplamOnlineGucL2 = K(10) * 1.0; // 40016
+  kademeler.toplamOnlineGucL3 = K(12) * 1.0; // 40018
+  // 40020-24 Toplam Islerme Yuk Gucu -- v1'de okunmuyor (dusuk oncelik)
+  kademeler.toplamKondansatorGucL1 = K(20) * 1.0; // 40026
+  kademeler.toplamKondansatorGucL2 = K(22) * 1.0; // 40028
+  kademeler.toplamKondansatorGucL3 = K(24) * 1.0; // 40030
+  #undef K
+
+  delay(30);
+  // Kademe Sayisi (40128) .. Kademe Manuel/Auto (40138): 6 alan x 2 = 12 register
+  result = node.readHoldingRegisters(40128, 12);
+  if (result != node.ku8MBSuccess) return false;
+  #define K2(off) readS32(off)
+  kademeler.kademeSayisi        = K2(0); // 40128
+  kademeler.kademeDurumlari     = K2(2); // 40130
+  kademeler.kademeOgrenmeDurumu = K2(4); // 40132
+  kademeler.hataliKademeDurumu  = K2(6); // 40134
+  kademeler.kademeIptalDurumu   = K2(8); // 40136
+  kademeler.kademeManuelAuto    = K2(10); // 40138
+  #undef K2
+
+  kademeler.kademeCount = kademeler.kademeSayisi;
+  if (kademeler.kademeCount < 0) kademeler.kademeCount = 0;
+  if (kademeler.kademeCount > MAX_KADEME) kademeler.kademeCount = MAX_KADEME;
+  return true;
+}
+
+bool readKademeDetaylari() {
+  if (kademeler.kademeCount <= 0) return true; // okunacak kademe yok, hata degil
+  uint16_t registerCount = kademeler.kademeCount * KADEME_STRIDE;
+  // ModbusMaster 64 register siniri: MAX_KADEME=12 -> 120 register, sinira
+  // takilir. Bu yuzden 6'sar kademelik (60 register) iki parcaya bolunuyor.
+  uint16_t okunan = 0;
+  while (okunan < kademeler.kademeCount) {
+    uint16_t buParcaKademe = (kademeler.kademeCount - okunan > 6) ? 6 : (kademeler.kademeCount - okunan);
+    uint16_t adres = KADEME_BASE + okunan * KADEME_STRIDE;
+    uint8_t result = node.readHoldingRegisters(adres, buParcaKademe * KADEME_STRIDE);
+    if (result != node.ku8MBSuccess) return false;
+    for (uint16_t i = 0; i < buParcaKademe; i++) {
+      uint16_t off = i * KADEME_STRIDE;
+      KademeData &k = kademeler.kademe[okunan + i];
+      k.gucL1 = readS32(off) * 1.0;
+      k.gucL2 = readS32(off + 2) * 1.0;
+      k.gucL3 = readS32(off + 4) * 1.0;
+      k.calismaSuresi = readS32(off + 6);
+      k.anahtarlamaSayisi = readS32(off + 8);
+    }
+    okunan += buParcaKademe;
+    if (okunan < kademeler.kademeCount) delay(30);
+  }
+  return true;
+}
+
+void buildKademelerJson(char *buf, size_t bufSize) {
+  size_t offset = snprintf(buf, bufSize,
+    "{\"cihaz_durumu\":%ld,\"kademe_sayisi\":%ld,\"kademe_durumlari\":%ld,"
+    "\"kademe_ogrenme_durumu\":%ld,\"hatali_kademe_durumu\":%ld,"
+    "\"kademe_iptal_durumu\":%ld,\"kademe_manuel_auto\":%ld,"
+    "\"toplam_online_guc_l1\":%.0f,\"toplam_online_guc_l2\":%.0f,\"toplam_online_guc_l3\":%.0f,"
+    "\"toplam_kondansator_guc_l1\":%.0f,\"toplam_kondansator_guc_l2\":%.0f,\"toplam_kondansator_guc_l3\":%.0f,"
+    "\"kademeler\":[",
+    (long)kademeler.cihazDurumu, (long)kademeler.kademeSayisi, (long)kademeler.kademeDurumlari,
+    (long)kademeler.kademeOgrenmeDurumu, (long)kademeler.hataliKademeDurumu,
+    (long)kademeler.kademeIptalDurumu, (long)kademeler.kademeManuelAuto,
+    kademeler.toplamOnlineGucL1, kademeler.toplamOnlineGucL2, kademeler.toplamOnlineGucL3,
+    kademeler.toplamKondansatorGucL1, kademeler.toplamKondansatorGucL2, kademeler.toplamKondansatorGucL3);
+  for (int i = 0; i < kademeler.kademeCount; i++) {
+    KademeData &k = kademeler.kademe[i];
+    offset += snprintf(buf + offset, bufSize - offset,
+      "%s{\"guc_l1\":%.0f,\"guc_l2\":%.0f,\"guc_l3\":%.0f,\"calisma_suresi\":%ld,\"anahtarlama_sayisi\":%ld}",
+      i > 0 ? "," : "", k.gucL1, k.gucL2, k.gucL3, (long)k.calismaSuresi, (long)k.anahtarlamaSayisi);
+  }
+  snprintf(buf + offset, bufSize - offset, "]}");
+}
+
+// ==================== YAZMA KOMUTLARI (referans) ====================
+// Kaynak: "Komutlar" sayfasi, adres 9000-9041. Tetikleme deseni ANL13/ANL21
+// ile AYNI: register'a value=0xAA55 (43605) yazilir (fonksiyon kodu 06,
+// bkz. onMqttMessage'daki genel {"register":N,"value":M} mekanizmasi -- bu
+// mekanizma zaten mevcut, asagidaki liste sadece HANGI register'in NE
+// yaptigini dokumante ediyor, ayrica kod gerektirmiyor).
 //
-// Register haritasi elde edildiginde buraya (ANL21'deki readPowerAnalyzer,
-// readTotals vb. ile AYNI desende) readRelayState() gibi fonksiyonlar
-// eklenecek: node.readHoldingRegisters(...) + readS32/dogrudan olcek
-// donusumu + PowerData benzeri bir struct'a yazma.
+// ORTAK (ANL13/ANL21 ile BIREBIR AYNI numaralar -- Grup Arge'nin tum urun
+// ailesinde bu blok sabit gorunuyor):
+//   9001 Enerjileri Sil          9002 Min/Max'lari Sil
+//   9003 Demandlari Sil          9004 Tum Alarmlari Sil
+//   9022 Sistem Password Reset   9024 Fabrika Ayarlarina Don (YUKSEK RISK)
+//   9025 Cihaz Reset             9040 Olaylari Sil    9041 Uyarilari Sil
 //
-// TODO(register-haritasi): Grup Arge GA1202 Modbus register haritasi
-// (adres, veri tipi, olcek/carpan, R/W) buraya entegre edilecek.
+// GA1202'YE OZEL (kademe/SVC/kompanzasyon islemleri):
+//   9000 Cihaz Durumu (deger: grup1 tanima=43521, grup2=43522, grup3=43523,
+//        tek kademe tanima = 43520+kademe_no -- bu TEK KOMUT, 0xAA55 DEGIL,
+//        deger dogrudan tanima kodu)
+//   9005 RGP Sil (Reaktif Guc Profili -- alarm/olay gunlugu, 44xxx bloku)
+//   9007 Kademe Tanima Baslat (Akilli)
+//   9008 Kademe Tanima Baslat (Sirali)
+//   9009 Kademe Tanima Baslat (Hizli)
+//   9010 SVC Tanimayi Baslat
+//   9011 Tek Kademe Tanima (deger: dogrudan kademe numarasi, 0xAA55 DEGIL)
+//   9012 Kademe Tanimayi Sonlandir
+//   9013 Kuruluma Basla           9014 Kurulumu Sonlandir
+//   9015 Kademe Cekme Sayisi ve Suresini Sil
+//   9016 Kademe Detaylarini Sil   9019 Kademe Reset
+//
+// YUKSEK RISKLI (UI'da CIFT ONAY gerektirmeli -- bkz. proje genelindeki
+// ANL21 dashboard planinin ayni kurali): 9024 Fabrika Ayarlarina Don,
+// 9022 Sistem Password Reset, 9025 Cihaz Reset.
 
 // Backend'ten cmd topic'ine gelen {"register": N, "value": M} komutunu ilgili
 // registera yazar (fonksiyon kodu 06, single register write). "value"
@@ -790,7 +1070,9 @@ void setup() {
   mqttClient.setServer(mqtt_server, mqtt_port);
   mqttClient.setCallback(onMqttMessage);
   mqttClient.setKeepAlive(60);
-  mqttClient.setBufferSize(1024);
+  // Kademeler payload'i (12 kademeye kadar) 1024'u asabiliyor -- ANL21'deki
+  // harmonik/tepe-deger payload'lariyla ayni sebepten genisletildi.
+  mqttClient.setBufferSize(2048);
 
   delay(30);
   deviceInfoOk = readDeviceInfo();
@@ -883,10 +1165,32 @@ void loop() {
     deviceInfoPublished = true;
   }
 
-  // TODO(register-haritasi): burada readRelayState() gibi bir fonksiyon
-  // cagrilip liveTopic'e role/kademe/cosfi verisi yayinlanacak -- ANL21'deki
-  // readPowerAnalyzer() + live payload yayini ile AYNI desen.
-  Serial.println("Bekleniyor: GA1202 Modbus register haritasi (bkz. README.md).");
+  bool okLive = readRelayLive();
+  if (okLive) confirmOtaIfPending();
+  if (okLive) {
+    char payload[900];
+    buildLiveJson(payload, sizeof(payload));
+    mqttClient.publish(liveTopic.c_str(), payload);
+    Serial.println(payload);
+  } else {
+    Serial.println("Modbus okuma hatasi (Anlik Degerler)!");
+  }
+
+  // Kademeler daha yavas degistigi icin ~10 saniyede bir okunur (2sn x 5).
+  if (loopCount % 5 == 0) {
+    hatBekle(30);
+    bool ozetOk = readKademelerOzet();
+    hatBekle(30);
+    bool detayOk = ozetOk && readKademeDetaylari();
+    if (ozetOk && detayOk) {
+      char buf[1400];
+      buildKademelerJson(buf, sizeof(buf));
+      mqttClient.publish(kademelerTopic.c_str(), buf);
+      Serial.println(buf);
+    } else {
+      Serial.println("Kademeler okuma hatasi!");
+    }
+  }
 
   loopCount++;
   uint32_t gecen = millis() - donguBasi;

@@ -1,0 +1,2183 @@
+
+===== PAGE 1 =====
+Anlık  Büyüklükler | Adres | Çarpan | Birim | Tür | W/R |  | 
+Remote 1 | 10002 | - |  | int 32 | R |  | 
+SVC Durum(16-16 bit) | 10004 | - | Table-1 | int 32 | R |  | Table-1
+Common V1 | 10006 | 1 | - | int 32 | R |  | 0: Termik Devre Dışı
+Common V2 | 10008 | 1 | - | int 32 | R |  | 1: Termik Normal
+Common V3 | 10010 | 1 | - | int 32 | R |  | 2: Termik Yüksek Sıcaklık
+Ek güç L1 | 10012 | 1 | VAr | int 32 | R |  | 3: Termik Hatası
+Ek güç L2 | 10014 | 1 | VAr | int 32 | R |  | 4: Termik Pasif
+Ek güç L3 | 10016 | 1 | VAr | int 32 | R |  | 5: Termik Uygulanabilir Değil
+Hedef Cos L1 | 10018 | 1 | - | int 32 | R |  | 
+Hedef Cos L2 | 10020 | 1 | - | int 32 | R |  | 
+Hedef Cos L3 | 10022 | 1 | - | int 32 | R |  | 
+Bağlantı Detayı | 10024 | index |  | int 32 | R | 0:Off 1:On | 
+Akım ve Güç Hassasiyeti(Modbus) | 10026 | 1 | - | int 32 | R |  | 
+Akım Trafo Oranı  | 10028 | index | - | int 32 | R |  | 
+Nominal Hat Gerilimi | 10030 | 1 | V | int 32 | R |  | 
+Nominal Ölçme Gerilimi | 10032 | 1 | V | int 32 | R |  | 
+Jenerator Durumu | 10034 | 1 | - | int 32 | R |  | 
+Sıcaklık 1 | 10036 | 0.1 | Santigrat | int 32 | R |  | 
+Dummy | 10038 | - | - | - | - |  | 
+Dummy | 10040 | - | - | - | - |  | 
+Cihaz İç Besleme Gerilim | 10042 | 1 | Volt | int 32 | R |  | 
+Pil Gerilimi | 10044 | 0,001 | Volt | int 32 | R |  | 
+Tarih / Saat (UTC) | 10046 | 1 | Timestamp | int 32 | R |  | 
+Seri Numarası | 10048 | 1 | - | int 32 | R |  | 
+1. Faz Nötr Gerilim  | 10050 | 0.1 | Volt | int 32 | R |  | 
+2. Faz Nötr Gerilim  | 10052 | 0.1 | Volt | int 32 | R |  | 
+3. Faz Nötr Gerilim  | 10054 | 0.1 | Volt | int 32 | R |  | 
+Nötr Gerilimi | 10056 | 0.1 | Volt | int 32 | R |  | 
+L1-L2 Faz Faz arası Gerilim  | 10058 | 0.1 | Volt | int 32 | R |  | 
+L2-L3 Faz Faz arası Gerilim  | 10060 | 0.1 | Volt | int 32 | R |  | 
+L3-L1 Faz Faz arası Gerilim  | 10062 | 0.1 | Volt | int 32 | R |  | 
+1. Faz Akım  | 10064 | 0,001 | Amper | int 32 | R |  | 
+2. Faz Akım  | 10066 | 0,001 | Amper | int 32 | R |  | 
+
+===== PAGE 2 =====
+3. Faz Akım  | 10068 | 0,001 | Amper | int 32 | R | 
+Nötr Akımı | 10070 | 0,001 | Amper | int 32 | R | 
+1. Faz Aktif Güç  | 10072 | 1 | Watt | int 32 | R | 
+2. Faz Aktif Güç  | 10074 | 1 | Watt | int 32 | R | 
+3. Faz Aktif Güç  | 10076 | 1 | Watt | int 32 | R | 
+1. Faz Reaktif Güç  | 10078 | 1 | VAr | int 32 | R | 
+2. Faz Reaktif Güç  | 10080 | 1 | VAr | int 32 | R | 
+3. Faz Reaktif Güç  | 10082 | 1 | VAr | int 32 | R | 
+1. Faz Görünür Güç  | 10084 | 1 | VA | int 32 | R | 
+2. Faz Görünür Güç  | 10086 | 1 | VA | int 32 | R | 
+3. Faz Görünür Güç  | 10088 | 1 | VA | int 32 | R | 
+1. Fazın Frekansı  | 10090 | 0,01 | Hz | int 32 | R | 
+2. Fazın Frekansı  | 10092 | 0,01 | Hz | int 32 | R | 
+3. Fazın Frekansı  | 10094 | 0,01 | Hz | int 32 | R | 
+1. Faz cos(fi)  | 10096 | 0,001 | - | int 32 | R | 
+2. Faz cos(fi)  | 10098 | 0,001 | - | int 32 | R | 
+3. Faz cos(fi)  | 10100 | 0,001 | - | int 32 | R | 
+1. Faz tan(fi)  | 10102 | 0,001 | - | int 32 | R | 
+2. Faz tan(fi)  | 10104 | 0,001 | - | int 32 | R | 
+3. Faz tan(fi)  | 10106 | 0,001 | - | int 32 | R | 
+1. Faz PF  | 10108 | 0,001 | - | int 32 | R | 
+2. Faz PF  | 10110 | 0,001 | - | int 32 | R | 
+3. Faz PF  | 10112 | 0,001 | - | int 32 | R | 
+1. Faz THDV  | 10114 | 0,1 | % | int 32 | R | 
+2. Faz THDV  | 10116 | 0,1 | % | int 32 | R | 
+3. Faz THDV  | 10118 | 0,1 | % | int 32 | R | 
+1. Faz THDI  | 10120 | 0,1 | % | int 32 | R | 
+2. Faz THDI  | 10122 | 0,1 | % | int 32 | R | 
+3. Faz THDI  | 10124 | 0,1 | % | int 32 | R | 
+Dummy | 10126 | - | - | - | - | 
+... |  |  |  |  |  | 
+Dummy | 10148 | - | - | - | - | 
+1.Faz Akım Temel Bileşen | 10150 | 0,001 | Amper | int 32 | R | 
+2.Faz Akım Temel Bileşen | 10152 | 0,001 | Amper | int 32 | R | 
+
+===== PAGE 3 =====
+3.Faz Akım Temel Bileşen | 10154 | 0,001 | Amper | int 32 | R | 
+1.Faz Gerilim Temel Bileşen | 10156 | 0,1 | Volt | int 32 | R | 
+2.Faz Gerilim Temel Bileşen | 10158 | 0,1 | Volt | int 32 | R | 
+3.Faz Gerilim Temel Bileşen | 10160 | 0,1 | Volt | int 32 | R | 
+1.Faz Aktif Güç Temel Bileşen | 10162 | 1 | Watt | int 32 | R | 
+2.Faz Aktif Güç Temel Bileşen | 10164 | 1 | Watt | int 32 | R | 
+3.Faz Aktif Güç Temel Bileşen | 10166 | 1 | Watt | int 32 | R | 
+1.Faz Reaktif Güç Temel Bileşen | 10168 | 1 | VAr | int 32 | R | 
+2.Faz Reaktif Güç Temel Bileşen | 10170 | 1 | VAr | int 32 | R | 
+3.Faz Reaktif Güç Temel Bileşen | 10172 | 1 | VAr | int 32 | R | 
+1.Faz Görünür Güç Temel Bileşen | 10174 | 1 | VA | int 32 | R | 
+2.Faz Görünür Güç Temel Bileşen | 10176 | 1 | VA | int 32 | R | 
+3.Faz Görünür Güç Temel Bileşen | 10178 | 1 | VA | int 32 | R | 
+Gerilim Açısı(L1-L1) | 10180 | 1 | Derece | int 32 | R | 
+Gerilim Açısı(L1-L2) | 10182 | 1 | Derece | int 32 | R | 
+Gerilim Açısı(L1-L3) | 10184 | 1 | Derece | int 32 | R | 
+1.Faz Akım Açısı | 10186 | 1 | Derece | int 32 | R | 
+2.Faz Akım Açısı | 10188 | 1 | Derece | int 32 | R | 
+3.Faz Akım Açısı | 10190 | 1 | Derece | int 32 | R | 
+1.Faz Gerilim Akım Açı Farkı | 10192 | 1 | Derece | int 32 | R | 
+2.Faz Gerilim Akım Açı Farkı | 10194 | 1 | Derece | int 32 | R | 
+3.Faz Gerilim Akım Açı Farkı | 10196 | 1 | Derece | int 32 | R | 
+Gerilim Açı Farkı(L1-L2) | 10198 | 1 | Derece | int 32 | R | 
+Gerilim Açı Farkı(L2-L3) | 10200 | 1 | Derece | int 32 | R | 
+Gerilim Açı Farkı(L1-L3) | 10202 | 1 | Derece | int 32 | R | 
+Akım Açı Farkı(L1-L2) | 10204 | 1 | Derece | int 32 | R | 
+Akım Açı Farkı(L2-L3) | 10206 | 1 | Derece | int 32 | R | 
+Akım Açı Farkı(L1-L3) | 10208 | 1 | Derece | int 32 | R | 
+Gerilim Dengesizliği(%) | 10210 | 0,1 | - | int 32 | R | 
+Akım Dengesizliği(%) | 10212 | 0,1 | - | int 32 | R | 
+
+===== PAGE 4 =====
+Anlık Tepe Değerleri (Tüketim) | Adres | Çarpan | Birim | Tür | W/R
+1.Faz Min Gerilim(LN) | 11010 | 0.1 | V(Volt) | int32 | R
+2.Faz Min Gerilim(LN) | 11012 | 0.1 | V(Volt) | int32 | R
+3.Faz Min Gerilim(LN) | 11014 | 0.1 | V(Volt) | int32 | R
+Nötr Min Gerilim | 11016 | 0.1 | V(Volt) | int32 | R
+1.Faz Max Gerilim(LN) | 11018 | 0.1 | V(Volt) | int32 | R
+2.Faz Max Gerilim(LN) | 11020 | 0.1 | V(Volt) | int32 | R
+3.Faz Max Gerilim(LN) | 11022 | 0.1 | V(Volt) | int32 | R
+Nötr Max Gerilim | 11024 | 0.1 | V(Volt) | int32 | R
+1.Faz Min Gerilim(L12) | 11026 | 0.1 | V(Volt) | int32 | R
+2.Faz Min Gerilim(L23) | 11028 | 0.1 | V(Volt) | int32 | R
+3.Faz Min Gerilim(L31) | 11030 | 0.1 | V(Volt) | int32 | R
+1.Faz Max Gerilim(L12) | 11032 | 0.1 | V(Volt) | int32 | R
+2.Faz Max Gerilim(L23) | 11034 | 0.1 | V(Volt) | int32 | R
+3.Faz Max Gerilim(L31) | 11036 | 0.1 | V(Volt) | int32 | R
+1.Faz Min Akım(Import) | 11038 | 1 | A(Amper) | int32 | R
+2.Faz Min Akım(Import) | 11040 | 1 | A(Amper) | int32 | R
+3.Faz Min Akım(Import) | 11042 | 1 | A(Amper) | int32 | R
+Nötr Min Akım | 11044 | 1 | A(Amper) | int32 | R
+1.Faz Max Akım | 11046 | 1 | A(Amper) | int32 | R
+2.Faz Max Akım | 11048 | 1 | A(Amper) | int32 | R
+3.Faz Max Akım | 11050 | 1 | A(Amper) | int32 | R
+Nötr Max Akım | 11052 | 1 | A(Amper) | int32 | R
+1.Faz Min Aktif Güç(Import) | 11054 | 1 | P(Watt) | int32 | R
+2.Faz Min Aktif Güç(Import) | 11056 | 1 | P(Watt) | int32 | R
+3.Faz Min Aktif Güç(Import) | 11058 | 1 | P(Watt) | int32 | R
+1.Faz Max Aktif Güç | 11060 | 1 | P(Watt) | int32 | R
+2.Faz Max Aktif Güç | 11062 | 1 | P(Watt) | int32 | R
+3.Faz Max Aktif Güç | 11064 | 1 | P(Watt) | int32 | R
+1.Faz Min Reaktif Güç | 11066 | 1 | Q(VAR) | int32 | R
+
+===== PAGE 5 =====
+2.Faz Min Reaktif Güç | 11068 | 1 | Q(VAR) | int32 | R
+3.Faz Min Reaktif Güç | 11070 | 1 | Q(VAR) | int32 | R
+1.Faz Max Reaktif Güç | 11072 | 1 | Q(VAR) | int32 | R
+2.Faz Max Reaktif Güç | 11074 | 1 | Q(VAR) | int32 | R
+3.Faz Max Reaktif Güç | 11076 | 1 | Q(VAR) | int32 | R
+1.Faz Min Görünür Güç | 11078 | 1 | S(VA) | int32 | R
+2.Faz Min Görünür Güç | 11080 | 1 | S(VA) | int32 | R
+3.Faz Min Görünür Güç | 11082 | 1 | S(VA) | int32 | R
+1.Faz Max Görünür Güç | 11084 | 1 | S(VA) | int32 | R
+2.Faz Max Görünür Güç | 11086 | 1 | S(VA) | int32 | R
+3.Faz Max Görünür Güç | 11088 | 1 | S(VA) | int32 | R
+1.Faz Min THDV | 11100 | 0.1 | % | int32 | R
+2.Faz Min THDV | 11102 | 0.1 | % | int32 | R
+3.Faz Min THDV | 11104 | 0.1 | % | int32 | R
+1.Faz Max THDV | 11106 | 0.1 | % | int32 | R
+2.Faz Max THDV | 11108 | 0.1 | % | int32 | R
+3.Faz Max THDV | 11110 | 0.1 | % | int32 | R
+1.Faz Min THDI | 11112 | 0.1 | % | int32 | R
+2.Faz Min THDI | 11114 | 0.1 | % | int32 | R
+3.Faz Min THDI | 11116 | 0.1 | % | int32 | R
+1.Faz Max THDI | 11118 | 0.1 | % | int32 | R
+2.Faz Max THDI | 11120 | 0.1 | % | int32 | R
+3.Faz Max THDI | 11122 | 0.1 | % | int32 | R
+Min Frekans | 11136 | 0.01 | Hz | int32 | R
+Max Frekans | 11138 | 0.01 | Hz | int32 | R
+Min Gerilim Dengesizlik | 11140 | - | % | int32 | R
+Max Gerilim Dengesizlik | 11142 | - | % | int32 | R
+Min Akım Dengesizlik | 11144 | - | % | int32 | R
+Max Akım Dengesizlik | 11146 | - | % | int32 | R
+ |  |  |  |  | 
+
+===== PAGE 6 =====
+Anlık Tepe Değerleri (Üretim) | Adres | Çarpan | Birim | Tür | W/R
+1.Faz Min Export Gerilim(LN) | 11260 | 0.1 | V(Volt) | int32 | R
+2.Faz Min Export Gerilim(LN) | 11262 | 0.1 | V(Volt) | int32 | R
+3.Faz Min Export Gerilim(LN) | 11264 | 0.1 | V(Volt) | int32 | R
+Nötr Min Gerilim | 11266 | 0.1 |  | int32 | R
+1.Faz Max Gerilim(LN) | 11268 | 0.1 | V(Volt) | int32 | R
+2.Faz Max Gerilim(LN) | 11270 | 0.1 | V(Volt) | int32 | R
+3.Faz Max Gerilim(LN) | 11272 | 0.1 | V(Volt) | int32 | R
+Nötr Max Gerilim | 11274 | 0.1 | V(Volt) | int32 | R
+1.Faz Min Gerilim(LL) | 11276 | 0.1 | V(Volt) | int32 | R
+2.Faz Min Gerilim(LL) | 11278 | 0.1 | V(Volt) | int32 | R
+3.Faz Min Gerilim(LL) | 11280 | 0.1 | V(Volt) | int32 | R
+1.Faz Max Gerilim(LL) | 11282 | 0.1 | V(Volt) | int32 | R
+2.Faz Max Gerilim(LL) | 11284 | 0.1 | V(Volt) | int32 | R
+3.Faz Max Gerilim(LL) | 11286 | 0.1 | V(Volt) | int32 | R
+1.Faz Min Akım | 11288 | 1 | A(Amper) | int32 | R
+2.Faz Min Akım | 11290 | 1 | A(Amper) | int32 | R
+3.Faz Min Akım | 11292 | 1 | A(Amper) | int32 | R
+Nötr Min Akım | 11294 | 1 |  | int32 | R
+1.Faz Max Akım | 11296 | 1 | A(Amper) | int32 | R
+2.Faz Max Akım | 11298 | 1 | A(Amper) | int32 | R
+3.Faz Max Akım | 11300 | 1 | A(Amper) | int32 | R
+Nötr Max Akım | 11302 | 1 |  | int32 | R
+1.Faz Min Aktif Güç | 11304 | 1 | P(Watt) | int32 | R
+2.Faz Min Aktif Güç | 11306 | 1 | P(Watt) | int32 | R
+3.Faz Min Aktif Güç | 11308 | 1 | P(Watt) | int32 | R
+1.Faz Max Aktif Güç | 11310 | 1 | P(Watt) | int32 | R
+2.Faz Max Aktif Güç | 11312 | 1 | P(Watt) | int32 | R
+3.Faz Max Aktif Güç | 11314 | 1 | P(Watt) | int32 | R
+1.Faz Min Reaktif Güç | 11316 | 1 | Q(VAR) | int32 | R
+
+===== PAGE 7 =====
+2.Faz Min Reaktif Güç | 11318 | 1 | Q(VAR) | int32 | R
+3.Faz Min Reaktif Güç | 11320 | 1 | Q(VAR) | int32 | R
+1.Faz Max Reaktif Güç | 11322 | 1 | Q(VAR) | int32 | R
+2.Faz Max Reaktif Güç | 11324 | 1 | Q(VAR) | int32 | R
+3.Faz Max Reaktif Güç | 11326 | 1 | Q(VAR) | int32 | R
+1.Faz Min Görünür Güç | 11328 | 1 | S(VA) | int32 | R
+2.Faz Min Görünür Güç | 11330 | 1 | S(VA) | int32 | R
+3.Faz Min Görünür Güç | 11332 | 1 | S(VA) | int32 | R
+1.Faz Max Görünür Güç | 11334 | 1 | S(VA) | int32 | R
+2.Faz Max Görünür Güç | 11336 | 1 | S(VA) | int32 | R
+3.Faz Max Görünür Güç | 11338 | 1 | S(VA) | int32 | R
+1.Faz Min THDV | 11350 | 0.1 | % | int32 | R
+2.Faz Min THDV | 11352 | 0.1 | % | int32 | R
+3.Faz Min THDV | 11354 | 0.1 | % | int32 | R
+1.Faz Max THDV | 11356 | 0.1 | % | int32 | R
+2.Faz Max THDV | 11358 | 0.1 | % | int32 | R
+3.Faz Max THDV | 11360 | 0.1 | % | int32 | R
+1.Faz Min THDI | 11362 | 0.1 | % | int32 | R
+2.Faz Min THDI | 11364 | 0.1 | % | int32 | R
+3.Faz Min THDI | 11366 | 0.1 | % | int32 | R
+1.Faz Max THDI | 11368 | 0.1 | % | int32 | R
+2.Faz Max THDI | 11370 | 0.1 | % | int32 | R
+3.Faz Max THDI | 11372 | 0.1 | % | int32 | R
+Min Frekans | 11386 | 0.01 | Hz | int32 | R
+Max Frekans | 11388 | 0.01 | Hz | int32 | R
+Min Gerilim Dengesizlik | 11390 | - | % | int32 | R
+Max Gerilim Dengesizlik | 11392 | - | % | int32 | R
+Min Akım Dengesizlik | 11394 | - | % | int32 | R
+Max Akım Dengesizlik | 11396 | - | % | int32 | R
+
+===== PAGE 8 =====
+Anlık Toplam Ve Ortalama Değerler | Adres | Çarpan | Birim | Tür | W/R
+Toplam Aktif Güç(Tüketim) | 10410 | 1 | Watt | int 32 | R
+Toplam Reaktif Güç (Tüketim) | 10412 | 1 | VAr | int 32 | R
+Toplam Endüktif Güç(Tüketim) | 10414 | 1 | VAr | int 32 | R
+Toplam Kapasitif Güç(Tüketim) | 10416 | 1 | VAr | int 32 | R
+Toplam Görünür Güç(Tüketim) | 10418 | 1 | VA | int 32 | R
+Toplam Aktif Güç(Üretim) | 10430 | 1 | Watt | int 32 | R
+Toplam Reaktif Güç (Üretim) | 10432 | 1 | VAr | int 32 | R
+Toplam Endüktif Güç(Üretim) | 10434 | 1 | VAr | int 32 | R
+Toplam Kapasitif Güç(Üretim) | 10436 | 1 | VAr | int 32 | R
+Toplam Görünür Güç(Üretim) | 10438 | 1 | VA | int 32 | R
+Ortalama Akım(Tüketim) | 10452 | 1 | Amper | int 32 | R
+Ortalama Aktif Güç(Tüketim) | 10454 | 1 | Watt | int 32 | R
+Ortalama Cos(Tüketim) | 10456 | 1 | - | int 32 | R
+Ortalama Tan(Tüketim) | 10458 | 0.1 | - | int 32 | R
+Ortalama Pf(Tüketim) | 10460 | - | - | int 32 | R
+Ortalama Akım(Üretim) | 10472 | 1 | Amper | int 32 | R
+Ortalama Aktif Güç(Üretim) | 10474 | 1 | Watt | int 32 | R
+Ortalama Cos(Üretim) | 10476 | 1 | - | int 32 | R
+Ortalama Tan(Üretim) | 10478 | 0.1 | - | int 32 | R
+Ortalama Pf(Üretim) | 10480 | - | - | int 32 | R
+Ortalama Gerilim(LN) | 10492 | 0.1 | Volt | int 32 | R
+Ortalama Gerilim(LL) | 10494 | 0.1 | Volt | int 32 | R
+Ortalama Frekans | 10496 | 0.01 | Hz | int 32 | R
+Ortalama THDI | 10498 | 0.1 | - | int 32 | R
+Ortalama THDV | 10500 | 0.1 | - | int 32 | R
+
+===== PAGE 9 =====
+Parametre | Adres | W/R | Tipi | Birim | Min | Max | Default | Step |  | Table-1 |  |  | Table-3 |  |  | Table-5 |  |  | Table-10 |  |  | 
+Parametre Versiyonu | 200 | R | Uint 16 | - | 0 | 255 | 6 | - |  | Index Modbus Hızı |  |  | Index Hat Gerilimi |  |  | Index Durum |  |  | Index Kapasitif Index Endüktif |  |  | 
+Çalışma Süresi | 201 | R | Uint 16 | - | 0 | 32767 | 0 | - |  | 0
+1
+2 | 4800 bps |  | 0 | 173 V |  | 0 | Devre Dışı |  | 0 | 10000 | 0 | 10000
+Reset Durumu | 202 | R | Uint 16 | - | 0 | 1 | 0 | - |  |  | 9600 bps |  | 1 | 190 V |  | 1 | Devrede |  | -1 | 9998 | 1 | 9998
+Power Down Counter | 203 | R | Uint 16 | - | 0 | 32767 | 0 | - |  |  | 19200 bps |  | 2 | 200 V |  |  |  |  | -2 | 9994 | 2 | 9994
+Dummy | 204 |  |  | - |  |  |  |  |  | 3
+4 | 38400 bps |  | 3 | 208 V |  |  |  |  | -3 | 9986 | 3 | 9986
+Dummy | 205 |  |  | - |  |  |  |  |  |  | 57600 bps |  | 4 | 220 V |  | Table-6 |  |  | -4 | 9976 | 4 | 9976
+Modbus Adresi | 206 | W/R | Uint 16 | - | 1 | 247 | 1 | 1 |  | 5 | 115200 bps |  | 5 | 380 V |  | Index Dil |  |  | -5 | 9962 | 5 | 9962
+Dummy | 207 |  |  | - |  |  |  |  |  |  |  |  | 6
+7 | 400 V |  | 0 | Türkçe |  | -6 | 9945 | 6 | 9945
+Dummy | 208 |  |  | - |  |  |  |  |  |  |  |  |  | 415 V |  | 1 | İngilizce |  | -7 | 9925 | 7 | 9925
+Dummy | 209 |  |  | - |  |  |  |  |  | Table-2 |  |  | 8 | 440 V |  |  |  |  | -8 | 9903 | 8 | 9903
+Modbus Hızı(Table-1)* | 210 | W/R | Uint 16 | bps | 0 | 5 | 1 | 1 |  | Index A.Trafo Oranı |  |  | 9 | 480 V |  |  |  |  | -9 | 9877 | 9 | 9877
+Dummy | 211 |  |  | - |  |  |  |  |  | 0
+1
+2 | 5 |  | 10 | 500 V |  | Table-7 |  |  | -10 | 9848 | 10 | 9848
+Dummy | 212 |  |  | - |  |  |  |  |  |  | 10 |  | 11 | 525 V |  | Index Harmonik Profili |  |  | -11 | 9816 | 11 | 9816
+Dummy | 213 |  |  | - |  |  |  |  |  |  | 15 |  | 12 | 550 V |  | 0 | 1-13 Arası Tek |  | -12 | 9781 | 12 | 9781
+Okuma Koruma Biti | 214 | R | Uint 16 | - | 0 | 1 | 0 | 1 |  | 3
+4
+5
+6 | 20 |  | 13 | 650 V |  | 1 | 1-13 Arası Çift |  | -13 | 9744 | 13 | 9744
+Yazma Koruma Biti | 215 | R | Uint 16 | - | 0 | 1 | 0 | 1 |  |  | 25 |  | 14 | 690 V |  | 2 | 1-13 Arası Hepsi |  | -14 | 9703 | 14 | 9703
+Okuma Şifresi Onay | 216 | W/R | Uint 16 | - | 0 | 4 | 0 | 1 |  |  | 30 |  | 15 | 725 V |  | 3 | 1-31 Arası Tek |  | -15 | 9659 | 15 | 9659
+Yazma Şifresi Onay | 217 | W/R | Uint 16 | - | 0 | 4 | 0 | 1 |  |  | 40 |  | 16 | 800 V |  | 4 | 1-31 Arası Çift |  | -16 | 9613 | 16 | 9613
+Dummy | 218 |  |  | - |  |  |  |  |  | 7
+8
+9 | 50 |  | 17 | 850 V |  | 5 | 1-31 Arası Hepsi |  | -17 | 9563 | 17 | 9563
+Dummy | 219 |  |  | - |  |  |  |  |  |  | 60 |  | 18 | 900 V |  | 6 | 1-63 Arası Tek |  | -18 | 9511 | 18 | 9511
+Dummy | 220 |  |  | - |  |  |  |  |  |  | 70 |  | 19 | 1000 V |  | 7 | 1-63 Arası Çift |  | -19 | 9455 | 19 | 9455
+Akım-Trafo Oranı(Table-2)* | 221 | W/R | Uint 16 | - | 0 | 69 | 0 | 1 |  | 10
+11 | 75 |  | 20 | 3600 V |  | 8 | Tüm Harmonikler |  | -20 | 9397 | 20 | 9397
+Hat Voltajı(Table-3)* | 222 | W/R | Uint 16 | Volt | 0 | 49 | 6 | 1 |  |  | 80 |  | 21 | 6300 V |  | 9 | Detay |  | -21 | 9336 | 21 | 9336
+Ölçüm Voltajı(Table-4)  | 223 | W/R | Uint 16 | Volt | 0 | 23 | 16 | 1 |  | 13 | 100 |  | 22 | 690 V |  |  |  |  | -22 | 9272 | 22 | 9272
+Dummy | 224 |  |  |  |  |  |  |  |  | 14
+15 | 120 |  | 23 | 725 V |  |  |  |  | -23 | 9205 | 23 | 9205
+Dummy | 225 |  |  |  |  |  |  |  |  |  | 125 |  | 24 | 11000 |  | Table-8 |  |  | -24 | 9135 | 24 | 9135
+Demand Periyodu | 226 | W/R | Uint 16 | - | 1 | 60 | 15 | 1 |  | 16
+17
+18 | 130 |  | 25 | 12000 |  | Index Durum |  |  | -25 | 9063 | 25 | 9063
+Modbus Akım Hassasiyeti | 227 | W/R | Uint 16 | - | 1 | 1000 | 1 | 1 |  |  | 150 |  | 26 | 13800 |  | 0 | None |  | -26 | 8988 | 26 | 8988
+Enerji Periyodu | 228 | W/R | Uint 16 | ms | 100 | 1000 | 200 | 10 |  |  | 160 |  | 27 | 14000 |  | 1 | Odd |  | -27 | 8910 | 27 | 8910
+Dummy | 228 |  |  |  |  |  |  |  |  | 19
+20
+21 | 175 |  | 28 | 15000 |  | 2 | Even |  | -28 | 8829 | 28 | 8829
+[171][171][171] | [171] |  |  |  |  |  |  |  |  |  | 180 |  | 29 | 15800 |  |  |  |  | -29 | 8746 | 29 | 8746
+Dummy | 239 |  |  |  |  |  |  |  |  |  | 200 |  | 30 | 17000 |  |  |  |  | -30 | 8660 | 30 | 8660
+Reset - Bilinmeyen | 240 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  | 22
+23
+24
+25
+26
+27
+28
+29 | 225 |  | 31 | 17500 |  | Table-9 |  |  | -31 | 8572 | 31 | 8572
+Reset - Power On | 241 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 240 |  | 32 | 24000 |  | Index Harmonik Tipi |  |  | -32 | 8480 | 32 | 8480
+Reset - Brown Out | 242 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 250 |  | 33 | 28500 |  | 0 | Tek |  | -33 | 8387 | 33 | 8387
+Reset - WatchDog Timer | 243 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 300 |  | 34 | 29250 |  | 1 | Çift |  | -34 | 8290 | 34 | 8290
+Reset - Software Reset | 244 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 330 |  | 35 | 30000 |  | 2 | Hepsi |  | -35 | 8192 | 35 | 8192
+Reset - MCLR | 245 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 350 |  | 36 | 30750 |  |  |  |  | -36 | 8090 | 36 | 8090
+Reset - Option Byte Loader | 246 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 360 |  | 37 | 30800 |  |  |  |  |  |  |  | 
+Reset - V1.8 Power | 247 | R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 400 |  | 38 | 31500 |  | Table-11 |  |  |  |  |  | 
+Dummy | 247 |  |  |  |  |  |  |  |  | 30
+31 | 450 |  | 39 | 32000 |  | Index Gerilim Tipi |  |  |  |  |  | 
+Dummy | 248 |  |  |  |  |  |  |  |  |  | 500 |  | 40 | 32800 |  | 0 | AC |  |  |  |  | 
+Zaman Dilimi(GMT) | 249 | W/R | int 16 | - | -12 | 12 | 3 | 1 |  | 32
+33
+34
+35
+36
+37 | 520 |  | 41 | 33000 |  | 1 | DC |  |  |  |  | 
+Tarih Saat Timestamp (High) | 250 | W/R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 550 |  | 42 | 33600 |  |  |  |  |  |  |  | 
+Tarih Saat Timestamp (Low) | 251 | W/R | Uint 16 | - | 0 | 65535 | 0 | 1 |  |  | 600 |  | 43 | 34500 |  |  |  |  |  |  |  | 
+Ekran Örnek Sayısı | 252 | W/R | Uint 16 | - | 1 | 16 | 8 | 1 |  |  | 630 |  | 44 | 35000 |  | Table-12 |  |  |  |  |  | 
+Ekran Yüzdelik Fark | 253 | W/R | Uint 16 | % | 1 | 60 | 30 | 1 |  |  | 650 |  | 45 | 35400 |  | Index Kurulum Modu |  |  |  |  |  | 
+Ekran Tazeleme Aralığı | 254 | W/R | Uint 16 | ms | 300 | 10000 | 300 | 100 |  |  | 700 |  | 46 | 36000 |  | 0 | Kondansatörlerle |  |  |  |  | 
+Dummy | 255 |  |  |  |  |  |  |  |  | 38 | 730 |  | 47 | 36200 |  | 1 | Reaktörlerle |  |  |  |  | 
+Ekran Koruyucu Etkinleştirme | 256 | W/R | Uint 16 | - | 0 | 1 | 1 | - |  | 39
+40
+41 | 750 |  | 48 | 38500 |  | 2 | SVC ile |  |  |  |  | 
+Ekran Koruyucu Bekleme Süresi | 257 | W/R | Uint 16 | dk | 3 | 240 | 60 | 1 |  |  | 800 |  | 49 | 46000 |  |  |  |  |  |  |  | 
+Ekran Parlaklık Seviyesi | 258 | W/R | Uint 16 | % | 5 | 100 | 90 | 1 |  |  | 900 |  |  |  |  |  |  |  |  |  |  | 
+Dummy | 259 |  |  |  |  |  |  |  |  | 42 | 1000 |  |  |  |  | Table-13 |  |  |  |  |  | 
+Dil(Table-6) | 260 | W/R | Uint 16 | - | 0 | 1 | 0 | - |  | 43
+44
+45 | 1100 |  | Table-4 |  |  | Index Bağlantı Şekli |  |  |  |  |  | 
+Erişim Seviyesi(Table-15) | 261 | W/R | Uint 16 | - | 0 | 2 | 2 | - |  |  | 1200 |  | Index Ölçme Gerilimi |  |  | 0 | Tek Faz L1 |  |  |  |  | 
+Erişim Kontrol Etkinleştirme(Table-5) | 262 | W/R | Uint 16 | - | 0 | 1 | 0 | - |  |  | 1250 |  | 0 | 22 |  | 1 | Tek Faz L2 |  |  |  |  | 
+Dummy | 263 |  |  |  |  |  |  |  |  | 46 | 1400 |  | 1 | 25 |  | 2 | Tek Faz l2 |  |  |  |  | 
+
+===== PAGE 10 =====
+Dummy | 264 |  |  |  |  |  |  |  |  | 47 | 1500 |  | 2 | 30 |  | 3 | Üç Faz L123 |  | 
+Harmonik Profili(Table-7) | 265 | W/R | Uint 16 | - | 0 | 9 | 3 | - |  | 48 | 1600 |  | 3 | 33 |  |  |  |  | 
+Harmonik Limiti | 266 | W/R | Uint 16 | - | 7 | 63 | 31 | - |  | 49
+50 | 1800 |  | 4 | 36 |  |  |  |  | 
+Harmonik Analizi(Table-8) | 267 | W/R | Uint 16 | - | 0 | 2 | 0 | - |  |  | 2000 |  | 5 | 40 |  | Table-14 |  |  | 
+Dummy | 268 |  |  |  |  |  |  |  |  | 51
+52
+53 | 2200 |  | 6 | 50 |  | Index Durum |  |  | 
+[171][171][171] | [171] |  |  |  |  |  |  |  |  |  | 2400 |  | 7 | 100 |  | 0 | RTU |  | 
+Dummy | 315 |  |  |  |  |  |  |  |  |  | 2500 |  | 8 | 110 |  | 1 | ASCII |  | 
+RGP Güç Çözünürlüğü | 316 | W/R | Uint 16 | x100VAr | 1 | 40 | 5 | 1 |  | 54 | 2600 |  | 9 | 120 |  |  |  |  | 
+RGP Maksimum Fark | 317 | W/R | Uint 16 | % | 20 | 40 | 40 | 1 |  | 55 | 3000 |  | 10 | 173 |  |  |  |  | 
+RGP Yüzdesi | 318 | W/R | Uint 16 | % | 5 | 40 | 5 | 1 |  | 56 | 3200 |  | 11 | 190 |  | Table-15 |  |  | 
+Dummy | 319 |  |  |  |  |  |  |  |  | 57 | 3500 |  | 12 | 200 |  | Index ErİŞİM Seviyesi |  |  | 
+Şirket Adı_1 | 320 | W/R | Uint 16 | - | - | - | - | - |  | 58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69 | 3600 |  | 13 | 208 |  | 0 | Kullanıcı |  | 
+Şirket Adı_2 | 321 | W/R | Uint 16 | - | - | - | - | - |  |  | 4000 |  | 14 | 220 |  | 1 | Operatör |  | 
+Şirket Adı_3 | 322 | W/R | Uint 16 | - | - | - | - | - |  |  | 4500 |  | 15 | 380 |  | 2 | Uzman |  | 
+Şirket Adı_4 | 323 | W/R | Uint 16 | - | - | - | - | - |  |  | 5000 |  | 16 | 400 |  |  |  |  | 
+Şirket Adı_5 | 324 | W/R | Uint 16 | - | - | - | - | - |  |  | 5500 |  | 17 | 415 |  |  |  |  | 
+Şirket Adı_6 | 325 | W/R | Uint 16 | - | - | - | - | - |  |  | 6000 |  | 18 | 440 |  |  |  |  | 
+Şirket Adı_7 | 326 | W/R | Uint 16 | - | - | - | - | - |  |  | 6500 |  | 19 | 480 |  |  |  |  | 
+Şirket Adı_8 | 327 | W/R | Uint 16 | - | - | - | - | - |  |  | 7000 |  | 20 | 525 |  |  |  |  | 
+Şirket Adı_9 | 328 | W/R | Uint 16 | - | - | - | - | - |  |  | 7500 |  | 21 | 600 |  |  |  |  | 
+Şirket Adı_10 | 329 | W/R | Uint 16 | - | - | - | - | - |  |  | 8000 |  | 22 | 690 |  |  |  |  | 
+Şirket Adı_11 | 330 | W/R | Uint 16 | - | - | - | - | - |  |  | 8500 |  | 23 | 725 |  |  |  |  | 
+Şirket Adı_12 | 331 | W/R | Uint 16 | - | - | - | - | - |  |  | 10000 |  |  |  |  |  |  |  | 
+Şirket Adı_13 | 332 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Şirket Adı_14 | 333 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Şirket Adı_15 | 334 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  | Table-9 |  |  |  |  |  | 
+Şirket Adı_16 | 335 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Şirket Adı_17 | 336 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Şirket Adı_18 | 337 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Şirket Adı_19 | 338 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Şirket Adı_20 | 339 | W/R | Uint 16 | - | - | - | - | - |  |  |  |  |  |  |  |  |  |  | 
+Dummy | 340 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Aşırı Gerilim Koruma(Table-5)* | 341 | W/R | Uint 16 | - | 0 | 1 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Düşük Gerilim Koruma(Table-5)* | 342 | W/R | Uint 16 | - | 0 | 1 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Aşırı Harmonik Koruma(Table-5)* | 343 | W/R | Uint 16 | - | 0 | 1 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Aşırı Sıcaklık Koruma(Table-5)* | 344 | W/R | Uint 16 | - | 0 | 1 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Düşük Gerilim Değeri | 345 | W/R | Uint 16 | Volt | 50 | 1000 | 180 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Aşırı Gerilim Değeri | 345 | W/R | Uint 16 | Volt | 100 | 1000 | 250 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Aşırı Harmonik Değeri | 347 | W/R | Uint 16 | % | 2 | 50 | 7 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Aşırı Sıcaklık Değeri | 348 | W/R | Uint 16 | °C | 40 | 90 | 70 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Dummy | 349 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Özel Akım Trafo Oranı L1 | 350 | R | Uint 16 | - | 0 | 2000 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Özel Akım Trafo Oranı L2 | 351 | R | Uint 16 | - | 0 | 2000 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Özel Akım Trafo Oranı L3 | 352 | R | Uint 16 | - | 0 | 2000 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Jenaratör(Table-5)* | 353 | W/R | Uint 16 | - | 0 | 1 | 0 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Kademe Desarj Süresi | 354 | W/R | Uint 16 | sn | 1 | 60 | 16 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Dummy | 355 |  |  |  |  |  |  |  | Table 4 açıklama |  |  |  |  |  |  |  |  |  | 
+Akım Yönü ve Akım-Gerilim Eşleşme (Table-9)* | 356 | R | Uint 16 | - | - | - | - | 1 |  |  |  |  |  |  |  |  |  |  | 
+Endüktif Limit | 357 | W/R | Uint 16 | - | 1 | 50 | 8 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Kapasitif Limit | 358 | W/R | Uint 16 | - | 1 | 50 | 8 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Histerisis(Endüktif) | 359 | W/R | Uint 16 | - | 5 | 50 | 20 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Histerisis(Kapasitif) | 360 | W/R | Uint 16 | - | 5 | 50 | 20 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Histerisis(Normal) | 361 | W/R | Uint 16 | - | 3 | 50 | 10 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Endüktifde Cevap Süresi | 362 | W/R | Uint 16 | x100 ms | 2 | 250 | 20 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Kapasitifde Cevap Süresi | 363 | W/R | Uint 16 | x100 ms | 2 | 250 | 20 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Normalde Cevap Süresi | 364 | W/R | Uint 16 | sn | 2 | 255 | 120 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Kademe Ortak Kontrol(Table-5)* | 365 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 |  |  |  |  |  |  |  |  |  |  | 
+Hedef Cos (Hat) (Table-10) | 366 | W/R | Uint 16 | -36 | 36 | 0 | 1 | 1 |  |  |  |  |  |  |  |  |  |  | 
+
+===== PAGE 11 =====
+Hedef Cos (Jeneratör) (Table-10) | 367 | W/R | Uint 16 | 8 | 36 |  | 0 | 1 | 
+Ek Güç Süresi | 368 | W/R | Uint 16 | saat | 0 | 720 | 0 | 1 | 
+Ek Reactive Güç 3Faz(0,1kvar) | 369 | W/R | int 16 | x100VAr | -500 | 500 | 0 | 1 | 
+Ek Reaktif Güç L1 | 370 | W/R | int 16 | VAr | -20000 | 20000 | 0 | 1 | 
+Ek Reaktif Güç L2 | 371 | W/R | int 16 | VAr | -20000 | 20000 | 0 | 1 | 
+Ek Reaktif Güç L3 | 372 | W/R | int 16 | VAr | -20000 | 20000 | 0 | 1 | 
+Dummy | 373 |  |  |  |  |  |  |  | 
+[171][171][171] | [171] |  |  |  |  |  |  |  | 
+Dummy | 377 |  |  |  |  |  |  |  | 
+Aktif SVC Oranı | 378 | W/R | Uint 16 | - | 5 | 100 | 20 | 1 | 
+Normalde SVC yüzdesi | 379 | W/R | Uint 16 | % | 10 | 80 | 30 | 1 | 
+Reaktifde SVC yüzdesi | 380 | W/R | Uint 16 | % | 30 | 100 | 60 | 1 | 
+Termik Kontrol(Table-5)* | 381 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 | 
+Dummy | 382 |  |  |  |  |  |  |  | 
+Kademe Ortak-1 Tipi (Table-11)* | 383 | W/R | Uint 16 |  | 0 | 1 | 0 | 1 | 
+Kademe Ortak-1 Ölçme Gerilim | 384 | W/R | Uint 16 | Volt | 0 | 450 | 220 | 1 | 
+Kademe Ortak-1 Yüzdelik Fark | 385 | W/R | Uint 16 | % | 5 | 50 | 20 | 1 | 
+Kademe Ortak-2 Tipi (Table-11)* | 386 | W/R | Uint 16 |  | 0 | 1 | 0 | 1 | 
+Kademe Ortak-2 Ölçme Gerilim | 387 | W/R | Uint 16 | Volt | 0 | 450 | 220 | 1 | 
+Kademe Ortak-2 Yüzdelik Fark | 388 | W/R | Uint 16 | % | 5 | 50 | 20 | 1 | 
+Kademe Ortak-3 Tipi (Table-11)* | 389 | W/R | Uint 16 |  | 0 | 1 | 0 | 1 | 
+Kademe Ortak-3 Ölçme Gerilim | 390 | W/R | Uint 16 | Volt | 0 | 450 | 220 | 1 | 
+Kademe Ortak-3 Yüzdelik Fark | 391 | W/R | Uint 16 | % | 5 | 50 | 20 | 1 | 
+Dummy | 392 |  |  |  |  |  |  |  | 
+Dummy | 393 |  |  |  |  |  |  |  | 
+Faz-Faz Kontrolü | 394 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 | 
+Akım-Gerilim Eşleştirme Kontrolü(Table-5)* | 395 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 | 
+Dummy | 396 |  |  |  |  |  |  |  | 
+Dummy | 397 |  |  |  |  |  |  |  | 
+Dummy | 398 |  |  |  |  |  |  |  | 
+Dummy | 399 |  |  |  |  |  |  |  | 
+Eş Yaşlandırma Kontrol(Table-5)* | 400 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 | 
+Eş Yaşlandırma Muadil Yüzdelik | 401 | W/R | Uint 16 | % | 1 | 10 | 5 | 1 | 
+Eş Yaşlandırma Devrede Kalma Süresi | 402 | W/R | Uint 16 | saat | 0 | 24 | 3 | 1 | 
+Kademe Ara Süresi | 403 | W/R | Uint 16 | s | 100 | 30000 | 5 | 100 | 
+Kademeler Daimi Kontrol(Table-5)* | 404 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 | 
+Ölçme Hatası(Tanıma) | 405 | W/R | Uint 16 | % | 2 | 15 | 5 | 1 | 
+Kademe Faz Hatası | 406 | W/R | Uint 16 | % | 5 | 30 | 15 | 1 | 
+Kademe Değer Kaybı | 407 | W/R | Uint 16 | % | 5 | 40 | 20 | 1 | 
+Dummy | 408 |  |  |  |  |  |  |  | 
+Dummy | 409 |  |  |  |  |  |  |  | 
+Kurulum Modu(Table-12) | 410 | W/R | Uint 16 | - | 0 | 2 | 0 | 1 | 
+Kurulum Tekrar Sayısı | 411 | W/R | Uint 16 | - | 1 | 5 | 3 | 1 | 
+Bağlantı Şekli(Table-13) | 412 | W/R | Uint 16 | - | 0 | 3 | 3 | 1 | 
+Kurulum Daimi Kontrol(Table-5)* | 413 | W/R | Uint 16 | - | 0 | 1 | 1 | 1 | 
+Ölçme Hatası(Kurulum) | 414 | W/R | Uint 16 | % | 5 | 30 | 8 | 1 | 
+Dummy | 415 |  |  |  |  |  |  |  | 
+[171][171][171] | [171] |  |  |  |  |  |  |  | 
+Dummy | 424 |  |  |  |  |  |  |  | 
+Modbus Modu (Table-14) | 425 | W/R | Uint 16 | - | 0 | 1 | 0 | 1 | 
+Modbus Data Bits | 426 | R | Uint 16 | - | 7 | 8 | 8 | 1 | 
+Modbus Parity(Table-15) | 427 | W/R | Uint 16 | - | 0 | 2 | 0 | 1 | 
+Modbus Stop Bits | 428 | W/R | Uint 16 | - | 1 | 2 | 1 | 1 | 
+Modbus Sesizlik Bekleme Süresi | 429 | W/R | Uint 16 | - | 4 | 128 | 8 | 1 | 
+
+===== PAGE 12 =====
+Demand Değerleri (Tüketim) | Adres | Çarpan | Birim | Tür | W/R
+1. Faz Max Demand Gerilim | 12010 | 0.1 | V(Volt) | int32 | R
+2. Faz Max Demand Gerilim | 12012 | 0.1 | V(Volt) | int32 | R
+3. Faz Max Demand Gerilim | 12014 | 0.1 | V(Volt) | int32 | R
+1. Faz Min Demand Gerilim | 12016 | 0.1 | V(Volt) | int32 | R
+2. Faz Min Demand Gerilim | 12018 | 0.1 | V(Volt) | int32 | R
+3. Faz Min Demand Gerilim | 12020 | 0.1 | V(Volt) | int32 | R
+1. Faz Max Demand Akım | 12022 | 1 | A(Amper) | int32 | R
+2. Faz Max Demand Akım | 12024 | 1 | A(Amper) | int32 | R
+3. Faz Max Demand Akım | 12026 | 1 | A(Amper) | int32 | R
+1. Faz Min Demand Akım | 12028 | 1 | A(Amper) | int32 | R
+2. Faz Min Demand Akım | 12030 | 1 | A(Amper) | int32 | R
+3. Faz Min Demand Akım | 12032 | 1 | A(Amper) | int32 | R
+1. Faz Max Demand Aktif Güç | 12034 | 1 | Watt | int32 | R
+2. Faz Max Demand Aktif Güç | 12036 | 1 | Watt | int32 | R
+3. Faz Max Demand Aktif Güç | 12038 | 1 | Watt | int32 | R
+1. Faz Min Demand Aktif Güç | 12040 | 1 | Watt | int32 | R
+2. Faz Min Demand Aktif Güç | 12042 | 1 | Watt | int32 | R
+3. Faz Min Demand Aktif Güç | 12044 | 1 | Watt | int32 | R
+1. Faz Max Demand Reaktif Güç | 12046 | 1 | VAR | int32 | R
+2. Faz Max Demand Reaktif Güç | 12048 | 1 | VAR | int32 | R
+3. Faz Max Demand Reaktif Güç | 12050 | 1 | VAR | int32 | R
+1. Faz Min Demand Reaktif Güç | 12052 | 1 | VAR | int32 | R
+2. Faz Min Demand Reaktif Güç | 12054 | 1 | VAR | int32 | R
+3. Faz Min Demand Reaktif Güç | 12056 | 1 | VAR | int32 | R
+1. Faz Max Demand Görünür Güç | 12058 | 1 | VA | int32 | R
+2. Faz Max Demand Görünür Güç | 12060 | 1 | VA | int32 | R
+3. Faz Max Demand Görünür Güç | 12062 | 1 | VA | int32 | R
+1. Faz Min Demand Görünür Güç | 12064 | 1 | VA | int32 | R
+2. Faz Min Demand Görünür Güç | 12066 | 1 | VA | int32 | R
+
+===== PAGE 13 =====
+3. Faz Min Demand Görünür Güç | 12068 | 1 | VA | int32 | R
+1. Faz Max Demand THDV | 12100 | 0.1 | % | int32 | R
+2. Faz Max Demand THDV | 12102 | 0.1 | % | int32 | R
+3. Faz Max Demand THDV | 12104 | 0.1 | % | int32 | R
+1. Faz Min Demand THDV | 12106 | 0.1 | % | int32 | R
+2. Faz Min Demand THDV | 12108 | 0.1 | % | int32 | R
+3. Faz Min Demand THDV | 12110 | 0.1 | % | int32 | R
+1. Faz Max Demand THDI | 12112 | 0.1 | % | int32 | R
+2. Faz Max Demand THDI | 12114 | 0.1 | % | int32 | R
+3. Faz Max Demand THDI | 12116 | 0.1 | % | int32 | R
+1. Faz Min Demand THDI | 12118 | 0.1 | % | int32 | R
+2. Faz Min Demand THDI | 12120 | 0.1 | % | int32 | R
+3. Faz Min Demand THDI | 12122 | 0.1 | % | int32 | R
+ |  |  |  |  | 
+Demand Değerleri (Üretim) | Adres | Çarpan | Birim | Tür | W/R
+1. Faz Max Demand Gerilim | 12260 | 0.1 | V(Volt) | int32 | R
+2. Faz Max Demand Gerilim | 12262 | 0.1 | V(Volt) | int32 | R
+3. Faz Max Demand Gerilim | 12264 | 0.1 | V(Volt) | int32 | R
+1. Faz Min Demand Gerilim | 12266 | 0.1 | V(Volt) | int32 | R
+2. Faz Min Demand Gerilim | 12268 | 0.1 | V(Volt) | int32 | R
+3. Faz Min Demand Gerilim | 12270 | 0.1 | V(Volt) | int32 | R
+1. Faz Max Demand Akım | 12272 | 1 | A(Amper) | int32 | R
+2. Faz Max Demand Akım | 12274 | 1 | A(Amper) | int32 | R
+3. Faz Max Demand Akım | 12276 | 1 | A(Amper) | int32 | R
+1. Faz Min Demand Akım | 12278 | 1 | A(Amper) | int32 | R
+2. Faz Min Demand Akım | 12280 | 1 | A(Amper) | int32 | R
+3. Faz Min Demand Akım | 12282 | 1 | A(Amper) | int32 | R
+1. Faz Max Demand Aktif Güç | 12284 | 1 | Watt | int32 | R
+2. Faz Max Demand Aktif Güç | 12286 | 1 | Watt | int32 | R
+3. Faz Max Demand Aktif Güç | 12288 | 1 | Watt | int32 | R
+
+===== PAGE 14 =====
+1.Faz Min Demand Aktif Güç | 12290 | 1 | Watt | int32 | R
+2.Faz Min Demand Aktif Güç | 12292 | 1 | Watt | int32 | R
+3.Faz Min Demand Aktif Güç | 12294 | 1 | Watt | int32 | R
+1.Faz Max Demand Reaktif Güç | 12296 | 1 | VAR | int32 | R
+2.Faz Max Demand Reaktif Güç | 12298 | 1 | VAR | int32 | R
+3.Faz Max Demand Reaktif Güç | 12300 | 1 | VAR | int32 | R
+1.Faz Min Demand Reaktif Güç | 12302 | 1 | VAR | int32 | R
+2.Faz Min Demand Reaktif Güç | 12304 | 1 | VAR | int32 | R
+3.Faz Min Demand Reaktif Güç | 12306 | 1 | VAR | int32 | R
+1.Faz Max Demand Görünür Güç | 12308 | 1 | VA | int32 | R
+2.Faz Max Demand Görünür Güç | 12310 | 1 | VA | int32 | R
+3.Faz Max Demand Görünür Güç | 12312 | 1 | VA | int32 | R
+1.Faz Min Demand Görünür Güç | 12314 | 1 | VA | int32 | R
+2.Faz Min Demand Görünür Güç | 12316 | 1 | VA | int32 | R
+3.Faz Min Demand Görünür Güç | 12318 | 1 | VA | int32 | R
+1. Faz Max Demand THDV | 12350 | 0.1 | % | int32 | R
+2. Faz Max Demand THDV | 12352 | 0.1 | % | int32 | R
+3. Faz Max Demand THDV | 12354 | 0.1 | % | int32 | R
+1. Faz Min Demand THDV | 12356 | 0.1 | % | int32 | R
+2. Faz Min Demand THDV | 12358 | 0.1 | % | int32 | R
+3. Faz Min Demand THDV | 12360 | 0.1 | % | int32 | R
+1. Faz Max Demand THDI | 12362 | 0.1 | % | int32 | R
+2. Faz Max Demand THDI | 12364 | 0.1 | % | int32 | R
+3. Faz Max Demand THDI | 12366 | 0.1 | % | int32 | R
+1. Faz Min Demand THDI | 12368 | 0.1 | % | int32 | R
+2. Faz Min Demand THDI | 12370 | 0.1 | % | int32 | R
+3. Faz Min Demand THDI | 12372 | 0.1 | % | int32 | R
+
+===== PAGE 15 =====
+Enerji Değerleri (Tüketim) | Adres | Çarpan | Birim | Tür | W/R
+Toplam Aktif Enerji | 13020 | 1 | kWh | uint64 | R
+Toplam Endüktif Enerji | 13024 | 1 | kVARh | uint64 | R
+Toplam Kapasitif Enerji | 13028 | 1 | kVARh | uint64 | R
+1. Faz Aktif Enerji | 13032 | 1 | kWh | uint64 | R
+2. Faz Aktif Enerji | 13036 | 1 | kWh | uint64 | R
+3. Faz Aktif Enerji | 13040 | 1 | kWh | uint64 | R
+1. Faz Endüktif Enerji | 13044 | 1 | kVARh | uint64 | R
+2. Faz Endüktif Enerji | 13048 | 1 | kVARh | uint64 | R
+3. Faz Endüktif Enerji | 13052 | 1 | kVARh | uint64 | R
+1. Faz Kapasitif Enerji | 13056 | 1 | kVARh | uint64 | R
+2. Faz Kapasitif Enerji | 13060 | 1 | kVARh | uint64 | R
+3. Faz Kapasitif Enerji | 13064 | 1 | kVARh | uint64 | R
+ |  |  |  |  | 
+Enerji Değerleri (Üretim) | Adres | Çarpan | Birim | Tür | W/R
+Toplam Aktif Enerji | 13280 | 1 | kWh | uint64 | R
+Toplam Endüktif Enerji | 13284 | 1 | kVARh | uint64 | R
+Toplam Kapasitif Enerji | 13288 | 1 | kVARh | uint64 | R
+1. Faz Aktif Enerji | 13292 | 1 | kWh | uint64 | R
+2. Faz Aktif Enerji | 13296 | 1 | kWh | uint64 | R
+3. Faz Aktif Enerji | 13300 | 1 | kWh | uint64 | R
+1. Faz Endüktif Enerji | 13304 | 1 | kVARh | uint64 | R
+2. Faz Endüktif Enerji | 13308 | 1 | kVARh | uint64 | R
+3. Faz Endüktif Enerji | 13312 | 1 | kVARh | uint64 | R
+1. Faz Kapasitif Enerji | 13316 | 1 | kVARh | uint64 | R
+2. Faz Kapasitif Enerji | 13320 | 1 | kVARh | uint64 | R
+3. Faz Kapasitif Enerji | 13324 | 1 | kVARh | uint64 | R
+
+===== PAGE 16 =====
+ | Gerilim Harmonik Distorsyon(Tek) | Adres | Çarpan | Birim | Tür | W/R |  | Gerilim Harmonik Distorsyon (Çift) | Adres | Çarpan | Birim | Tür | W/R | 
+ | Tek/Çift Profili | 19998 | - |  | int16 | R |  | Tek/Çift Profili | 20098 | - |  | int16 | R | 
+ | Harmonik Limit | 19999 | - |  | int16 | R |  | Harmonik Limit | 20099 | - |  | int16 | R | 
+ | 1.Faz THDV | 20000 | 0.1 | % | int16 | R |  | 1.Faz THDV | 20100 | 0.1 | % | int16 | R | 
+ | 2.Faz THDV | 20001 | 0.1 | % | int16 | R |  | 2.Faz THDV | 20101 | 0.1 | % | int16 | R | 
+ | 3.Faz THDV | 20002 | 0.1 | % | int16 | R |  | 3.Faz THDV | 20102 | 0.1 | % | int16 | R | 
+ | 3.Harmonik L1 | 20003 | 0.1 | % | int16 | R |  | 2.Harmonik L1 | 20103 | 0.1 | % | int16 | R | 
+ | 3.Harmonik L2 | 20004 | 0.1 | % | int16 | R |  | 2.Harmonik L2 | 20104 | 0.1 | % | int16 | R | 
+ | 3.Harmonik L3 | 20005 | 0.1 | % | int16 | R |  | 2.Harmonik L3 | 20105 | 0.1 | % | int16 | R | 
+ | 5.Harmonik L1 | 20006 | 0.1 | % | int16 | R |  | 4.Harmonik L1 | 20106 | 0.1 | % | int16 | R | 
+ | 5.Harmonik L2 | 20007 | 0.1 | % | int16 | R |  | 4.Harmonik L2 | 20107 | 0.1 | % | int16 | R | 
+ | 5.Harmonik L3 | 20008 | 0.1 | % | int16 | R |  | 4.Harmonik L3 | 20108 | 0.1 | % | int16 | R | 
+ | 7.Harmonik L1 | 20009 | 0.1 | % | int16 | R |  | 6.Harmonik L1 | 20109 | 0.1 | % | int16 | R | 
+ | 7.Harmonik L2 | 20010 | 0.1 | % | int16 | R |  | 6.Harmonik L2 | 20110 | 0.1 | % | int16 | R | 
+ | 7.Harmonik L3 | 20011 | 0.1 | % | int16 | R |  | 6.Harmonik L3 | 20111 | 0.1 | % | int16 | R | 
+ | 9.Harmonik L1 | 20012 | 0.1 | % | int16 | R |  | 8.Harmonik L1 | 20112 | 0.1 | % | int16 | R | 
+ | 9.Harmonik L2 | 20013 | 0.1 | % | int16 | R |  | 8.Harmonik L2 | 20113 | 0.1 | % | int16 | R | 
+ | 9.Harmonik L3 | 20014 | 0.1 | % | int16 | R |  | 8.Harmonik L3 | 20114 | 0.1 | % | int16 | R | 
+ | 11.Harmonik L1 | 20015 | 0.1 | % | int16 | R |  | 10.Harmonik L1 | 20115 | 0.1 | % | int16 | R | 
+ | 11.Harmonik L2 | 20016 | 0.1 | % | int16 | R |  | 10.Harmonik L2 | 20116 | 0.1 | % | int16 | R | 
+ | 11.Harmonik L3 | 20017 | 0.1 | % | int16 | R |  | 10.Harmonik L3 | 20117 | 0.1 | % | int16 | R | 
+ | 13.Harmonik L1 | 20018 | 0.1 | % | int16 | R |  | 12.Harmonik L1 | 20118 | 0.1 | % | int16 | R | 
+ | 13.Harmonik L2 | 20019 | 0.1 | % | int16 | R |  | 12.Harmonik L2 | 20119 | 0.1 | % | int16 | R | 
+ | 13.Harmonik L3 | 20020 | 0.1 | % | int16 | R |  | 12.Harmonik L3 | 20120 | 0.1 | % | int16 | R | 
+ | 15.Harmonik L1 | 20021 | 0.1 | % | int16 | R |  | 14.Harmonik L1 | 20121 | 0.1 | % | int16 | R | 
+ | 15.Harmonik L2 | 20022 | 0.1 | % | int16 | R |  | 14.Harmonik L2 | 20122 | 0.1 | % | int16 | R | 
+ | 15.Harmonik L3 | 20023 | 0.1 | % | int16 | R |  | 14.Harmonik L3 | 20123 | 0.1 | % | int16 | R | 
+ | 17.Harmonik L1 | 20024 | 0.1 | % | int16 | R |  | 16.Harmonik L1 | 20124 | 0.1 | % | int16 | R | 
+ | 17.Harmonik L2 | 20025 | 0.1 | % | int16 | R |  | 16.Harmonik L2 | 20125 | 0.1 | % | int16 | R | 
+ | 17.Harmonik L3 | 20026 | 0.1 | % | int16 | R |  | 16.Harmonik L3 | 20126 | 0.1 | % | int16 | R | 
+ | 19.Harmonik L1 | 20027 | 0.1 | % | int16 | R |  | 18.Harmonik L1 | 20127 | 0.1 | % | int16 | R | 
+ | 19.Harmonik L2 | 20028 | 0.1 | % | int16 | R |  | 18.Harmonik L2 | 20128 | 0.1 | % | int16 | R | 
+ | 19.Harmonik L3 | 20029 | 0.1 | % | int16 | R |  | 18.Harmonik L3 | 20129 | 0.1 | % | int16 | R | 
+ | 21.Harmonik L1 | 20030 | 0.1 | % | int16 | R |  | 20.Harmonik L1 | 20130 | 0.1 | % | int16 | R | 
+ | 21.Harmonik L2 | 20031 | 0.1 | % | int16 | R |  | 20.Harmonik L2 | 20131 | 0.1 | % | int16 | R | 
+ | 21.Harmonik L3 | 20032 | 0.1 | % | int16 | R |  | 20.Harmonik L3 | 20132 | 0.1 | % | int16 | R | 
+ | 23.Harmonik L1 | 20033 | 0.1 | % | int16 | R |  | 22.Harmonik L1 | 20133 | 0.1 | % | int16 | R | 
+ | 23.Harmonik L2 | 20034 | 0.1 | % | int16 | R |  | 22.Harmonik L2 | 20134 | 0.1 | % | int16 | R | 
+ | 23.Harmonik L3 | 20035 | 0.1 | % | int16 | R |  | 22.Harmonik L3 | 20135 | 0.1 | % | int16 | R | 
+ | 25.Harmonik L1 | 20036 | 0.1 | % | int16 | R |  | 24.Harmonik L1 | 20136 | 0.1 | % | int16 | R | 
+ | 25.Harmonik L2 | 20037 | 0.1 | % | int16 | R |  | 24.Harmonik L2 | 20137 | 0.1 | % | int16 | R | 
+
+===== PAGE 17 =====
+ | 25.Harmonik L3 | 20038 | 0.1 | % | int16 | R |  | 24.Harmonik L3 | 20138 | 0.1 | % | int16 | R | 
+ | 27.Harmonik L1 | 20039 | 0.1 | % | int16 | R |  | 26.Harmonik L1 | 20139 | 0.1 | % | int16 | R | 
+ | 27.Harmonik L2 | 20040 | 0.1 | % | int16 | R |  | 26.Harmonik L2 | 20140 | 0.1 | % | int16 | R | 
+ | 27.Harmonik L3 | 20041 | 0.1 | % | int16 | R |  | 26.Harmonik L3 | 20141 | 0.1 | % | int16 | R | 
+ | 29.Harmonik L1 | 20042 | 0.1 | % | int16 | R |  | 28.Harmonik L1 | 20142 | 0.1 | % | int16 | R | 
+ | 29.Harmonik L2 | 20043 | 0.1 | % | int16 | R |  | 28.Harmonik L2 | 20143 | 0.1 | % | int16 | R | 
+ | 29.Harmonik L3 | 20044 | 0.1 | % | int16 | R |  | 28.Harmonik L3 | 20144 | 0.1 | % | int16 | R | 
+ | 31.Harmonik L1 | 20045 | 0.1 | % | int16 | R |  | 30.Harmonik L1 | 20145 | 0.1 | % | int16 | R | 
+ | 31.Harmonik L2 | 20046 | 0.1 | % | int16 | R |  | 30.Harmonik L2 | 20146 | 0.1 | % | int16 | R | 
+ | 31.Harmonik L3 | 20047 | 0.1 | % | int16 | R |  | 30.Harmonik L3 | 20147 | 0.1 | % | int16 | R | 
+ | 33.Harmonik L1 | 20048 | 0.1 | % | int16 | R |  | 32.Harmonik L1 | 20148 | 0.1 | % | int16 | R | 
+ | 33.Harmonik L2 | 20049 | 0.1 | % | int16 | R |  | 32.Harmonik L2 | 20149 | 0.1 | % | int16 | R | 
+ | 33.Harmonik L3 | 20050 | 0.1 | % | int16 | R |  | 32.Harmonik L3 | 20150 | 0.1 | % | int16 | R | 
+ | 35.Harmonik L1 | 20051 | 0.1 | % | int16 | R |  | 34.Harmonik L1 | 20151 | 0.1 | % | int16 | R | 
+ | 35.Harmonik L2 | 20052 | 0.1 | % | int16 | R |  | 34.Harmonik L2 | 20152 | 0.1 | % | int16 | R | 
+ | 35.Harmonik L3 | 20053 | 0.1 | % | int16 | R |  | 34.Harmonik L3 | 20153 | 0.1 | % | int16 | R | 
+ | 37.Harmonik L1 | 20054 | 0.1 | % | int16 | R |  | 36.Harmonik L1 | 20154 | 0.1 | % | int16 | R | 
+ | 37.Harmonik L2 | 20055 | 0.1 | % | int16 | R |  | 36.Harmonik L2 | 20155 | 0.1 | % | int16 | R | 
+ | 37.Harmonik L3 | 20056 | 0.1 | % | int16 | R |  | 36.Harmonik L3 | 20156 | 0.1 | % | int16 | R | 
+ | 39.Harmonik L1 | 20057 | 0.1 | % | int16 | R |  | 38.Harmonik L1 | 20157 | 0.1 | % | int16 | R | 
+ | 39.Harmonik L2 | 20058 | 0.1 | % | int16 | R |  | 38.Harmonik L2 | 20158 | 0.1 | % | int16 | R | 
+ | 39.Harmonik L3 | 20059 | 0.1 | % | int16 | R |  | 38.Harmonik L3 | 20159 | 0.1 | % | int16 | R | 
+ | 41.Harmonik L1 | 20060 | 0.1 | % | int16 | R |  | 40.Harmonik L1 | 20160 | 0.1 | % | int16 | R | 
+ | 41.Harmonik L2 | 20061 | 0.1 | % | int16 | R |  | 40.Harmonik L2 | 20161 | 0.1 | % | int16 | R | 
+ | 41.Harmonik L3 | 20062 | 0.1 | % | int16 | R |  | 40.Harmonik L3 | 20162 | 0.1 | % | int16 | R | 
+ | 43.Harmonik L1 | 20063 | 0.1 | % | int16 | R |  | 42.Harmonik L1 | 20163 | 0.1 | % | int16 | R | 
+ | 43.Harmonik L2 | 20064 | 0.1 | % | int16 | R |  | 42.Harmonik L2 | 20164 | 0.1 | % | int16 | R | 
+ | 43.Harmonik L3 | 20065 | 0.1 | % | int16 | R |  | 42.Harmonik L3 | 20165 | 0.1 | % | int16 | R | 
+ | 45.Harmonik L1 | 20066 | 0.1 | % | int16 | R |  | 44.Harmonik L1 | 20166 | 0.1 | % | int16 | R | 
+ | 45.Harmonik L2 | 20067 | 0.1 | % | int16 | R |  | 44.Harmonik L2 | 20167 | 0.1 | % | int16 | R | 
+ | 45.Harmonik L3 | 20068 | 0.1 | % | int16 | R |  | 44.Harmonik L3 | 20168 | 0.1 | % | int16 | R | 
+ | 47.Harmonik L1 | 20069 | 0.1 | % | int16 | R |  | 46.Harmonik L1 | 20169 | 0.1 | % | int16 | R | 
+ | 47.Harmonik L2 | 20070 | 0.1 | % | int16 | R |  | 46.Harmonik L2 | 20170 | 0.1 | % | int16 | R | 
+ | 47.Harmonik L3 | 20071 | 0.1 | % | int16 | R |  | 46.Harmonik L3 | 20171 | 0.1 | % | int16 | R | 
+ | 49.Harmonik L1 | 20072 | 0.1 | % | int16 | R |  | 48.Harmonik L1 | 20172 | 0.1 | % | int16 | R | 
+ | 49.Harmonik L2 | 20073 | 0.1 | % | int16 | R |  | 48.Harmonik L2 | 20173 | 0.1 | % | int16 | R | 
+ | 49.Harmonik L3 | 20074 | 0.1 | % | int16 | R |  | 48.Harmonik L3 | 20174 | 0.1 | % | int16 | R | 
+ | 51.Harmonik L1 | 20075 | 0.1 | % | int16 | R |  | 50.Harmonik L1 | 20175 | 0.1 | % | int16 | R | 
+ | 51.Harmonik L2 | 20076 | 0.1 | % | int16 | R |  | 50.Harmonik L2 | 20176 | 0.1 | % | int16 | R | 
+ | 51.Harmonik L3 | 20077 | 0.1 | % | int16 | R |  | 50.Harmonik L3 | 20177 | 0.1 | % | int16 | R | 
+ | 53.Harmonik L1 | 20078 | 0.1 | % | int16 | R |  | 52.Harmonik L1 | 20178 | 0.1 | % | int16 | R | 
+
+===== PAGE 18 =====
+ | 53.Harmonik L2 | 20079 | 0.1 | % | int16 | R |  | 52.Harmonik L2 | 20179 | 0.1 | % | int16 | R | 
+ | 53.Harmonik L3 | 20080 | 0.1 | % | int16 | R |  | 52.Harmonik L3 | 20180 | 0.1 | % | int16 | R | 
+ | 55.Harmonik L1 | 20081 | 0.1 | % | int16 | R |  | 54.Harmonik L1 | 20181 | 0.1 | % | int16 | R | 
+ | 55.Harmonik L2 | 20082 | 0.1 | % | int16 | R |  | 54.Harmonik L2 | 20182 | 0.1 | % | int16 | R | 
+ | 55.Harmonik L3 | 20083 | 0.1 | % | int16 | R |  | 54.Harmonik L3 | 20183 | 0.1 | % | int16 | R | 
+ | 57.Harmonik L1 | 20084 | 0.1 | % | int16 | R |  | 56.Harmonik L1 | 20184 | 0.1 | % | int16 | R | 
+ | 57.Harmonik L2 | 20085 | 0.1 | % | int16 | R |  | 56.Harmonik L2 | 20185 | 0.1 | % | int16 | R | 
+ | 57.Harmonik L3 | 20086 | 0.1 | % | int16 | R |  | 56.Harmonik L3 | 20186 | 0.1 | % | int16 | R | 
+ | 59.Harmonik L1 | 20087 | 0.1 | % | int16 | R |  | 58.Harmonik L1 | 20187 | 0.1 | % | int16 | R | 
+ | 59.Harmonik L2 | 20088 | 0.1 | % | int16 | R |  | 58.Harmonik L2 | 20188 | 0.1 | % | int16 | R | 
+ | 59.Harmonik L3 | 20089 | 0.1 | % | int16 | R |  | 58.Harmonik L3 | 20189 | 0.1 | % | int16 | R | 
+ | 61.Harmonik L1 | 20090 | 0.1 | % | int16 | R |  | 60.Harmonik L1 | 20190 | 0.1 | % | int16 | R | 
+ | 61.Harmonik L2 | 20091 | 0.1 | % | int16 | R |  | 60.Harmonik L2 | 20191 | 0.1 | % | int16 | R | 
+ | 61.Harmonik L3 | 20092 | 0.1 | % | int16 | R |  | 60.Harmonik L3 | 20192 | 0.1 | % | int16 | R | 
+ | 63.Harmonik L1 | 20093 | 0.1 | % | int16 | R |  | 62.Harmonik L1 | 20193 | 0.1 | % | int16 | R | 
+ | 63.Harmonik L2 | 20094 | 0.1 | % | int16 | R |  | 62.Harmonik L2 | 20194 | 0.1 | % | int16 | R | 
+ | 63.Harmonik L3 | 20095 | 0.1 | % | int16 | R |  | 62.Harmonik L3 | 20195 | 0.1 | % | int16 | R | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Gerilim Harmonik RMS (Tek) | Adres | Çarpan | Birim | Tür | W/R |  | Gerilim Harmonik RMS (Çift) | Adres | Çarpan | Birim | Tür | W/R | 
+ | Tek/Çift Profili | 20246 | - |  | int16 | R |  | Tek/Çift Profili | 20496 | - |  | int16 | R | 
+ | Harmonik Limit | 20248 | - |  | int16 | R |  | Harmonik Limit | 20498 | - |  | int16 | R | 
+ | 1.Faz Temel Büyüklük | 20250 | 0.1 |  | int32 | R |  | 1.Faz Temel Büyüklük | 20500 | 0.1 |  | int32 | R | 
+ | 2.Faz Temel Büyüklük | 20252 | 0.1 |  | int32 | R |  | 2.Faz Temel Büyüklük | 20502 | 0.1 |  | int32 | R | 
+ | 3.Faz Temel Büyüklük | 20254 | 0.1 |  | int32 | R |  | 3.Faz Temel Büyüklük | 20504 | 0.1 |  | int32 | R | 
+ | 3.Harmonik L1 | 20256 | 0.1 |  | int32 | R |  | 2.Harmonik L1 | 20506 | 0.1 |  | int32 | R | 
+ | 3.Harmonik L2 | 20258 | 0.1 |  | int32 | R |  | 2.Harmonik L2 | 20508 | 0.1 |  | int32 | R | 
+ | 3.Harmonik L3 | 20260 | 0.1 |  | int32 | R |  | 2.Harmonik L3 | 20510 | 0.1 |  | int32 | R | 
+ | 5.Harmonik L1 | 20262 | 0.1 |  | int32 | R |  | 4.Harmonik L1 | 20512 | 0.1 |  | int32 | R | 
+ | 5.Harmonik L2 | 20264 | 0.1 |  | int32 | R |  | 4.Harmonik L2 | 20514 | 0.1 |  | int32 | R | 
+ | 5.Harmonik L3 | 20266 | 0.1 |  | int32 | R |  | 4.Harmonik L3 | 20516 | 0.1 |  | int32 | R | 
+ | 7.Harmonik L1 | 20268 | 0.1 |  | int32 | R |  | 6.Harmonik L1 | 20518 | 0.1 |  | int32 | R | 
+ | 7.Harmonik L2 | 20270 | 0.1 |  | int32 | R |  | 6.Harmonik L2 | 20520 | 0.1 |  | int32 | R | 
+ | 7.Harmonik L3 | 20272 | 0.1 |  | int32 | R |  | 6.Harmonik L3 | 20522 | 0.1 |  | int32 | R | 
+ | 9.Harmonik L1 | 20274 | 0.1 |  | int32 | R |  | 8.Harmonik L1 | 20524 | 0.1 |  | int32 | R | 
+ | 9.Harmonik L2 | 20276 | 0.1 |  | int32 | R |  | 8.Harmonik L2 | 20526 | 0.1 |  | int32 | R | 
+ | 9.Harmonik L3 | 20278 | 0.1 |  | int32 | R |  | 8.Harmonik L3 | 20528 | 0.1 |  | int32 | R | 
+ | 11.Harmonik L1 | 20280 | 0.1 |  | int32 | R |  | 10.Harmonik L1 | 20530 | 0.1 |  | int32 | R | 
+ | 11.Harmonik L2 | 20282 | 0.1 |  | int32 | R |  | 10.Harmonik L2 | 20532 | 0.1 |  | int32 | R | 
+ | 11.Harmonik L3 | 20284 | 0.1 |  | int32 | R |  | 10.Harmonik L3 | 20534 | 0.1 |  | int32 | R | 
+ | 13.Harmonik L1 | 20286 | 0.1 |  | int32 | R |  | 12.Harmonik L1 | 20536 | 0.1 |  | int32 | R | 
+ | 13.Harmonik L2 | 20288 | 0.1 |  | int32 | R |  | 12.Harmonik L2 | 20538 | 0.1 |  | int32 | R | 
+
+===== PAGE 19 =====
+ | 13.Harmonik L3 | 20290 | 0.1 |  | int32 | R |  | 12.Harmonik L3 | 20540 | 0.1 |  | int32 | R | 
+ | 15.Harmonik L1 | 20292 | 0.1 |  | int32 | R |  | 14.Harmonik L1 | 20542 | 0.1 |  | int32 | R | 
+ | 15.Harmonik L2 | 20294 | 0.1 |  | int32 | R |  | 14.Harmonik L2 | 20544 | 0.1 |  | int32 | R | 
+ | 15.Harmonik L3 | 20296 | 0.1 |  | int32 | R |  | 14.Harmonik L3 | 20546 | 0.1 |  | int32 | R | 
+ | 17.Harmonik L1 | 20298 | 0.1 |  | int32 | R |  | 16.Harmonik L1 | 20548 | 0.1 |  | int32 | R | 
+ | 17.Harmonik L2 | 20300 | 0.1 |  | int32 | R |  | 16.Harmonik L2 | 20550 | 0.1 |  | int32 | R | 
+ | 17.Harmonik L3 | 20302 | 0.1 |  | int32 | R |  | 16.Harmonik L3 | 20552 | 0.1 |  | int32 | R | 
+ | 19.Harmonik L1 | 20304 | 0.1 |  | int32 | R |  | 18.Harmonik L1 | 20554 | 0.1 |  | int32 | R | 
+ | 19.Harmonik L2 | 20306 | 0.1 |  | int32 | R |  | 18.Harmonik L2 | 20556 | 0.1 |  | int32 | R | 
+ | 19.Harmonik L3 | 20308 | 0.1 |  | int32 | R |  | 18.Harmonik L3 | 20558 | 0.1 |  | int32 | R | 
+ | 21.Harmonik L1 | 20310 | 0.1 |  | int32 | R |  | 20.Harmonik L1 | 20560 | 0.1 |  | int32 | R | 
+ | 21.Harmonik L2 | 20312 | 0.1 |  | int32 | R |  | 20.Harmonik L2 | 20562 | 0.1 |  | int32 | R | 
+ | 21.Harmonik L3 | 20314 | 0.1 |  | int32 | R |  | 20.Harmonik L3 | 20564 | 0.1 |  | int32 | R | 
+ | 23.Harmonik L1 | 20316 | 0.1 |  | int32 | R |  | 22.Harmonik L1 | 20566 | 0.1 |  | int32 | R | 
+ | 23.Harmonik L2 | 20318 | 0.1 |  | int32 | R |  | 22.Harmonik L2 | 20568 | 0.1 |  | int32 | R | 
+ | 23.Harmonik L3 | 20320 | 0.1 |  | int32 | R |  | 22.Harmonik L3 | 20570 | 0.1 |  | int32 | R | 
+ | 25.Harmonik L1 | 20322 | 0.1 |  | int32 | R |  | 24.Harmonik L1 | 20572 | 0.1 |  | int32 | R | 
+ | 25.Harmonik L2 | 20324 | 0.1 |  | int32 | R |  | 24.Harmonik L2 | 20574 | 0.1 |  | int32 | R | 
+ | 25.Harmonik L3 | 20326 | 0.1 |  | int32 | R |  | 24.Harmonik L3 | 20576 | 0.1 |  | int32 | R | 
+ | 27.Harmonik L1 | 20328 | 0.1 |  | int32 | R |  | 26.Harmonik L1 | 20578 | 0.1 |  | int32 | R | 
+ | 27.Harmonik L2 | 20330 | 0.1 |  | int32 | R |  | 26.Harmonik L2 | 20580 | 0.1 |  | int32 | R | 
+ | 27.Harmonik L3 | 20332 | 0.1 |  | int32 | R |  | 26.Harmonik L3 | 20582 | 0.1 |  | int32 | R | 
+ | 29.Harmonik L1 | 20334 | 0.1 |  | int32 | R |  | 28.Harmonik L1 | 20584 | 0.1 |  | int32 | R | 
+ | 29.Harmonik L2 | 20336 | 0.1 |  | int32 | R |  | 28.Harmonik L2 | 20586 | 0.1 |  | int32 | R | 
+ | 29.Harmonik L3 | 20338 | 0.1 |  | int32 | R |  | 28.Harmonik L3 | 20588 | 0.1 |  | int32 | R | 
+ | 31.Harmonik L1 | 20340 | 0.1 |  | int32 | R |  | 30.Harmonik L1 | 20590 | 0.1 |  | int32 | R | 
+ | 31.Harmonik L2 | 20342 | 0.1 |  | int32 | R |  | 30.Harmonik L2 | 20592 | 0.1 |  | int32 | R | 
+ | 31.Harmonik L3 | 20344 | 0.1 |  | int32 | R |  | 30.Harmonik L3 | 20594 | 0.1 |  | int32 | R | 
+ | 33.Harmonik L1 | 20346 | 0.1 |  | int32 | R |  | 32.Harmonik L1 | 20596 | 0.1 |  | int32 | R | 
+ | 33.Harmonik L2 | 20348 | 0.1 |  | int32 | R |  | 32.Harmonik L2 | 20598 | 0.1 |  | int32 | R | 
+ | 33.Harmonik L3 | 20350 | 0.1 |  | int32 | R |  | 32.Harmonik L3 | 20600 | 0.1 |  | int32 | R | 
+ | 35.Harmonik L1 | 20352 | 0.1 |  | int32 | R |  | 34.Harmonik L1 | 20602 | 0.1 |  | int32 | R | 
+ | 35.Harmonik L2 | 20354 | 0.1 |  | int32 | R |  | 34.Harmonik L2 | 20604 | 0.1 |  | int32 | R | 
+ | 35.Harmonik L3 | 20356 | 0.1 |  | int32 | R |  | 34.Harmonik L3 | 20606 | 0.1 |  | int32 | R | 
+ | 37.Harmonik L1 | 20358 | 0.1 |  | int32 | R |  | 36.Harmonik L1 | 20608 | 0.1 |  | int32 | R | 
+ | 37.Harmonik L2 | 20360 | 0.1 |  | int32 | R |  | 36.Harmonik L2 | 20610 | 0.1 |  | int32 | R | 
+ | 37.Harmonik L3 | 20362 | 0.1 |  | int32 | R |  | 36.Harmonik L3 | 20612 | 0.1 |  | int32 | R | 
+ | 39.Harmonik L1 | 20364 | 0.1 |  | int32 | R |  | 38.Harmonik L1 | 20614 | 0.1 |  | int32 | R | 
+ | 39.Harmonik L2 | 20366 | 0.1 |  | int32 | R |  | 38.Harmonik L2 | 20616 | 0.1 |  | int32 | R | 
+ | 39.Harmonik L3 | 20368 | 0.1 |  | int32 | R |  | 38.Harmonik L3 | 20618 | 0.1 |  | int32 | R | 
+ | 41.Harmonik L1 | 20370 | 0.1 |  | int32 | R |  | 40.Harmonik L1 | 20620 | 0.1 |  | int32 | R | 
+
+===== PAGE 20 =====
+ | 41.Harmonik L2 | 20372 | 0.1 |  | int32 | R |  | 40.Harmonik L2 | 20622 | 0.1 |  | int32 | R | 
+ | 41.Harmonik L3 | 20374 | 0.1 |  | int32 | R |  | 40.Harmonik L3 | 20624 | 0.1 |  | int32 | R | 
+ | 43.Harmonik L1 | 20376 | 0.1 |  | int32 | R |  | 42.Harmonik L1 | 20626 | 0.1 |  | int32 | R | 
+ | 43.Harmonik L2 | 20378 | 0.1 |  | int32 | R |  | 42.Harmonik L2 | 20628 | 0.1 |  | int32 | R | 
+ | 43.Harmonik L3 | 20380 | 0.1 |  | int32 | R |  | 42.Harmonik L3 | 20630 | 0.1 |  | int32 | R | 
+ | 45.Harmonik L1 | 20382 | 0.1 |  | int32 | R |  | 44.Harmonik L1 | 20632 | 0.1 |  | int32 | R | 
+ | 45.Harmonik L2 | 20384 | 0.1 |  | int32 | R |  | 44.Harmonik L2 | 20634 | 0.1 |  | int32 | R | 
+ | 45.Harmonik L3 | 20386 | 0.1 |  | int32 | R |  | 44.Harmonik L3 | 20636 | 0.1 |  | int32 | R | 
+ | 47.Harmonik L1 | 20388 | 0.1 |  | int32 | R |  | 46.Harmonik L1 | 20638 | 0.1 |  | int32 | R | 
+ | 47.Harmonik L2 | 20390 | 0.1 |  | int32 | R |  | 46.Harmonik L2 | 20640 | 0.1 |  | int32 | R | 
+ | 47.Harmonik L3 | 20392 | 0.1 |  | int32 | R |  | 46.Harmonik L3 | 20642 | 0.1 |  | int32 | R | 
+ | 49.Harmonik L1 | 20394 | 0.1 |  | int32 | R |  | 48.Harmonik L1 | 20644 | 0.1 |  | int32 | R | 
+ | 49.Harmonik L2 | 20396 | 0.1 |  | int32 | R |  | 48.Harmonik L2 | 20646 | 0.1 |  | int32 | R | 
+ | 49.Harmonik L3 | 20398 | 0.1 |  | int32 | R |  | 48.Harmonik L3 | 20648 | 0.1 |  | int32 | R | 
+ | 51.Harmonik L1 | 20400 | 0.1 |  | int32 | R |  | 50.Harmonik L1 | 20650 | 0.1 |  | int32 | R | 
+ | 51.Harmonik L2 | 20402 | 0.1 |  | int32 | R |  | 50.Harmonik L2 | 20652 | 0.1 |  | int32 | R | 
+ | 51.Harmonik L3 | 20404 | 0.1 |  | int32 | R |  | 50.Harmonik L3 | 20654 | 0.1 |  | int32 | R | 
+ | 53.Harmonik L1 | 20406 | 0.1 |  | int32 | R |  | 52.Harmonik L1 | 20656 | 0.1 |  | int32 | R | 
+ | 53.Harmonik L2 | 20408 | 0.1 |  | int32 | R |  | 52.Harmonik L2 | 20658 | 0.1 |  | int32 | R | 
+ | 53.Harmonik L3 | 20410 | 0.1 |  | int32 | R |  | 52.Harmonik L3 | 20660 | 0.1 |  | int32 | R | 
+ | 55.Harmonik L1 | 20412 | 0.1 |  | int32 | R |  | 54.Harmonik L1 | 20662 | 0.1 |  | int32 | R | 
+ | 55.Harmonik L2 | 20414 | 0.1 |  | int32 | R |  | 54.Harmonik L2 | 20664 | 0.1 |  | int32 | R | 
+ | 55.Harmonik L3 | 20416 | 0.1 |  | int32 | R |  | 54.Harmonik L3 | 20666 | 0.1 |  | int32 | R | 
+ | 57.Harmonik L1 | 20418 | 0.1 |  | int32 | R |  | 56.Harmonik L1 | 20668 | 0.1 |  | int32 | R | 
+ | 57.Harmonik L2 | 20420 | 0.1 |  | int32 | R |  | 56.Harmonik L2 | 20670 | 0.1 |  | int32 | R | 
+ | 57.Harmonik L3 | 20422 | 0.1 |  | int32 | R |  | 56.Harmonik L3 | 20672 | 0.1 |  | int32 | R | 
+ | 59.Harmonik L1 | 20424 | 0.1 |  | int32 | R |  | 58.Harmonik L1 | 20674 | 0.1 |  | int32 | R | 
+ | 59.Harmonik L2 | 20426 | 0.1 |  | int32 | R |  | 58.Harmonik L2 | 20676 | 0.1 |  | int32 | R | 
+ | 59.Harmonik L3 | 20428 | 0.1 |  | int32 | R |  | 58.Harmonik L3 | 20678 | 0.1 |  | int32 | R | 
+ | 61.Harmonik L1 | 20430 | 0.1 |  | int32 | R |  | 60.Harmonik L1 | 20680 | 0.1 |  | int32 | R | 
+ | 61.Harmonik L2 | 20432 | 0.1 |  | int32 | R |  | 60.Harmonik L2 | 20682 | 0.1 |  | int32 | R | 
+ | 61.Harmonik L3 | 20434 | 0.1 |  | int32 | R |  | 60.Harmonik L3 | 20684 | 0.1 |  | int32 | R | 
+ | 63.Harmonik L1 | 20436 | 0.1 |  | int32 | R |  | 62.Harmonik L1 | 20686 | 0.1 |  | int32 | R | 
+ | 63.Harmonik L2 | 20438 | 0.1 |  | int32 | R |  | 62.Harmonik L2 | 20688 | 0.1 |  | int32 | R | 
+ | 63.Harmonik L3 | 20440 | 0.1 |  | int32 | R |  | 62.Harmonik L3 | 20690 | 0.1 |  | int32 | R | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+
+===== PAGE 21 =====
+ |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Akım Harmonik Distorsyon (Tek) | Adres | Çarpan | Birim | Tür | W/R |  | Akım Harmonik Distorsyon(Çift) | Adres | Çarpan | Birim | Tür | W/R | 
+ | Tek/Çift Profili | 29998 | - |  | int16 | R |  | Tek/Çift Profili | 30098 | - |  | int16 | R | 
+ | Harmonik Limit | 29999 | - |  | int16 | R |  | Harmonik Limit | 30099 | - |  | int16 | R | 
+ | 1.Faz THDI | 30000 | 0.1 | % | int16 | R |  | 1.Faz THDI | 30100 | 0.1 | % | int16 | R | 
+ | 2.Faz THDI | 30001 | 0.1 | % | int16 | R |  | 2.Faz THDI | 30101 | 0.1 | % | int16 | R | 
+ | 3.Faz THDI | 30002 | 0.1 | % | int16 | R |  | 3.Faz THDI | 30102 | 0.1 | % | int16 | R | 
+ | 3.Harmonik L1 | 30003 | 0.1 | % | int16 | R |  | 2.Harmonik L1 | 30103 | 0.1 | % | int16 | R | 
+ | 3.Harmonik L2 | 30004 | 0.1 | % | int16 | R |  | 2.Harmonik L2 | 30104 | 0.1 | % | int16 | R | 
+ | 3.Harmonik L3 | 30005 | 0.1 | % | int16 | R |  | 2.Harmonik L3 | 30105 | 0.1 | % | int16 | R | 
+ | 5.Harmonik L1 | 30006 | 0.1 | % | int16 | R |  | 4.Harmonik L1 | 30106 | 0.1 | % | int16 | R | 
+ | 5.Harmonik L2 | 30007 | 0.1 | % | int16 | R |  | 4.Harmonik L2 | 30107 | 0.1 | % | int16 | R | 
+ | 5.Harmonik L3 | 30008 | 0.1 | % | int16 | R |  | 4.Harmonik L3 | 30108 | 0.1 | % | int16 | R | 
+ | 7.Harmonik L1 | 30009 | 0.1 | % | int16 | R |  | 6.Harmonik L1 | 30109 | 0.1 | % | int16 | R | 
+ | 7.Harmonik L2 | 30010 | 0.1 | % | int16 | R |  | 6.Harmonik L2 | 30110 | 0.1 | % | int16 | R | 
+ | 7.Harmonik L3 | 30011 | 0.1 | % | int16 | R |  | 6.Harmonik L3 | 30111 | 0.1 | % | int16 | R | 
+ | 9.Harmonik L1 | 30012 | 0.1 | % | int16 | R |  | 8.Harmonik L1 | 30112 | 0.1 | % | int16 | R | 
+ | 9.Harmonik L2 | 30013 | 0.1 | % | int16 | R |  | 8.Harmonik L2 | 30113 | 0.1 | % | int16 | R | 
+ | 9.Harmonik L3 | 30014 | 0.1 | % | int16 | R |  | 8.Harmonik L3 | 30114 | 0.1 | % | int16 | R | 
+ | 11.Harmonik L1 | 30015 | 0.1 | % | int16 | R |  | 10.Harmonik L1 | 30115 | 0.1 | % | int16 | R | 
+ | 11.Harmonik L2 | 30016 | 0.1 | % | int16 | R |  | 10.Harmonik L2 | 30116 | 0.1 | % | int16 | R | 
+ | 11.Harmonik L3 | 30017 | 0.1 | % | int16 | R |  | 10.Harmonik L3 | 30117 | 0.1 | % | int16 | R | 
+ | 13.Harmonik L1 | 30018 | 0.1 | % | int16 | R |  | 12.Harmonik L1 | 30118 | 0.1 | % | int16 | R | 
+ | 13.Harmonik L2 | 30019 | 0.1 | % | int16 | R |  | 12.Harmonik L2 | 30119 | 0.1 | % | int16 | R | 
+ | 13.Harmonik L3 | 30020 | 0.1 | % | int16 | R |  | 12.Harmonik L3 | 30120 | 0.1 | % | int16 | R | 
+ | 15.Harmonik L1 | 30021 | 0.1 | % | int16 | R |  | 14.Harmonik L1 | 30121 | 0.1 | % | int16 | R | 
+ | 15.Harmonik L2 | 30022 | 0.1 | % | int16 | R |  | 14.Harmonik L2 | 30122 | 0.1 | % | int16 | R | 
+ | 15.Harmonik L3 | 30023 | 0.1 | % | int16 | R |  | 14.Harmonik L3 | 30123 | 0.1 | % | int16 | R | 
+ | 17.Harmonik L1 | 30024 | 0.1 | % | int16 | R |  | 16.Harmonik L1 | 30124 | 0.1 | % | int16 | R | 
+ | 17.Harmonik L2 | 30025 | 0.1 | % | int16 | R |  | 16.Harmonik L2 | 30125 | 0.1 | % | int16 | R | 
+ | 17.Harmonik L3 | 30026 | 0.1 | % | int16 | R |  | 16.Harmonik L3 | 30126 | 0.1 | % | int16 | R | 
+ | 19.Harmonik L1 | 30027 | 0.1 | % | int16 | R |  | 18.Harmonik L1 | 30127 | 0.1 | % | int16 | R | 
+ | 19.Harmonik L2 | 30028 | 0.1 | % | int16 | R |  | 18.Harmonik L2 | 30128 | 0.1 | % | int16 | R | 
+ | 19.Harmonik L3 | 30029 | 0.1 | % | int16 | R |  | 18.Harmonik L3 | 30129 | 0.1 | % | int16 | R | 
+ | 21.Harmonik L1 | 30030 | 0.1 | % | int16 | R |  | 20.Harmonik L1 | 30130 | 0.1 | % | int16 | R | 
+ | 21.Harmonik L2 | 30031 | 0.1 | % | int16 | R |  | 20.Harmonik L2 | 30131 | 0.1 | % | int16 | R | 
+ | 21.Harmonik L3 | 30032 | 0.1 | % | int16 | R |  | 20.Harmonik L3 | 30132 | 0.1 | % | int16 | R | 
+ | 23.Harmonik L1 | 30033 | 0.1 | % | int16 | R |  | 22.Harmonik L1 | 30133 | 0.1 | % | int16 | R | 
+ | 23.Harmonik L2 | 30034 | 0.1 | % | int16 | R |  | 22.Harmonik L2 | 30134 | 0.1 | % | int16 | R | 
+ | 23.Harmonik L3 | 30035 | 0.1 | % | int16 | R |  | 22.Harmonik L3 | 30135 | 0.1 | % | int16 | R | 
+ | 25.Harmonik L1 | 30036 | 0.1 | % | int16 | R |  | 24.Harmonik L1 | 30136 | 0.1 | % | int16 | R | 
+ | 25.Harmonik L2 | 30037 | 0.1 | % | int16 | R |  | 24.Harmonik L2 | 30137 | 0.1 | % | int16 | R | 
+ | 25.Harmonik L3 | 30038 | 0.1 | % | int16 | R |  | 24.Harmonik L3 | 30138 | 0.1 | % | int16 | R | 
+
+===== PAGE 22 =====
+ | 27.Harmonik L1 | 30039 | 0.1 | % | int16 | R |  | 26.Harmonik L1 | 30139 | 0.1 | % | int16 | R | 
+ | 27.Harmonik L2 | 30040 | 0.1 | % | int16 | R |  | 26.Harmonik L2 | 30140 | 0.1 | % | int16 | R | 
+ | 27.Harmonik L3 | 30041 | 0.1 | % | int16 | R |  | 26.Harmonik L3 | 30141 | 0.1 | % | int16 | R | 
+ | 29.Harmonik L1 | 30042 | 0.1 | % | int16 | R |  | 28.Harmonik L1 | 30142 | 0.1 | % | int16 | R | 
+ | 29.Harmonik L2 | 30043 | 0.1 | % | int16 | R |  | 28.Harmonik L2 | 30143 | 0.1 | % | int16 | R | 
+ | 29.Harmonik L3 | 30044 | 0.1 | % | int16 | R |  | 28.Harmonik L3 | 30144 | 0.1 | % | int16 | R | 
+ | 31.Harmonik L1 | 30045 | 0.1 | % | int16 | R |  | 30.Harmonik L1 | 30145 | 0.1 | % | int16 | R | 
+ | 31.Harmonik L2 | 30046 | 0.1 | % | int16 | R |  | 30.Harmonik L2 | 30146 | 0.1 | % | int16 | R | 
+ | 31.Harmonik L3 | 30047 | 0.1 | % | int16 | R |  | 30.Harmonik L3 | 30147 | 0.1 | % | int16 | R | 
+ | 33.Harmonik L1 | 30048 | 0.1 | % | int16 | R |  | 32.Harmonik L1 | 30148 | 0.1 | % | int16 | R | 
+ | 33.Harmonik L2 | 30049 | 0.1 | % | int16 | R |  | 32.Harmonik L2 | 30149 | 0.1 | % | int16 | R | 
+ | 33.Harmonik L3 | 30050 | 0.1 | % | int16 | R |  | 32.Harmonik L3 | 30150 | 0.1 | % | int16 | R | 
+ | 35.Harmonik L1 | 30051 | 0.1 | % | int16 | R |  | 34.Harmonik L1 | 30151 | 0.1 | % | int16 | R | 
+ | 35.Harmonik L2 | 30052 | 0.1 | % | int16 | R |  | 34.Harmonik L2 | 30152 | 0.1 | % | int16 | R | 
+ | 35.Harmonik L3 | 30053 | 0.1 | % | int16 | R |  | 34.Harmonik L3 | 30153 | 0.1 | % | int16 | R | 
+ | 37.Harmonik L1 | 30054 | 0.1 | % | int16 | R |  | 36.Harmonik L1 | 30154 | 0.1 | % | int16 | R | 
+ | 37.Harmonik L2 | 30055 | 0.1 | % | int16 | R |  | 36.Harmonik L2 | 30155 | 0.1 | % | int16 | R | 
+ | 37.Harmonik L3 | 30056 | 0.1 | % | int16 | R |  | 36.Harmonik L3 | 30156 | 0.1 | % | int16 | R | 
+ | 39.Harmonik L1 | 30057 | 0.1 | % | int16 | R |  | 38.Harmonik L1 | 30157 | 0.1 | % | int16 | R | 
+ | 39.Harmonik L2 | 30058 | 0.1 | % | int16 | R |  | 38.Harmonik L2 | 30158 | 0.1 | % | int16 | R | 
+ | 39.Harmonik L3 | 30059 | 0.1 | % | int16 | R |  | 38.Harmonik L3 | 30159 | 0.1 | % | int16 | R | 
+ | 41.Harmonik L1 | 30060 | 0.1 | % | int16 | R |  | 40.Harmonik L1 | 30160 | 0.1 | % | int16 | R | 
+ | 41.Harmonik L2 | 30061 | 0.1 | % | int16 | R |  | 40.Harmonik L2 | 30161 | 0.1 | % | int16 | R | 
+ | 41.Harmonik L3 | 30062 | 0.1 | % | int16 | R |  | 40.Harmonik L3 | 30162 | 0.1 | % | int16 | R | 
+ | 43.Harmonik L1 | 30063 | 0.1 | % | int16 | R |  | 42.Harmonik L1 | 30163 | 0.1 | % | int16 | R | 
+ | 43.Harmonik L2 | 30064 | 0.1 | % | int16 | R |  | 42.Harmonik L2 | 30164 | 0.1 | % | int16 | R | 
+ | 43.Harmonik L3 | 30065 | 0.1 | % | int16 | R |  | 42.Harmonik L3 | 30165 | 0.1 | % | int16 | R | 
+ | 45.Harmonik L1 | 30066 | 0.1 | % | int16 | R |  | 44.Harmonik L1 | 30166 | 0.1 | % | int16 | R | 
+ | 45.Harmonik L2 | 30067 | 0.1 | % | int16 | R |  | 44.Harmonik L2 | 30167 | 0.1 | % | int16 | R | 
+ | 45.Harmonik L3 | 30068 | 0.1 | % | int16 | R |  | 44.Harmonik L3 | 30168 | 0.1 | % | int16 | R | 
+ | 47.Harmonik L1 | 30069 | 0.1 | % | int16 | R |  | 46.Harmonik L1 | 30169 | 0.1 | % | int16 | R | 
+ | 47.Harmonik L2 | 30070 | 0.1 | % | int16 | R |  | 46.Harmonik L2 | 30170 | 0.1 | % | int16 | R | 
+ | 47.Harmonik L3 | 30071 | 0.1 | % | int16 | R |  | 46.Harmonik L3 | 30171 | 0.1 | % | int16 | R | 
+ | 49.Harmonik L1 | 30072 | 0.1 | % | int16 | R |  | 48.Harmonik L1 | 30172 | 0.1 | % | int16 | R | 
+ | 49.Harmonik L2 | 30073 | 0.1 | % | int16 | R |  | 48.Harmonik L2 | 30173 | 0.1 | % | int16 | R | 
+ | 49.Harmonik L3 | 30074 | 0.1 | % | int16 | R |  | 48.Harmonik L3 | 30174 | 0.1 | % | int16 | R | 
+ | 51.Harmonik L1 | 30075 | 0.1 | % | int16 | R |  | 50.Harmonik L1 | 30175 | 0.1 | % | int16 | R | 
+ | 51.Harmonik L2 | 30076 | 0.1 | % | int16 | R |  | 50.Harmonik L2 | 30176 | 0.1 | % | int16 | R | 
+ | 51.Harmonik L3 | 30077 | 0.1 | % | int16 | R |  | 50.Harmonik L3 | 30177 | 0.1 | % | int16 | R | 
+ | 53.Harmonik L1 | 30078 | 0.1 | % | int16 | R |  | 52.Harmonik L1 | 30178 | 0.1 | % | int16 | R | 
+ | 53.Harmonik L2 | 30079 | 0.1 | % | int16 | R |  | 52.Harmonik L2 | 30179 | 0.1 | % | int16 | R | 
+ | 53.Harmonik L3 | 30080 | 0.1 | % | int16 | R |  | 52.Harmonik L3 | 30180 | 0.1 | % | int16 | R | 
+
+===== PAGE 23 =====
+ | 55.Harmonik L1 | 30081 | 0.1 | % | int16 | R |  | 54.Harmonik L1 | 30181 | 0.1 | % | int16 | R | 
+ | 55.Harmonik L2 | 30082 | 0.1 | % | int16 | R |  | 54.Harmonik L2 | 30182 | 0.1 | % | int16 | R | 
+ | 55.Harmonik L3 | 30083 | 0.1 | % | int16 | R |  | 54.Harmonik L3 | 30183 | 0.1 | % | int16 | R | 
+ | 57.Harmonik L1 | 30084 | 0.1 | % | int16 | R |  | 56.Harmonik L1 | 30184 | 0.1 | % | int16 | R | 
+ | 57.Harmonik L2 | 30085 | 0.1 | % | int16 | R |  | 56.Harmonik L2 | 30185 | 0.1 | % | int16 | R | 
+ | 57.Harmonik L3 | 30086 | 0.1 | % | int16 | R |  | 56.Harmonik L3 | 30186 | 0.1 | % | int16 | R | 
+ | 59.Harmonik L1 | 30087 | 0.1 | % | int16 | R |  | 58.Harmonik L1 | 30187 | 0.1 | % | int16 | R | 
+ | 59.Harmonik L2 | 30088 | 0.1 | % | int16 | R |  | 58.Harmonik L2 | 30188 | 0.1 | % | int16 | R | 
+ | 59.Harmonik L3 | 30089 | 0.1 | % | int16 | R |  | 58.Harmonik L3 | 30189 | 0.1 | % | int16 | R | 
+ | 61.Harmonik L1 | 30090 | 0.1 | % | int16 | R |  | 60.Harmonik L1 | 30190 | 0.1 | % | int16 | R | 
+ | 61.Harmonik L2 | 30091 | 0.1 | % | int16 | R |  | 60.Harmonik L2 | 30191 | 0.1 | % | int16 | R | 
+ | 61.Harmonik L3 | 30092 | 0.1 | % | int16 | R |  | 60.Harmonik L3 | 30192 | 0.1 | % | int16 | R | 
+ | 63.Harmonik L1 | 30093 | 0.1 | % | int16 | R |  | 62.Harmonik L1 | 30193 | 0.1 | % | int16 | R | 
+ | 63.Harmonik L2 | 30094 | 0.1 | % | int16 | R |  | 62.Harmonik L2 | 30194 | 0.1 | % | int16 | R | 
+ | 63.Harmonik L3 | 30095 | 0.1 | % | int16 | R |  | 62.Harmonik L3 | 30195 | 0.1 | % | int16 | R | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Akım Harmonik RMS (Tek) | Adres | Çarpan | Birim | Tür | W/R |  | Akım Harmonik RMS (Çift) | Adres | Çarpan | Birim | Tür | W/R | 
+ | Tek/Çift Profili | 30246 | - |  | int32 | R |  | Tek/Çift Profili | 30496 | - |  | int32 | R | 
+ | Harmonik Limit | 30248 | - |  | int32 | R |  | Harmonik Limit | 30498 | - |  | int32 | R | 
+ | 1.Faz Temel Büyüklük | 30250 | 1 | % | int32 | R |  | 1.Faz Temel Büyüklük | 30500 | 1 | % | int32 | R | 
+ | 2.Faz Temel Büyüklük | 30252 | 1 | % | int32 | R |  | 2.Faz Temel Büyüklük | 30502 | 1 | % | int32 | R | 
+ | 3.Faz Temel Büyüklük | 30254 | 1 | % | int32 | R |  | 3.Faz Temel Büyüklük | 30504 | 1 | % | int32 | R | 
+ | 3.Harmonik L1 | 30256 | 1 | % | int32 | R |  | 2.Harmonik L1 | 30506 | 1 | % | int32 | R | 
+ | 3.Harmonik L2 | 30258 | 1 | % | int32 | R |  | 2.Harmonik L2 | 30508 | 1 | % | int32 | R | 
+ | 3.Harmonik L3 | 30260 | 1 | % | int32 | R |  | 2.Harmonik L3 | 30510 | 1 | % | int32 | R | 
+ | 5.Harmonik L1 | 30262 | 1 | % | int32 | R |  | 4.Harmonik L1 | 30512 | 1 | % | int32 | R | 
+ | 5.Harmonik L2 | 30264 | 1 | % | int32 | R |  | 4.Harmonik L2 | 30514 | 1 | % | int32 | R | 
+ | 5.Harmonik L3 | 30266 | 1 | % | int32 | R |  | 4.Harmonik L3 | 30516 | 1 | % | int32 | R | 
+ | 7.Harmonik L1 | 30268 | 1 | % | int32 | R |  | 6.Harmonik L1 | 30518 | 1 | % | int32 | R | 
+ | 7.Harmonik L2 | 30270 | 1 | % | int32 | R |  | 6.Harmonik L2 | 30520 | 1 | % | int32 | R | 
+ | 7.Harmonik L3 | 30272 | 1 | % | int32 | R |  | 6.Harmonik L3 | 30522 | 1 | % | int32 | R | 
+ | 9.Harmonik L1 | 30274 | 1 | % | int32 | R |  | 8.Harmonik L1 | 30524 | 1 | % | int32 | R | 
+ | 9.Harmonik L2 | 30276 | 1 | % | int32 | R |  | 8.Harmonik L2 | 30526 | 1 | % | int32 | R | 
+ | 9.Harmonik L3 | 30278 | 1 | % | int32 | R |  | 8.Harmonik L3 | 30528 | 1 | % | int32 | R | 
+ | 11.Harmonik L1 | 30280 | 1 | % | int32 | R |  | 10.Harmonik L1 | 30530 | 1 | % | int32 | R | 
+ | 11.Harmonik L2 | 30282 | 1 | % | int32 | R |  | 10.Harmonik L2 | 30532 | 1 | % | int32 | R | 
+ | 11.Harmonik L3 | 30284 | 1 | % | int32 | R |  | 10.Harmonik L3 | 30534 | 1 | % | int32 | R | 
+ | 13.Harmonik L1 | 30286 | 1 | % | int32 | R |  | 12.Harmonik L1 | 30536 | 1 | % | int32 | R | 
+ | 13.Harmonik L2 | 30288 | 1 | % | int32 | R |  | 12.Harmonik L2 | 30538 | 1 | % | int32 | R | 
+ | 13.Harmonik L3 | 30290 | 1 | % | int32 | R |  | 12.Harmonik L3 | 30540 | 1 | % | int32 | R | 
+ | 15.Harmonik L1 | 30292 | 1 | % | int32 | R |  | 14.Harmonik L1 | 30542 | 1 | % | int32 | R | 
+ | 15.Harmonik L2 | 30294 | 1 | % | int32 | R |  | 14.Harmonik L2 | 30544 | 1 | % | int32 | R | 
+
+===== PAGE 24 =====
+ | 15.Harmonik L3 | 30296 | 1 | % | int32 | R |  | 14.Harmonik L3 | 30546 | 1 | % | int32 | R | 
+ | 17.Harmonik L1 | 30298 | 1 | % | int32 | R |  | 16.Harmonik L1 | 30548 | 1 | % | int32 | R | 
+ | 17.Harmonik L2 | 30300 | 1 | % | int32 | R |  | 16.Harmonik L2 | 30550 | 1 | % | int32 | R | 
+ | 17.Harmonik L3 | 30302 | 1 | % | int32 | R |  | 16.Harmonik L3 | 30552 | 1 | % | int32 | R | 
+ | 19.Harmonik L1 | 30304 | 1 | % | int32 | R |  | 18.Harmonik L1 | 30554 | 1 | % | int32 | R | 
+ | 19.Harmonik L2 | 30306 | 1 | % | int32 | R |  | 18.Harmonik L2 | 30556 | 1 | % | int32 | R | 
+ | 19.Harmonik L3 | 30308 | 1 | % | int32 | R |  | 18.Harmonik L3 | 30558 | 1 | % | int32 | R | 
+ | 21.Harmonik L1 | 30310 | 1 | % | int32 | R |  | 20.Harmonik L1 | 30560 | 1 | % | int32 | R | 
+ | 21.Harmonik L2 | 30312 | 1 | % | int32 | R |  | 20.Harmonik L2 | 30562 | 1 | % | int32 | R | 
+ | 21.Harmonik L3 | 30314 | 1 | % | int32 | R |  | 20.Harmonik L3 | 30564 | 1 | % | int32 | R | 
+ | 23.Harmonik L1 | 30316 | 1 | % | int32 | R |  | 22.Harmonik L1 | 30566 | 1 | % | int32 | R | 
+ | 23.Harmonik L2 | 30318 | 1 | % | int32 | R |  | 22.Harmonik L2 | 30568 | 1 | % | int32 | R | 
+ | 23.Harmonik L3 | 30320 | 1 | % | int32 | R |  | 22.Harmonik L3 | 30570 | 1 | % | int32 | R | 
+ | 25.Harmonik L1 | 30322 | 1 | % | int32 | R |  | 24.Harmonik L1 | 30572 | 1 | % | int32 | R | 
+ | 25.Harmonik L2 | 30324 | 1 | % | int32 | R |  | 24.Harmonik L2 | 30574 | 1 | % | int32 | R | 
+ | 25.Harmonik L3 | 30326 | 1 | % | int32 | R |  | 24.Harmonik L3 | 30576 | 1 | % | int32 | R | 
+ | 27.Harmonik L1 | 30328 | 1 | % | int32 | R |  | 26.Harmonik L1 | 30578 | 1 | % | int32 | R | 
+ | 27.Harmonik L2 | 30330 | 1 | % | int32 | R |  | 26.Harmonik L2 | 30580 | 1 | % | int32 | R | 
+ | 27.Harmonik L3 | 30332 | 1 | % | int32 | R |  | 26.Harmonik L3 | 30582 | 1 | % | int32 | R | 
+ | 29.Harmonik L1 | 30334 | 1 | % | int32 | R |  | 28.Harmonik L1 | 30584 | 1 | % | int32 | R | 
+ | 29.Harmonik L2 | 30336 | 1 | % | int32 | R |  | 28.Harmonik L2 | 30586 | 1 | % | int32 | R | 
+ | 29.Harmonik L3 | 30338 | 1 | % | int32 | R |  | 28.Harmonik L3 | 30588 | 1 | % | int32 | R | 
+ | 31.Harmonik L1 | 30340 | 1 | % | int32 | R |  | 30.Harmonik L1 | 30590 | 1 | % | int32 | R | 
+ | 31.Harmonik L2 | 30342 | 1 | % | int32 | R |  | 30.Harmonik L2 | 30592 | 1 | % | int32 | R | 
+ | 31.Harmonik L3 | 30344 | 1 | % | int32 | R |  | 30.Harmonik L3 | 30594 | 1 | % | int32 | R | 
+ | 33.Harmonik L1 | 30346 | 1 | % | int32 | R |  | 32.Harmonik L1 | 30596 | 1 | % | int32 | R | 
+ | 33.Harmonik L2 | 30348 | 1 | % | int32 | R |  | 32.Harmonik L2 | 30598 | 1 | % | int32 | R | 
+ | 33.Harmonik L3 | 30350 | 1 | % | int32 | R |  | 32.Harmonik L3 | 30600 | 1 | % | int32 | R | 
+ | 35.Harmonik L1 | 30352 | 1 | % | int32 | R |  | 34.Harmonik L1 | 30602 | 1 | % | int32 | R | 
+ | 35.Harmonik L2 | 30354 | 1 | % | int32 | R |  | 34.Harmonik L2 | 30604 | 1 | % | int32 | R | 
+ | 35.Harmonik L3 | 30356 | 1 | % | int32 | R |  | 34.Harmonik L3 | 30606 | 1 | % | int32 | R | 
+ | 37.Harmonik L1 | 30358 | 1 | % | int32 | R |  | 36.Harmonik L1 | 30608 | 1 | % | int32 | R | 
+ | 37.Harmonik L2 | 30360 | 1 | % | int32 | R |  | 36.Harmonik L2 | 30610 | 1 | % | int32 | R | 
+ | 37.Harmonik L3 | 30362 | 1 | % | int32 | R |  | 36.Harmonik L3 | 30612 | 1 | % | int32 | R | 
+ | 39.Harmonik L1 | 30364 | 1 | % | int32 | R |  | 38.Harmonik L1 | 30614 | 1 | % | int32 | R | 
+ | 39.Harmonik L2 | 30366 | 1 | % | int32 | R |  | 38.Harmonik L2 | 30616 | 1 | % | int32 | R | 
+ | 39.Harmonik L3 | 30368 | 1 | % | int32 | R |  | 38.Harmonik L3 | 30618 | 1 | % | int32 | R | 
+ | 41.Harmonik L1 | 30370 | 1 | % | int32 | R |  | 40.Harmonik L1 | 30620 | 1 | % | int32 | R | 
+ | 41.Harmonik L2 | 30372 | 1 | % | int32 | R |  | 40.Harmonik L2 | 30622 | 1 | % | int32 | R | 
+ | 41.Harmonik L3 | 30374 | 1 | % | int32 | R |  | 40.Harmonik L3 | 30624 | 1 | % | int32 | R | 
+ | 43.Harmonik L1 | 30376 | 1 | % | int32 | R |  | 42.Harmonik L1 | 30626 | 1 | % | int32 | R | 
+ | 43.Harmonik L2 | 30378 | 1 | % | int32 | R |  | 42.Harmonik L2 | 30628 | 1 | % | int32 | R | 
+
+===== PAGE 25 =====
+ | 43.Harmonik L3 | 30380 | 1 | % | int32 | R |  | 42.Harmonik L3 | 30630 | 1 | % | int32 | R | 
+ | 45.Harmonik L1 | 30382 | 1 | % | int32 | R |  | 44.Harmonik L1 | 30632 | 1 | % | int32 | R | 
+ | 45.Harmonik L2 | 30384 | 1 | % | int32 | R |  | 44.Harmonik L2 | 30634 | 1 | % | int32 | R | 
+ | 45.Harmonik L3 | 30386 | 1 | % | int32 | R |  | 44.Harmonik L3 | 30636 | 1 | % | int32 | R | 
+ | 47.Harmonik L1 | 30388 | 1 | % | int32 | R |  | 46.Harmonik L1 | 30638 | 1 | % | int32 | R | 
+ | 47.Harmonik L2 | 30390 | 1 | % | int32 | R |  | 46.Harmonik L2 | 30640 | 1 | % | int32 | R | 
+ | 47.Harmonik L3 | 30392 | 1 | % | int32 | R |  | 46.Harmonik L3 | 30642 | 1 | % | int32 | R | 
+ | 49.Harmonik L1 | 30394 | 1 | % | int32 | R |  | 48.Harmonik L1 | 30644 | 1 | % | int32 | R | 
+ | 49.Harmonik L2 | 30396 | 1 | % | int32 | R |  | 48.Harmonik L2 | 30646 | 1 | % | int32 | R | 
+ | 49.Harmonik L3 | 30398 | 1 | % | int32 | R |  | 48.Harmonik L3 | 30648 | 1 | % | int32 | R | 
+ | 51.Harmonik L1 | 30400 | 1 | % | int32 | R |  | 50.Harmonik L1 | 30650 | 1 | % | int32 | R | 
+ | 51.Harmonik L2 | 30402 | 1 | % | int32 | R |  | 50.Harmonik L2 | 30652 | 1 | % | int32 | R | 
+ | 51.Harmonik L3 | 30404 | 1 | % | int32 | R |  | 50.Harmonik L3 | 30654 | 1 | % | int32 | R | 
+ | 53.Harmonik L1 | 30406 | 1 | % | int32 | R |  | 52.Harmonik L1 | 30656 | 1 | % | int32 | R | 
+ | 53.Harmonik L2 | 30408 | 1 | % | int32 | R |  | 52.Harmonik L2 | 30658 | 1 | % | int32 | R | 
+ | 53.Harmonik L3 | 30410 | 1 | % | int32 | R |  | 52.Harmonik L3 | 30660 | 1 | % | int32 | R | 
+ | 55.Harmonik L1 | 30412 | 1 | % | int32 | R |  | 54.Harmonik L1 | 30662 | 1 | % | int32 | R | 
+ | 55.Harmonik L2 | 30414 | 1 | % | int32 | R |  | 54.Harmonik L2 | 30664 | 1 | % | int32 | R | 
+ | 55.Harmonik L3 | 30416 | 1 | % | int32 | R |  | 54.Harmonik L3 | 30666 | 1 | % | int32 | R | 
+ | 57.Harmonik L1 | 30418 | 1 | % | int32 | R |  | 56.Harmonik L1 | 30668 | 1 | % | int32 | R | 
+ | 57.Harmonik L2 | 30420 | 1 | % | int32 | R |  | 56.Harmonik L2 | 30670 | 1 | % | int32 | R | 
+ | 57.Harmonik L3 | 30422 | 1 | % | int32 | R |  | 56.Harmonik L3 | 30672 | 1 | % | int32 | R | 
+ | 59.Harmonik L1 | 30424 | 1 | % | int32 | R |  | 58.Harmonik L1 | 30674 | 1 | % | int32 | R | 
+ | 59.Harmonik L2 | 30426 | 1 | % | int32 | R |  | 58.Harmonik L2 | 30676 | 1 | % | int32 | R | 
+ | 59.Harmonik L3 | 30428 | 1 | % | int32 | R |  | 58.Harmonik L3 | 30678 | 1 | % | int32 | R | 
+ | 61.Harmonik L1 | 30430 | 1 | % | int32 | R |  | 60.Harmonik L1 | 30680 | 1 | % | int32 | R | 
+ | 61.Harmonik L2 | 30432 | 1 | % | int32 | R |  | 60.Harmonik L2 | 30682 | 1 | % | int32 | R | 
+ | 61.Harmonik L3 | 30434 | 1 | % | int32 | R |  | 60.Harmonik L3 | 30684 | 1 | % | int32 | R | 
+ | 63.Harmonik L1 | 30436 | 1 | % | int32 | R |  | 62.Harmonik L1 | 30686 | 1 | % | int32 | R | 
+ | 63.Harmonik L2 | 30438 | 1 | % | int32 | R |  | 62.Harmonik L2 | 30688 | 1 | % | int32 | R | 
+ | 63.Harmonik L3 | 30440 | 1 | % | int32 | R |  | 62.Harmonik L3 | 30690 | 1 | % | int32 | R | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+
+===== PAGE 26 =====
+Kademeler | Adres | Çarpan | Birim | Tür | W/R |  | Table-1 |  |  | Table-3 | 
+Akım Trafo Oranı | 40000 | - | - | int32 | R | Table-1 | Index Cihaz Durumu |  |  | Index Termik Hata Durumu | 
+Hat Gerilimi | 40002 | 1 | V(Volt) | int32 | R |  | 0
+1
+2
+3
+4
+5 | Boşta |  | 0 | Normal ( Hata Yok)
+Ölçme Gerilimi | 40004 | 1 | V(Volt) | int32 | R |  |  | ServisDışı |  | 1 | Açık ve Yüksek Isı
+Cihaz Durumu(Table-1)* | 40006 |  |  | int32 | R |  |  | Kurulumda |  | 2 | Termik Alt Pinine Faz Bağlı
+Toplam Online Kademe Gücü L1 | 40014 | 1 | Watt | int32 | R |  |  | Kompanzasyonda |  | 3 | Termik Alt Pinine Faz Üst Pinine Nötr Bağlı
+Toplam Online Kademe Gücü L2 | 40016 | 1 | Watt | int32 | R |  |  | Kademe Öprenmede |  | 4 | Termik Üst Pinine Faz Alt Pinine Nötr Bağlı
+Toplam Online Kademe Gücü L3 | 40018 | 1 | Watt | int32 | R |  |  | Uygulanamaz |  | 5 | Termik Alt Pinine Nötr Bağlı
+Toplam işlerme Yük Gücü L1 | 40020 | 1 | Watt | int32 | R |  |  |  |  | 6 | Bilinmeyen Bağlantı Hatası
+Toplam işlerme Yük Gücü L2 | 40022 | 1 | Watt | int32 | R |  |  |  |  |  | 
+Toplam işlerme Yük Gücü L3 | 40024 | 1 | Watt | int32 | R |  |  |  |  |  | 
+Kademelerdeki Toplam Kondansatör Gücü L1 | 40026 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Kademelerdeki Toplam Kondansatör Gücü L2 | 40028 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Kademelerdeki Toplam Kondansatör Gücü L3 | 40030 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Kademelerdeki Toplam Reaktör Gücü L1 | 40032 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Kademelerdeki Toplam Reaktör Gücü L2 | 40034 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Kademelerdeki Toplam Reaktör Gücü L3 | 40036 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Ek Güç L1 | 40038 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Ek Güç L2 | 40040 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Ek Güç L3 | 40042 | 1 | VAr | int32 | R |  |  |  |  |  | 
+Hedef Cos L1 | 40044 | - | - | int32 | R |  |  |  |  |  | 
+Hedef Cos L2 | 40046 | - | - | int32 | R |  |  |  |  |  | 
+Hedef Cos L3 | 40048 | - | - | int32 | R |  |  |  |  |  | 
+SVC1  Kademe Gücü L1 | 40070 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC1  Kademe Gücü L2 | 40072 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC1  Kademe Gücü L3 | 40074 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC1 Devredeki Gücü L1 | 40076 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC1 Devredeki Gücü L2 | 40078 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC1 Devredeki Gücü L3 | 40080 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC1 Yüzdelik  | 40082 |  | % | int32 | R |  |  |  |  |  | 
+SVC2  Kademe Gücü L1 | 40084 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC2  Kademe Gücü L2 | 40086 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC2  Kademe Gücü L3 | 40088 | 1 | Watt | int32 | R |  |  |  |  |  | 
+SVC2 Devredeki Gücü L1 | 40090 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC2 Devredeki Gücü L2 | 40092 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC2 Devredeki Gücü L3 | 40094 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC2 Yüzdelik  | 40096 |  | % | int32 | R |  |  |  |  |  | 
+SVC3  Kademe Gücü L1 | 40098 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC3  Kademe Gücü L2 | 40100 | 1 | VAr | int32 | R |  |  |  |  |  | 
+SVC3  Kademe Gücü L3 | 40102 | 1 | VAr | int32 | R |  |  |  |  |  | 
+
+===== PAGE 27 =====
+SVC3 Devredeki Gücü L1 | 40104 | 1 | VAr | int32 | R |  | 
+SVC3 Devredeki Gücü L2 | 40106 | 1 | VAr | int32 | R |  | 
+SVC3 Devredeki Gücü L3 | 40108 | 1 | VAr | int32 | R |  | 
+SVC3 Yüzdelik  | 40110 |  | % | int32 | R |  | 
+SVC Durumu(Termik-Pasik-Aktif)(Table-2)* | 40120 | - | - | int32 | R |  | 
+SVC Öğrenme Durumu | 40122 |  |  | int32 | R |  | 
+SVC Hata Durumu(Table-3)* | 40124 |  |  | int32 | R |  | 
+SVC Sayısı | 40126 | - | - | int32 | R |  | 
+Cihaz Kademe Sayısı | 40128 | - | - | int32 | R |  | 
+Kademe Durumları | 40130 | - | - | int32 | R |  | 
+Kademe Öğrenme Durumu | 40132 | - | - | int32 | R |  | 
+Hatalı Kademe Durumu | 40134 |  |  | int32 | R |  | 
+Kademe İptal Durumu | 40136 | - | - | int32 | R |  | 
+Kademe Manuel/Auto | 40138 |  |  | int32 | R |  | 
+Kademe Deşarj Durmu | 40140 | - | - | int32 | R |  | 
+Kademe Ortak 1 | 40150 | 1 | Volt | int32 | R |  | 
+Kademe Ortak 2 | 40152 | 1 | Volt | int32 | R |  | 
+Kademe Ortak 3 | 40154 | 1 | Volt | int32 | R |  | 
+Kademe Ortak 4 | 40156 |  | Volt | int32 | R |  | 
+Kademe Ortak 5 | 40158 |  | Volt | int32 | R |  | 
+1.Kademe Gücü L1 | 40160 | 1 | VAr | int32 | R |  | 
+1.Kademe Gücü L2 | 40162 | 1 | VAr | int32 | R |  | 
+1.Kademe Gücü L3 | 40164 | 1 | VAr | int32 | R |  | 
+1.Kademe Çalışma Süresi | 40166 | 1 | Sn | int32 | R |  | 
+1.Kademe Anahtarlama Sayısı | 40168 | 1 | - | int32 | R |  | 
+2.Kademe Gücü L1 | 40170 | 1 | VAr | int32 | R |  | 
+2.Kademe Gücü L2 | 40172 | 1 | VAr | int32 | R |  | 
+2.Kademe Gücü L3 | 40174 | 1 | VAr | int32 | R |  | 
+2.Kademe Çalışma Süresi | 40176 | 1 | Sn | int32 | R |  | 
+2.Kademe Anahtarlama Sayısı | 40178 | 1 | - | int32 | R |  | 
+3.Kademe Gücü L1 | 40180 | 1 | VAr | int32 | R |  | 
+3.Kademe Gücü L2 | 40182 | 1 | VAr | int32 | R |  | 
+3.Kademe Gücü L3 | 40184 | 1 | VAr | int32 | R |  | 
+3.Kademe Çalışma Süresi | 40186 | 1 | Sn | int32 | R |  | 
+3.Kademe Anahtarlama Sayısı | 40188 | 1 | - | int32 | R |  | 
+4.Kademe Gücü L1 | 40190 | 1 | VAr | int32 | R |  | 
+4.Kademe Gücü L2 | 40192 | 1 | VAr | int32 | R |  | 
+4.Kademe Gücü L3 | 40194 | 1 | VAr | int32 | R |  | 
+4.Kademe Çalışma Süresi | 40196 | 1 | Sn | int32 | R |  | 
+4.Kademe Anahtarlama Sayısı | 40198 | 1 | - | int32 | R |  | 
+
+===== PAGE 28 =====
+5.Kademe Gücü L1 | 40200 | 1 | VAr | int32 | R |  | 
+5.Kademe Gücü L2 | 40202 | 1 | VAr | int32 | R |  | 
+5.Kademe Gücü L3 | 40204 | 1 | VAr | int32 | R |  | 
+5.Kademe Çalışma Süresi | 40206 | 1 | Sn | int32 | R |  | 
+5.Kademe Anahtarlama Sayısı | 40208 | 1 | - | int32 | R |  | 
+6.Kademe Gücü L1 | 40210 | 1 | VAr | int32 | R |  | 
+6.Kademe Gücü L2 | 40212 | 1 | VAr | int32 | R |  | 
+6.Kademe Gücü L3 | 40214 | 1 | VAr | int32 | R |  | 
+6.Kademe Çalışma Süresi | 40216 | 1 | Sn | int32 | R |  | 
+6.Kademe Anahtarlama Sayısı | 40218 | 1 | - | int32 | R |  | 
+7.Kademe Gücü L1 | 40220 | 1 | VAr | int32 | R |  | 
+7.Kademe Gücü L2 | 40222 | 1 | VAr | int32 | R |  | 
+7.Kademe Gücü L3 | 40224 | 1 | VAr | int32 | R |  | 
+7.Kademe Çalışma Süresi | 40226 | 1 | Sn | int32 | R |  | 
+7.Kademe Anahtarlama Sayısı | 40228 | 1 | - | int32 | R |  | 
+8.Kademe Gücü L1 | 40230 | 1 | VAr | int32 | R |  | 
+8.Kademe Gücü L2 | 40232 | 1 | VAr | int32 | R |  | 
+8.Kademe Gücü L3 | 40234 | 1 | VAr | int32 | R |  | 
+8.Kademe Çalışma Süresi | 40236 | 1 | Sn | int32 | R |  | 
+8.Kademe Anahtarlama Sayısı | 40238 | 1 | - | int32 | R |  | 
+9.Kademe Gücü L1 | 40240 | 1 | VAr | int32 | R |  | 
+9.Kademe Gücü L2 | 40242 | 1 | VAr | int32 | R |  | 
+9.Kademe Gücü L3 | 40244 | 1 | VAr | int32 | R |  | 
+9.Kademe Çalışma Süresi | 40246 | 1 | Sn | int32 | R |  | 
+9.Kademe Anahtarlama Sayısı | 40248 | 1 | - | int32 | R |  | 
+10.Kademe Gücü L1 | 40250 | 1 | VAr | int32 | R |  | 
+10.Kademe Gücü L2 | 40252 | 1 | VAr | int32 | R |  | 
+10.Kademe Gücü L3 | 40254 | 1 | VAr | int32 | R |  | 
+10.Kademe Çalışma Süresi | 40256 | 1 | Sn | int32 | R |  | 
+10.Kademe Anahtarlama Sayısı | 40258 | 1 | - | int32 | R |  | 
+11.Kademe Gücü L1 | 40260 | 1 | VAr | int32 | R |  | 
+11.Kademe Gücü L2 | 40262 | 1 | VAr | int32 | R |  | 
+11.Kademe Gücü L3 | 40264 | 1 | VAr | int32 | R |  | 
+11.Kademe Çalışma Süresi | 40266 | 1 | Sn | int32 | R |  | 
+11.Kademe Anahtarlama Sayısı | 40268 | 1 | - | int32 | R |  | 
+12.Kademe Gücü L1 | 40270 | 1 | VAr | int32 | R |  | 
+12.Kademe Gücü L2 | 40272 | 1 | VAr | int32 | R |  | 
+12.Kademe Gücü L3 | 40274 | 1 | VAr | int32 | R |  | 
+12.Kademe Çalışma Süresi | 40276 | 1 | Sn | int32 | R |  | 
+12.Kademe Anahtarlama Sayısı | 40278 | 1 | - | int32 | R |  | 
+
+===== PAGE 29 =====
+13.Kademe Gücü L1 | 40280 | 1 | VAr | int32 | R |  | 
+13.Kademe Gücü L2 | 40282 | 1 | VAr | int32 | R |  | 
+13.Kademe Gücü L3 | 40284 | 1 | VAr | int32 | R |  | 
+13.Kademe Çalışma Süresi | 40286 | 1 | Sn | int32 | R |  | 
+13.Kademe Anahtarlama Sayısı | 40288 | 1 | - | int32 | R |  | 
+14.Kademe Gücü L1 | 40290 | 1 | VAr | int32 | R |  | 
+14.Kademe Gücü L2 | 40292 | 1 | VAr | int32 | R |  | 
+14.Kademe Gücü L3 | 40294 | 1 | VAr | int32 | R |  | 
+14.Kademe Çalışma Süresi | 40296 | 1 | Sn | int32 | R |  | 
+14.Kademe Anahtarlama Sayısı | 40298 | 1 | - | int32 | R |  | 
+15.Kademe Gücü L1 | 40300 | 1 | VAr | int32 | R |  | 
+15.Kademe Gücü L2 | 40302 | 1 | VAr | int32 | R |  | 
+15.Kademe Gücü L3 | 40304 | 1 | VAr | int32 | R |  | 
+15.Kademe Çalışma Süresi | 40306 | 1 | Sn | int32 | R |  | 
+15.Kademe Anahtarlama Sayısı | 40308 | 1 | - | int32 | R |  | 
+16.Kademe Gücü L1 | 40310 | 1 | VAr | int32 | R |  | 
+16.Kademe Gücü L2 | 40312 | 1 | VAr | int32 | R |  | 
+16.Kademe Gücü L3 | 40314 | 1 | VAr | int32 | R |  | 
+16.Kademe Çalışma Süresi | 40316 | 1 | Sn | int32 | R |  | 
+16.Kademe Anahtarlama Sayısı | 40318 | 1 | - | int32 | R |  | 
+17.Kademe Gücü L1 | 40320 | 1 | VAr | int32 | R |  | 
+17.Kademe Gücü L2 | 40322 | 1 | VAr | int32 | R |  | 
+17.Kademe Gücü L3 | 40324 | 1 | VAr | int32 | R |  | 
+17.Kademe Çalışma Süresi | 40326 | 1 | Sn | int32 | R |  | 
+17.Kademe Anahtarlama Sayısı | 40328 | 1 | - | int32 | R |  | 
+18.Kademe Gücü L1 | 40330 | 1 | VAr | int32 | R |  | 
+18.Kademe Gücü L2 | 40332 | 1 | VAr | int32 | R |  | 
+18.Kademe Gücü L3 | 40334 | 1 | VAr | int32 | R |  | 
+18.Kademe Çalışma Süresi | 40336 | 1 | Sn | int32 | R |  | 
+18.Kademe Anahtarlama Sayısı | 40338 | 1 | - | int32 | R |  | 
+19.Kademe Gücü L1 | 40340 | 1 | VAr | int32 | R |  | 
+19.Kademe Gücü L2 | 40342 | 1 | VAr | int32 | R |  | 
+19.Kademe Gücü L3 | 40344 | 1 | VAr | int32 | R |  | 
+19.Kademe Çalışma Süresi | 40346 | 1 | Sn | int32 | R |  | 
+19.Kademe Anahtarlama Sayısı | 40348 | 1 | - | int32 | R |  | 
+20.Kademe Gücü L1 | 40350 | 1 | VAr | int32 | R |  | 
+20.Kademe Gücü L2 | 40352 | 1 | VAr | int32 | R |  | 
+20.Kademe Gücü L3 | 40354 | 1 | VAr | int32 | R |  | 
+20.Kademe Çalışma Süresi | 40356 | 1 | Sn | int32 | R |  | 
+20.Kademe Anahtarlama Sayısı | 40358 | 1 | - | int32 | R |  | 
+
+===== PAGE 30 =====
+21.Kademe Gücü L1 | 40360 | 1 | VAr | int32 | R |  | 
+21.Kademe Gücü L2 | 40362 | 1 | VAr | int32 | R |  | 
+21.Kademe Gücü L3 | 40364 | 1 | VAr | int32 | R |  | 
+21.Kademe Çalışma Süresi | 40366 | 1 | Sn | int32 | R |  | 
+21.Kademe Anahtarlama Sayısı | 40368 | 1 | - | int32 | R |  | 
+22.Kademe Gücü L1 | 40370 | 1 | VAr | int32 | R |  | 
+22.Kademe Gücü L2 | 40372 | 1 | VAr | int32 | R |  | 
+22.Kademe Gücü L3 | 40374 | 1 | VAr | int32 | R |  | 
+22.Kademe Çalışma Süresi | 40376 | 1 | Sn | int32 | R |  | 
+22.Kademe Anahtarlama Sayısı | 40378 | 1 | - | int32 | R |  | 
+23.Kademe Gücü L1 | 40380 | 1 | VAr | int32 | R |  | 
+23.Kademe Gücü L2 | 40382 | 1 | VAr | int32 | R |  | 
+23.Kademe Gücü L3 | 40384 | 1 | VAr | int32 | R |  | 
+23.Kademe Çalışma Süresi | 40386 | 1 | Sn | int32 | R |  | 
+23.Kademe Anahtarlama Sayısı | 40388 | 1 | - | int32 | R |  | 
+24.Kademe Gücü L1 | 40390 | 1 | VAr | int32 | R |  | 
+24.Kademe Gücü L2 | 40392 | 1 | VAr | int32 | R |  | 
+24.Kademe Gücü L3 | 40394 | 1 | VAr | int32 | R |  | 
+24.Kademe Çalışma Süresi | 40396 | 1 | Sn | int32 | R |  | 
+24.Kademe Anahtarlama Sayısı | 40398 | 1 | - | int32 | R |  | 
+25.Kademe Gücü L1 | 40400 | 1 | VAr | int32 | R |  | 
+25.Kademe Gücü L2 | 40402 | 1 | VAr | int32 | R |  | 
+25.Kademe Gücü L3 | 40404 | 1 | VAr | int32 | R |  | 
+25.Kademe Çalışma Süresi | 40406 | 1 | Sn | int32 | R |  | 
+25.Kademe Anahtarlama Sayısı | 40408 | 1 | - | int32 | R |  | 
+26.Kademe Gücü L1 | 40410 | 1 | VAr | int32 | R |  | 
+26.Kademe Gücü L2 | 40412 | 1 | VAr | int32 | R |  | 
+26.Kademe Gücü L3 | 40414 | 1 | VAr | int32 | R |  | 
+26.Kademe Çalışma Süresi | 40416 | 1 | Sn | int32 | R |  | 
+26.Kademe Anahtarlama Sayısı | 40418 | 1 | - | int32 | R |  | 
+27.Kademe Gücü L1 | 40420 | 1 | VAr | int32 | R |  | 
+27.Kademe Gücü L2 | 40422 | 1 | VAr | int32 | R |  | 
+27.Kademe Gücü L3 | 40424 | 1 | VAr | int32 | R |  | 
+27.Kademe Çalışma Süresi | 40426 | 1 | Sn | int32 | R |  | 
+27.Kademe Anahtarlama Sayısı | 40428 | 1 | - | int32 | R |  | 
+28.Kademe Gücü L1 | 40430 | 1 | VAr | int32 | R |  | 
+28.Kademe Gücü L2 | 40432 | 1 | VAr | int32 | R |  | 
+28.Kademe Gücü L3 | 40434 | 1 | VAr | int32 | R |  | 
+28.Kademe Çalışma Süresi | 40436 | 1 | Sn | int32 | R |  | 
+28.Kademe Anahtarlama Sayısı | 40438 | 1 | - | int32 | R |  | 
+
+===== PAGE 31 =====
+29.Kademe Gücü L1 | 40440 | 1 | VAr | int32 | R | 
+29.Kademe Gücü L2 | 40442 | 1 | VAr | int32 | R | 
+29.Kademe Gücü L3 | 40444 | 1 | VAr | int32 | R | 
+29.Kademe Çalışma Süresi | 40446 | 1 | Sn | int32 | R | 
+29.Kademe Anahtarlama Sayısı | 40448 | 1 | - | int32 | R | 
+30.Kademe Gücü L1 | 40450 | 1 | VAr | int32 | R | 
+30.Kademe Gücü L2 | 40452 | 1 | VAr | int32 | R | 
+30.Kademe Gücü L3 | 40454 | 1 | VAr | int32 | R | 
+30.Kademe Çalışma Süresi | 40456 | 1 | Sn | int32 | R | 
+30.Kademe Anahtarlama Sayısı | 40458 | 1 | - | int32 | R | 
+31.Kademe Gücü L1 | 40460 | 1 | VAr | int32 | R | 
+31.Kademe Gücü L2 | 40462 | 1 | VAr | int32 | R | 
+31.Kademe Gücü L3 | 40464 | 1 | VAr | int32 | R | 
+31.Kademe Çalışma Süresi | 40466 | 1 | Sn | int32 | R | 
+31.Kademe Anahtarlama Sayısı | 40468 | 1 | - | int32 | R | 
+32.Kademe Gücü L1 | 40470 | 1 | VAr | int32 | R | 
+32.Kademe Gücü L2 | 40472 | 1 | VAr | int32 | R | 
+32.Kademe Gücü L3 | 40474 | 1 | VAr | int32 | R | 
+32.Kademe Çalışma Süresi | 40476 | 1 | Sn | int32 | R | 
+32.Kademe Anahtarlama Sayısı | 40478 | 1 | - | int32 | R | 
+
+===== PAGE 32 =====
+9:.
+;: | ;< | := | :> | :? | :@ | :A | :B | :9 | :; | :: | :< | = | > | ? | @ | A | B | 9 | ; | : | <
+(C
+D | [1]
+:> | [1]
+:? | [1]
+:@ | [1]
+:A | [1]
+:B | [1]
+:9 | [1]
+:; | [1]
+:: | [1]
+:< | [1]= | [1]> | [1]? | [1]@ | [1]A | [1]B | [1]9 | [1]; | [1]: | D; | D: | D<
+0,M- "+ | 5,N | 7-#"2&
+I[2] | /JK: | >>>/9//$9///
+0,M- "+ | 5,N | 7-#"2&
+9[2]R | /J:9 | >>>9///$///9
+0,M- "+ | 5,N | 7-#"2&
+[1]/K | /J9[1]/ | >>>///9$//99$////
+0,M- "+ | 5,N | 7-#"2&
+M[1] | /J[1]T | >>>//99$9999
+
+===== PAGE 33 =====
+Oran | Adres | Çarpan | Birim | Boyut | W/R
+Anlık | 14000 | 0.1 |  | int16 | R
+Anlık | 14001 | 0.1 |  | int16 | R
+Anlık | 14002 | 0.1 |  | int16 | R
+Anlık | 14003 | 0.1 |  | int16 | R
+Anlık | 14004 | 0.1 |  | int16 | R
+Anlık | 14005 | 0.1 |  | int16 | R
+Anlık | 14006 | 0.1 |  | int16 | R
+Anlık | 14007 | 0.1 |  | int16 | R
+1..F az Endüktif Oran (Tüketim) | 14008 | 0.1 | % | int16 | R
+2..F az Endüktif Oran (Tüketim) | 14009 | 0.1 | % | int16 | R
+3..F az Endüktif Oran (Tüketim) | 14010 | 0.1 | % | int16 | R
+Toplam Endüktif Oran (Tüketim) | 14011 | 0.1 | % | int16 | R
+1.Faz Kapasitif Oran (Tüketim) | 14012 | 0.1 | % | int16 | R
+2.Faz Kapasitif Oran (Tüketim) | 14013 | 0.1 | % | int16 | R
+3.Faz Kapasitif Oran (Tüketim) | 14014 | 0.1 | % | int16 | R
+Topma Kapasitif Oran (Tüketim) | 14015 | 0.1 | % | int16 | R
+Anlık | 14050 | 0.1 |  | int16 | R
+Anlık | 14051 | 0.1 |  | int16 | R
+Anlık | 14052 | 0.1 |  | int16 | R
+Anlık | 14053 | 0.1 |  | int16 | R
+Anlık | 14054 | 0.1 |  | int16 | R
+Anlık | 14055 | 0.1 |  | int16 | R
+Anlık | 14056 | 0.1 |  | int16 | R
+Anlık | 14057 | 0.1 |  | int16 | R
+1..F az Endüktif Oran (Üretim) | 14058 | 0.1 | % | int16 | R
+2..F az Endüktif Oran (Üretim) | 14059 | 0.1 | % | int16 | R
+3..F az Endüktif Oran (Üretim) | 14060 | 0.1 | % | int16 | R
+Toplam Endüktif Oran (Üretim) | 14061 | 0.1 | % | int16 | R
+1.Faz Kapasitif Oran (Üretim) | 14062 | 0.1 | % | int16 | R
+2.Faz Kapasitif Oran (Üretim) | 14063 | 0.1 | % | int16 | R
+3.Faz Kapasitif Oran (Üretim) | 14064 | 0.1 | % | int16 | R
+Topma Kapasitif Oran (Üretim) | 14065 | 0.1 | % | int16 | R
+
+===== PAGE 34 =====
+OLAYLAR (Oluşma Sayısı) |  |  |  |  |  |  | UYARILAR (Oluşma Sayısı) |  |  |  |  |  |  | SİSTEM HATALARI(Oluşma Sayısı) |  |  |  |  |  | 
+PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R |  | PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R |  | PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R | 
+SVC 1 Eklendi | 47000 | - | - | int 16 | R |  | SVC 1 Degisti | 48000 | - | - | int 16 | R |  | Reset, Tick Dolu | 49000 | - | - | int 16 | R | 
+SVC 2 Eklendi | 47001 | - | - | int 16 | R |  | SVC 2 Degisti | 48001 | - | - | int 16 | R |  | Reset, Istisnai Durum | 49001 | - | - | int 16 | R | 
+SVC 3 Eklendi | 47002 | - | - | int 16 | R |  | SVC 3 Degisti | 48002 | - | - | int 16 | R |  | Reset, Kaynak Yetersiz | 49002 | - | - | int 16 | R | 
+Kademe 1 Eklendi | 47003 | - | - | int 16 | R |  | Kademe 1 Degisti | 48003 | - | - | int 16 | R |  | Reset, Mesaj Kuyrugu Dolu | 49003 | - | - | int 16 | R | 
+Kademe 2 Eklendi | 47004 | - | - | int 16 | R |  | Kademe 2 Degisti | 48004 | - | - | int 16 | R |  | Dummy | 49004 | - | - | int 16 | R | 
+Kademe 3 Eklendi | 47005 | - | - | int 16 | R |  | Kademe 3 Degisti | 48005 | - | - | int 16 | R |  | Uygulama Guvenligi-1 | 49005 | - | - | int 16 | R | 
+Kademe 4 Eklendi | 47006 | - | - | int 16 | R |  | Kademe 4 Degisti | 48006 | - | - | int 16 | R |  | Uygulama Guvenligi-2 | 49006 | - | - | int 16 | R | 
+Kademe 5 Eklendi | 47007 | - | - | int 16 | R |  | Kademe 5 Degisti | 48007 | - | - | int 16 | R |  | Uygulama Guvenligi-3 | 49007 | - | - | int 16 | R | 
+Kademe 6 Eklendi | 47008 | - | - | int 16 | R |  | Kademe 6 Degisti | 48008 | - | - | int 16 | R |  | Reset, Kalite Test | 49008 | - | - | int 16 | R | 
+Kademe 7 Eklendi | 47009 | - | - | int 16 | R |  | Kademe 7 Degisti | 48009 | - | - | int 16 | R |  | Dummy | 49009 | - | - | int 16 | R | 
+Kademe 8 Eklendi | 47010 | - | - | int 16 | R |  | Kademe 8 Degisti | 48010 | - | - | int 16 | R |  | Reset, Servis Disi | 49010 | - | - | int 16 | R | 
+Kademe 9 Eklendi | 47011 | - | - | int 16 | R |  | Kademe 9 Degisti | 48011 | - | - | int 16 | R |  | Dummy | 49011 | - | - | int 16 | R | 
+Kademe 10 Eklendi | 47012 | - | - | int 16 | R |  | Kademe 10 Degisti | 48012 | - | - | int 16 | R |  | Dummy | 49012 | - | - | int 16 | R | 
+Kademe 11 Eklendi | 47013 | - | - | int 16 | R |  | Kademe 11 Degisti | 48013 | - | - | int 16 | R |  | Dummy | 49013 | - | - | int 16 | R | 
+Kademe 12 Eklendi | 47014 | - | - | int 16 | R |  | Kademe 12 Degisti | 48014 | - | - | int 16 | R |  | Reset, Modbus | 49014 | - | - | int 16 | R | 
+Kademe 13 Eklendi | 47015 | - | - | int 16 | R |  | Kademe 13 Degisti | 48015 | - | - | int 16 | R |  | Reset, Mucbir | 49015 | - | - | int 16 | R | 
+Kademe 14 Eklendi | 47016 | - | - | int 16 | R |  | Kademe 14 Degisti | 48016 | - | - | int 16 | R |  | Dummy | 49016 | - | - | int 16 | R | 
+Kademe 15 Eklendi | 47017 | - | - | int 16 | R |  | Kademe 15 Degisti | 48017 | - | - | int 16 | R |  | Dummy | 49017 | - | - | int 16 | R | 
+Kademe 16 Eklendi | 47018 | - | - | int 16 | R |  | Kademe 16 Degisti | 48018 | - | - | int 16 | R |  | Reset, Menu | 49018 | - | - | int 16 | R | 
+Kademe 17 Eklendi | 47019 | - | - | int 16 | R |  | Kademe 17 Degisti | 48019 | - | - | int 16 | R |  | Reset, PC Komut | 49019 | - | - | int 16 | R | 
+Kademe 18 Eklendi | 47020 | - | - | int 16 | R |  | Kademe 18 Degisti | 48020 | - | - | int 16 | R |  | Reset, Fabrika Ayarlari | 49020 | - | - | int 16 | R | 
+Dummy | 47021 | - | - | int 16 | R |  | Dummy | 48021 | - | - | int 16 | R |  | RTC Okuma Hatasi | 49021 | - | - | int 16 | R | 
+Dummy | 47022 | - | - | int 16 | R |  | Dummy | 48022 | - | - | int 16 | R |  | RTC Yazma Hatasi 1 | 49022 | - | - | int 16 | R | 
+Dummy | 47023 | - | - | int 16 | R |  | Dummy | 48023 | - | - | int 16 | R |  | RTC Yazma Hatasi 2 | 49023 | - | - | int 16 | R | 
+Dummy | 47024 | - | - | int 16 | R |  | Dummy | 48024 | - | - | int 16 | R |  | RTC Kristal Hatasi | 49024 | - | - | int 16 | R | 
+Dummy | 47025 | - | - | int 16 | R |  | Dummy | 48025 | - | - | int 16 | R |  | RTC Pil Hatasi | 49025 | - | - | int 16 | R | 
+Dummy | 47026 | - | - | int 16 | R |  | Dummy | 48026 | - | - | int 16 | R |  | RTC Enter Init Hatasi 1 | 49026 | - | - | int 16 | R | 
+Dummy | 47027 | - | - | int 16 | R |  | Dummy | 48027 | - | - | int 16 | R |  | RTC Exit Init Hatasi 1 | 49027 | - | - | int 16 | R | 
+Dummy | 47028 | - | - | int 16 | R |  | SVC 1'de Sorun Var | 48028 | - | - | int 16 | R |  | RTC Backup Reg Hatasi | 49028 | - | - | int 16 | R | 
+Faz 1 Kayboldu | 47029 | - | - | int 16 | R |  | SVC 2'de Sorun Var | 48029 | - | - | int 16 | R |  | RTC Backup Okuma Hatasi | 49029 | - | - | int 16 | R | 
+Faz 2 Kayboldu | 47030 | - | - | int 16 | R |  | SVC 3'te Sorun Var | 48030 | - | - | int 16 | R |  | RTC Sync Hatasi | 49030 | - | - | int 16 | R | 
+Faz 3 Kayboldu | 47031 | - | - | int 16 | R |  | Kademe 1'de Sorun Var | 48031 | - | - | int 16 | R |  | Dummy | 49031 | - | - | int 16 | R | 
+Dusuk Gerilim L1 | 47032 | - | - | int 16 | R |  | Kademe 2'de Sorun Var | 48032 | - | - | int 16 | R |  | Dummy | 49032 | - | - | int 16 | R | 
+Dusuk Gerilim L2 | 47033 | - | - | int 16 | R |  | Kademe 3'te Sorun Var | 48033 | - | - | int 16 | R |  | Dummy | 49033 | - | - | int 16 | R | 
+Dusuk Gerilim L3 | 47034 | - | - | int 16 | R |  | Kademe 4'te Sorun Var | 48034 | - | - | int 16 | R |  | Dummy | 49034 | - | - | int 16 | R | 
+Gerilim Fazlari Ayni | 47035 | - | - | int 16 | R |  | Kademe 5'te Sorun Var | 48035 | - | - | int 16 | R |  | Enerji Kesildi HW Hatali | 49035 | - | - | int 16 | R | 
+Gerilim Yok L1 | 47036 | - | - | int 16 | R |  | Kademe 6'da Sorun Var | 48036 | - | - | int 16 | R |  | Dummy | 49036 | - | - | int 16 | R | 
+Gerilim Yok L2 | 47037 | - | - | int 16 | R |  | Kademe 7'de Sorun Var | 48037 | - | - | int 16 | R |  | Dummy | 49037 | - | - | int 16 | R | 
+Gerilim Yok L3 | 47038 | - | - | int 16 | R |  | Kademe 8'de Sorun Var | 48038 | - | - | int 16 | R |  | Dummy | 49038 | - | - | int 16 | R | 
+SVC'den Kurulum Mod Degisti | 47039 | - | - | int 16 | R |  | Kademe 9'da Sorun Var | 48039 | - | - | int 16 | R |  | Harici Kristal Hatasi | 49039 | - | - | int 16 | R | 
+SVC'siz Kurulum Mod Degisti | 47040 | - | - | int 16 | R |  | Kademe 10'da Sorun Var | 48040 | - | - | int 16 | R |  | Bellek Reset Yazma | 49040 | - | - | int 16 | R | 
+Kurulum Baslatildi | 47041 | - | - | int 16 | R |  | Kademe 11'de Sorun Var | 48041 | - | - | int 16 | R |  | Bellek Imza | 49041 | - | - | int 16 | R | 
+Tanima Baslatildi | 47042 | - | - | int 16 | R |  | Kademe 12'de Sorun Var | 48042 | - | - | int 16 | R |  | Bellek Kontrol | 49042 | - | - | int 16 | R | 
+Kademeler Silindi | 47043 | - | - | int 16 | R |  | Kademe 13'te Sorun Var | 48043 | - | - | int 16 | R |  | Bellek Gecersizligi | 49043 | - | - | int 16 | R | 
+Enerjiler Silindi | 47044 | - | - | int 16 | R |  | Kademe 14'te Sorun Var | 48044 | - | - | int 16 | R |  | Bellek Yazma Parametre | 49044 | - | - | int 16 | R | 
+Min Max Silindi | 47045 | - | - | int 16 | R |  | Kademe 15'te Sorun Var | 48045 | - | - | int 16 | R |  | Bellek Yazma Alarm | 49045 | - | - | int 16 | R | 
+Demandlar Silindi | 47046 | - | - | int 16 | R |  | Kademe 16'da Sorun Var | 48046 | - | - | int 16 | R |  | Bellek Yazma Demand | 49046 | - | - | int 16 | R | 
+Oranlar Silindi | 47047 | - | - | int 16 | R |  | Kademe 17'de Sorun Var | 48047 | - | - | int 16 | R |  | Bellek Yazma Enerji | 49047 | - | - | int 16 | R | 
+RGP Silindi | 47048 | - | - | int 16 | R |  | Kademe 18'de Sorun Var | 48048 | - | - | int 16 | R |  | Bellek Yazma RGP | 49048 | - | - | int 16 | R | 
+RGP Sikistirildi | 47049 | - | - | int 16 | R |  | Dummy | 48049 | - | - | int 16 | R |  | Bellek Yazma MinMax | 49049 | - | - | int 16 | R | 
+Otomatik Kurulum | 47050 | - | - | int 16 | R |  | Dummy | 48050 | - | - | int 16 | R |  | Bellek Yazma Kademe | 49050 | - | - | int 16 | R | 
+Akim-Gerilim Eslestirildi | 47051 | - | - | int 16 | R |  | Dummy | 48051 | - | - | int 16 | R |  | Bellek Yazma Oran | 49051 | - | - | int 16 | R | 
+Manuel Kademe Tanindi | 47052 | - | - | int 16 | R |  | Dummy | 48052 | - | - | int 16 | R |  | Bellek Okuma Param | 49052 | - | - | int 16 | R | 
+Otomatik Tanima | 47053 | - | - | int 16 | R |  | Dummy | 48053 | - | - | int 16 | R |  | Bellek Okuma Alarm | 49053 | - | - | int 16 | R | 
+Tanima Durduruldu | 47054 | - | - | int 16 | R |  | Dummy | 48054 | - | - | int 16 | R |  | Bellek Okuma Demand | 49054 | - | - | int 16 | R | 
+Kompanzasyon Basladi | 47055 | - | - | int 16 | R |  | Dummy | 48055 | - | - | int 16 | R |  | Bellek Okuma Enerji | 49055 | - | - | int 16 | R | 
+Elle Kademe Girisi | 47056 | - | - | int 16 | R |  | SVC 1 Hatali | 48056 | - | - | int 16 | R |  | Bellek Okuma RGP | 49056 | - | - | int 16 | R | 
+Manuel Kademe Korundu | 47057 | - | - | int 16 | R |  | SVC 2 Hatali | 48057 | - | - | int 16 | R |  | Bellek Okuma MinMax | 49057 | - | - | int 16 | R | 
+Manuel Kademe Degisti | 47058 | - | - | int 16 | R |  | SVC 3 Hatali | 48058 | - | - | int 16 | R |  | Bellek Okuma Kademe | 49058 | - | - | int 16 | R | 
+Hatali PIN | 47059 | - | - | int 16 | R |  | Kademe 1 Hatali | 48059 | - | - | int 16 | R |  | Bellek Okuma Oran | 49059 | - | - | int 16 | R | 
+PIN Degistirildi | 47060 | - | - | int 16 | R |  | Kademe 2 Hatali | 48060 | - | - | int 16 | R |  | Param. Ver. Uyumsuzlugu | 49060 | - | - | int 16 | R | 
+Ozel PIN Girildi | 47061 | - | - | int 16 | R |  | Kademe 3 Hatali | 48061 | - | - | int 16 | R |  | Dummy | 49061 | - | - | int 16 | R | 
+PIN Sahtekarligi | 47062 | - | - | int 16 | R |  | Kademe 4 Hatali | 48062 | - | - | int 16 | R |  | Dummy | 49062 | - | - | int 16 | R | 
+Fabrika Ayarlari | 47063 | - | - | int 16 | R |  | Kademe 5 Hatali | 48063 | - | - | int 16 | R |  | Dummy | 49063 | - | - | int 16 | R | 
+Dummy | 47064 | - | - | int 16 | R |  | Kademe 6 Hatali | 48064 | - | - | int 16 | R |  | SMPS Asiri Gerilim | 49064 | - | - | int 16 | R | 
+Uzun Ent. Suresi | 47065 | - | - | int 16 | R |  | Kademe 7 Hatali | 48065 | - | - | int 16 | R |  | SMPS Dusuk Gerilim | 49065 | - | - | int 16 | R | 
+SVC Termik Devrede | 47066 | - | - | int 16 | R |  | Kademe 8 Hatali | 48066 | - | - | int 16 | R |  | Modbus_A DMA Timeout | 49066 | - | - | int 16 | R | 
+SVC Termik Devre Disi | 47067 | - | - | int 16 | R |  | Kademe 9 Hatali | 48067 | - | - | int 16 | R |  | Dummy | 49067 | - | - | int 16 | R | 
+End. Limit Degistirildi | 47068 | - | - | int 16 | R |  | Kademe 10 Hatali | 48068 | - | - | int 16 | R |  | Dummy | 49068 | - | - | int 16 | R | 
+Kap. Limit Degistirildi | 47069 | - | - | int 16 | R |  | Kademe 11 Hatali | 48069 | - | - | int 16 | R |  | Dummy | 49069 | - | - | int 16 | R | 
+End. Cevap Suresi Degisti | 47070 | - | - | int 16 | R |  | Kademe 12 Hatali | 48070 | - | - | int 16 | R |  | Dummy | 49070 | - | - | int 16 | R | 
+Kap. Cevap Suresi Degisti | 47071 | - | - | int 16 | R |  | Kademe 13 Hatali | 48071 | - | - | int 16 | R |  | Modbus_A Parity Error | 49071 | - | - | int 16 | R | 
+Genel Cevap Suresi Degisti | 47072 | - | - | int 16 | R |  | Kademe 14 Hatali | 48072 | - | - | int 16 | R |  | Modbus_A Noise Error | 49072 | - | - | int 16 | R | 
+Normal Cvp Suresi Degisti | 47073 | - | - | int 16 | R |  | Kademe 15 Hatali | 48073 | - | - | int 16 | R |  | Modbus_A Frame Error | 49073 | - | - | int 16 | R | 
+
+===== PAGE 35 =====
+Es Yaslandirma Devrede | 47074 | - | - | int 16 | R |  |  | Kademe 16 Hatali | 48074 | - | - | int 16 | R |  | Modbus_A Overrun Error | 49074 | - | - | int 16 | R | 
+Es Yaslandirma Devre Disi | 47075 | - | - | int 16 | R |  |  | Kademe 17 Hatali | 48075 | - | - | int 16 | R |  | Dummy | 49075 | - | - | int 16 | R | 
+Jenerator Kontrol Devrede | 47076 | - | - | int 16 | R |  |  | Kademe 18 Hatali | 48076 | - | - | int 16 | R |  | Dummy | 49076 | - | - | int 16 | R | 
+Jenerator Kontrol DevreDisi | 47077 | - | - | int 16 | R |  |  | Dummy | 48077 | - | - | int 16 | R |  | Dummy | 49077 | - | - | int 16 | R | 
+Kfofsbups!Ifefg!Lptjovt | 47078 | - | - | int 16 | R |  |  | Dummy | 48078 | - | - | int 16 | R |  | Dummy | 49078 | - | - | int 16 | R | 
+Jenerator Devreye Girdi | 47079 | - | - | int 16 | R |  |  | Dummy | 48079 | - | - | int 16 | R |  | Dummy | 49079 | - | - | int 16 | R | 
+Jenerator Devreden Cikti | 47080 | - | - | int 16 | R |  |  | Dummy | 48080 | - | - | int 16 | R |  | Dummy | 49080 | - | - | int 16 | R | 
+Uretimde Kompanzasyon On | 47081 | - | - | int 16 | R |  |  | Dummy | 48081 | - | - | int 16 | R |  | Dummy | 49081 | - | - | int 16 | R | 
+Uretimde Kompanzasyon Off | 47082 | - | - | int 16 | R |  |  | Dummy | 48082 | - | - | int 16 | R |  | Dummy | 49082 | - | - | int 16 | R | 
+Akim-Gerilim Eslesme On | 47083 | - | - | int 16 | R |  |  | Dummy | 48083 | - | - | int 16 | R |  | Dummy | 49083 | - | - | int 16 | R | 
+Akim-Gerilim Eslesme Off | 47084 | - | - | int 16 | R |  |  | Kad. Ortak 1 Dusuk Gerilim | 48084 | - | - | int 16 | R |  | PON | 49084 | - | - | int 16 | R | 
+Kadame Teshisi Acik | 47085 | - | - | int 16 | R |  |  | Kad. Ortak 2 Dusuk Gerilim | 48085 | - | - | int 16 | R |  | PDF | 49085 | - | - | int 16 | R | 
+Kadame Teshisi Kapali | 47086 | - | - | int 16 | R |  |  | Kad. Ortak 3 Dusuk Gerilim | 48086 | - | - | int 16 | R |  | PDE | 49086 | - | - | int 16 | R | 
+Baglanti Teshisi Acik | 47087 | - | - | int 16 | R |  |  | Dummy | 48087 | - | - | int 16 | R |  | SGN | 49087 | - | - | int 16 | R | 
+Baglanti Teshisi Kapali | 47088 | - | - | int 16 | R |  |  | Dummy | 48088 | - | - | int 16 | R |  | sGn | 49088 | - | - | int 16 | R | 
+Ortak Kontrol Devrede | 47089 | - | - | int 16 | R |  |  | Dummy | 48089 | - | - | int 16 | R |  | sgn | 49089 | - | - | int 16 | R | 
+Ortak Kontrol Devre Disi | 47090 | - | - | int 16 | R |  |  | Hic Kademe Yok | 48090 | - | - | int 16 | R |  | SgN | 49090 | - | - | int 16 | R | 
+Ortak 1 Parametre Degisti | 47091 | - | - | int 16 | R |  |  | Kademe Baglanti Hata | 48091 | - | - | int 16 | R |  | E2C | 49091 | - | - | int 16 | R | 
+Ortak 2 Parametre Degisti | 47092 | - | - | int 16 | R |  |  | Kademe Grup 1 Hata | 48092 | - | - | int 16 | R |  | PLF | 49092 | - | - | int 16 | R | 
+Ortak 3 Parametre Degisti | 47093 | - | - | int 16 | R |  |  | Kademe Grup 1 Faz 1 Hata | 48093 | - | - | int 16 | R |  | VER | 49093 | - | - | int 16 | R | 
+Dummy | 47094 | - | - | int 16 | R |  |  | Kademe Grup 1 Faz 2 Hata | 48094 | - | - | int 16 | R |  | OoS | 49094 | - | - | int 16 | R | 
+Cihaz Acildi | 47095 | - | - | int 16 | R |  |  | Kademe Grup 1 Faz 3 Hata | 48095 | - | - | int 16 | R |  | ooS | 49095 | - | - | int 16 | R | 
+Cihaz Kapandi | 47096 | - | - | int 16 | R |  |  | Kademe Grup 2 Hata | 48096 | - | - | int 16 | R |  | DTP | 49096 | - | - | int 16 | R | 
+Kademe Bilgileri Sifirlandi | 47097 | - | - | int 16 | R |  |  | Kademe Grup 2 Faz 1 Hata | 48097 | - | - | int 16 | R |  | RDT | 49097 | - | - | int 16 | R | 
+Onceki Degerler Sifirlandi | 47098 | - | - | int 16 | R |  |  | Kademe Grup 2 Faz 2 Hata | 48098 | - | - | int 16 | R |  | ACZ | 49098 | - | - | int 16 | R | 
+Tek Kademe Bilgisi Sifirlandi | 47099 | - | - | int 16 | R |  |  | Kademe Grup 2 Faz 3 Hata | 48099 | - | - | int 16 | R |  | RNS | 49099 | - | - | int 16 | R | 
+Kapasitor Sokulmus | 47100 | - | - | int 16 | R |  |  | Kademe Grup 3 Hata | 48100 | - | - | int 16 | R |  | DNR | 49100 | - | - | int 16 | R | 
+Enduktor Sokulmus | 47101 | - | - | int 16 | R |  |  | Kademe Grup 3 Faz 1 Hata | 48101 | - | - | int 16 | R |  | DAR | 49101 | - | - | int 16 | R | 
+Kapasitor Deger Kaybi | 47102 | - | - | int 16 | R |  |  | Kademe Grup 3 Faz 2 Hata | 48102 | - | - | int 16 | R |  | CAR | 49102 | - | - | int 16 | R | 
+Daha Buyuk Kapasitor | 47103 | - | - | int 16 | R |  |  | Kademe Grup 3 Faz 3 Hata | 48103 | - | - | int 16 | R |  | HWN | 49103 | - | - | int 16 | R | 
+Daha Kucuk Reaktor | 47104 | - | - | int 16 | R |  |  | Dummy | 48104 | - | - | int 16 | R |  | RED | 49104 | - | - | int 16 | R | 
+Daha Buyuk Reaktor | 47105 | - | - | int 16 | R |  |  | Dummy | 48105 | - | - | int 16 | R |  | Dummy | 49105 | - | - | int 16 | R | 
+End, Kap ile Degistirildi | 47106 | - | - | int 16 | R |  |  | Dummy | 48106 | - | - | int 16 | R |  | Dummy | 49106 | - | - | int 16 | R | 
+Kap, End ile Degistirildi | 47107 | - | - | int 16 | R |  |  | Dummy | 48107 | - | - | int 16 | R |  | DoR | 49107 | - | - | int 16 | R | 
+Dummy | 47108 | - | - | int 16 | R |  |  | Dummy | 48108 | - | - | int 16 | R |  | TFTfail | 49108 | - | - | int 16 | R | 
+Dummy | 47109 | - | - | int 16 | R |  |  | Dummy | 48109 | - | - | int 16 | R |  |  |  |  |  |  |  | 
+Elle Kademe Kontrol | 47110 | - | - | int 16 | R |  |  | Dummy | 48110 | - | - | int 16 | R |  | SİSTEM HATALARI(Son Oluşma Tarihi) |  |  |  |  |  | 
+Tarih/Saat Guncellendi | 47111 | - | - | int 16 | R |  |  | Dummy | 48111 | - | - | int 16 | R |  | PARAMETRE ADI  | SON ZAMAN ADRES | İLK ZAMAN ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R
+Tarih/Saat Degistirildi | 47112 | - | - | int 16 | R |  |  | Dummy | 48112 | - | - | int 16 | R |  | Reset, Tick Dolu | 52000 | 55000 | - | Timestamp | int 32 | R
+Tarih/Saat Uzaktan Degisti | 47113 | - | - | int 16 | R |  |  | Dummy | 48113 | - | - | int 16 | R |  | Reset, Istisnai Durum | 52002 | 55002 | - | Timestamp | int 32 | R
+Dummy | 47114 | - | - | int 16 | R |  |  | Dummy | 48114 | - | - | int 16 | R |  | Reset, Kaynak Yetersiz | 52004 | 55004 | - | Timestamp | int 32 | R
+Baglanti Sekli Degisti | 47115 | - | - | int 16 | R |  |  | Dummy | 48115 | - | - | int 16 | R |  | Reset, Mesaj Kuyrugu Dolu | 52006 | 55006 | - | Timestamp | int 32 | R
+Kurulum Modu Degisti | 47116 | - | - | int 16 | R |  |  | Akim Tasmasi | 48116 | - | - | int 16 | R |  | Dummy | 52008 | 55008 | - | Timestamp | int 32 | R
+Akim Trafo Yon Degisimi | 47117 | - | - | int 16 | R |  |  | Asiri Akim L1 | 48117 | - | - | int 16 | R |  | Uygulama Guvenligi-1 | 52010 | 55010 | - | Timestamp | int 32 | R
+Kurulum Modu Degistirildi | 47118 | - | - | int 16 | R |  |  | Asiri Akim L2 | 48118 | - | - | int 16 | R |  | Uygulama Guvenligi-2 | 52012 | 55012 | - | Timestamp | int 32 | R
+Faz-Faz Kontrol Devrede | 47119 | - | - | int 16 | R |  |  | Asiri Akim L3 | 48119 | - | - | int 16 | R |  | Uygulama Guvenligi-3 | 52014 | 55014 | - | Timestamp | int 32 | R
+Faz-Faz Kontrol Devre Disi | 47120 | - | - | int 16 | R |  |  | Baglanti Zayif L1 | 48120 | - | - | int 16 | R |  | Reset, Kalite Test | 52016 | 55016 | - | Timestamp | int 32 | R
+Gecis Suresi Degisti | 47121 | - | - | int 16 | R |  |  | Baglanti Zayif L2 | 48121 | - | - | int 16 | R |  | Dummy | 52018 | 55018 | - | Timestamp | int 32 | R
+Teshis Mumkun | 47122 | - | - | int 16 | R |  |  | Baglanti Zayif L3 | 48122 | - | - | int 16 | R |  | Reset, Servis Disi | 52020 | 55020 | - | Timestamp | int 32 | R
+Teshis Mumkun Degil | 47123 | - | - | int 16 | R |  |  | Asiri Gerilim L1 | 48123 | - | - | int 16 | R |  | Dummy | 52022 | 55022 | - | Timestamp | int 32 | R
+Dummy | 47124 | - | - | int 16 | R |  |  | Asiri Gerilim L2 | 48124 | - | - | int 16 | R |  | Dummy | 52024 | 55024 | - | Timestamp | int 32 | R
+Dummy | 47125 | - | - | int 16 | R |  |  | Asiri Gerilim L3 | 48125 | - | - | int 16 | R |  | Dummy | 52026 | 55026 | - | Timestamp | int 32 | R
+SVC Faz Degisti | 47126 | - | - | int 16 | R |  |  | Asiri Enduktif | 48126 | - | - | int 16 | R |  | Reset, Modbus | 52028 | 55028 | - | Timestamp | int 32 | R
+SVC Faz Duzeltme | 47127 | - | - | int 16 | R |  |  | Asiri Kapasitif | 48127 | - | - | int 16 | R |  | Reset, Mucbir | 52030 | 55030 | - | Timestamp | int 32 | R
+Dummy | 47128 | - | - | int 16 | R |  |  | Kurulum Tamamlanamadi | 48128 | - | - | int 16 | R |  | Dummy | 52032 | 55032 | - | Timestamp | int 32 | R
+SVC'ye Sigorta Takin | 47129 | - | - | int 16 | R |  |  | Kurulum Durduruldu | 48129 | - | - | int 16 | R |  | Dummy | 52034 | 55034 | - | Timestamp | int 32 | R
+Grup 1'e Sigorta Takin | 47130 | - | - | int 16 | R |  |  | Akim Trafo Oran Hatasi | 48130 | - | - | int 16 | R |  | Reset, Menu | 52036 | 55036 | - | Timestamp | int 32 | R
+Grup 2'ye Sigorta Takin | 47131 | - | - | int 16 | R |  |  | A=V Eslesme/CT Cevrim Hata | 48131 | - | - | int 16 | R |  | Reset, PC Komut | 52038 | 55038 | - | Timestamp | int 32 | R
+Grup 3'e Sigorta Takin | 47132 | - | - | int 16 | R |  |  | Faz-Faz Kontrol Degisti | 48132 | - | - | int 16 | R |  | Reset, Fabrika Ayarlari | 52040 | 55040 | - | Timestamp | int 32 | R
+Dummy | 47133 | - | - | int 16 | R |  |  | Akim-Gerilim Eslesmemis | 48133 | - | - | int 16 | R |  | RTC Okuma Hatasi | 52042 | 55042 | - | Timestamp | int 32 | R
+Tum Kad. Ortaklari Bosta | 47134 | - | - | int 16 | R |  |  | Kurulum Iptal Edildi | 48134 | - | - | int 16 | R |  | RTC Yazma Hatasi 1 | 52044 | 55044 | - | Timestamp | int 32 | R
+Dummy | 47135 | - | - | int 16 | R |  |  | Kurulum Atlatildi | 48135 | - | - | int 16 | R |  | RTC Yazma Hatasi 2 | 52046 | 55046 | - | Timestamp | int 32 | R
+Dummy | 47136 | - | - | int 16 | R |  |  | Ek Enduktif Yuk | 48136 | - | - | int 16 | R |  | RTC Kristal Hatasi | 52048 | 55048 | - | Timestamp | int 32 | R
+ |  |  |  |  |  |  |  | Ek Kapasitif Yuk | 48137 | - | - | int 16 | R |  | RTC Pil Hatasi | 52050 | 55050 | - | Timestamp | int 32 | R
+OLAYLAR (Son Oluşma Tarihi) |  |  |  |  |  |  |  | Ek Yuk Suresi | 48138 | - | - | int 16 | R |  | RTC Enter Init Hatasi 1 | 52052 | 55052 | - | Timestamp | int 32 | R
+PARAMETRE ADI  | SON ZAMAN ADRES | İLK ZAMAN ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R |  | Ek Yuk Silindi | 48139 | - | - | int 16 | R |  | RTC Exit Init Hatasi 1 | 52054 | 55054 | - | Timestamp | int 32 | R
+SVC 1 Eklendi | 50000 | 53000 | - | Timestamp | int 32 | R |  | Ek Yuk Kismen Silindi | 48140 | - | - | int 16 | R |  | RTC Backup Reg Hatasi | 52056 | 55056 | - | Timestamp | int 32 | R
+SVC 2 Eklendi | 50002 | 53002 | - | Timestamp | int 32 | R |  | Ek Yuk Tuketildi | 48141 | - | - | int 16 | R |  | RTC Backup Okuma Hatasi | 52058 | 55058 | - | Timestamp | int 32 | R
+SVC 3 Eklendi | 50004 | 53004 | - | Timestamp | int 32 | R |  | Ek Yuk Kismen Tuketildi | 48142 | - | - | int 16 | R |  | RTC Sync Hatasi | 52060 | 55060 | - | Timestamp | int 32 | R
+Kademe 1 Eklendi | 50006 | 53006 | - | Timestamp | int 32 | R |  | Ek Yuk Iptal | 48143 | - | - | int 16 | R |  | Dummy | 52062 | 55062 | - | Timestamp | int 32 | R
+Kademe 2 Eklendi | 50008 | 53008 | - | Timestamp | int 32 | R |  | Asiri Harmonik | 48144 | - | - | int 16 | R |  | Dummy | 52064 | 55064 | - | Timestamp | int 32 | R
+Kademe 3 Eklendi | 50010 | 53010 | - | Timestamp | int 32 | R |  | Asiri Sicaklik | 48145 | - | - | int 16 | R |  | Dummy | 52066 | 55066 | - | Timestamp | int 32 | R
+Kademe 4 Eklendi | 50012 | 53012 | - | Timestamp | int 32 | R |  | ModBus Erisim Reddedildi | 48146 | - | - | int 16 | R |  | Dummy | 52068 | 55068 | - | Timestamp | int 32 | R
+Kademe 5 Eklendi | 50014 | 53014 | - | Timestamp | int 32 | R |  | RGP Tablosu Dolu | 48147 | - | - | int 16 | R |  | Enerji Kesildi HW Hatali | 52070 | 55070 | - | Timestamp | int 32 | R
+Kademe 6 Eklendi | 50016 | 53016 | - | Timestamp | int 32 | R |  | Dummy | 48148 | - | - | int 16 | R |  | Dummy | 52072 | 55072 | - | Timestamp | int 32 | R
+Kademe 7 Eklendi | 50018 | 53018 | - | Timestamp | int 32 | R |  | Dummy | 48149 | - | - | int 16 | R |  | Dummy | 52074 | 55074 | - | Timestamp | int 32 | R
+
+===== PAGE 36 =====
+Kademe 8 Eklendi | 50020 | 53020 | - | Timestamp | int 32 | R |  | SVC Isinma/Baglanti Hatasi | 48150 | - | - | int 16 | R |  | Dummy | 52076 | 55076 | - | Timestamp | int 32 | R
+Kademe 9 Eklendi | 50022 | 53022 | - | Timestamp | int 32 | R |  | Termik Girise Faz Bagli | 48151 | - | - | int 16 | R |  | Harici Kristal Hatasi | 52078 | 55078 | - | Timestamp | int 32 | R
+Kademe 10 Eklendi | 50024 | 53024 | - | Timestamp | int 32 | R |  | Termik Girise Notr Bagli | 48152 | - | - | int 16 | R |  | Bellek Reset Yazma | 52080 | 55080 | - | Timestamp | int 32 | R
+Kademe 11 Eklendi | 50026 | 53026 | - | Timestamp | int 32 | R |  | Termik Baglanti Hatasi | 48153 | - | - | int 16 | R |  | Bellek Imza | 52082 | 55082 | - | Timestamp | int 32 | R
+Kademe 12 Eklendi | 50028 | 53028 | - | Timestamp | int 32 | R |  | SVC'den Kuruluma Yonlendi | 48154 | - | - | int 16 | R |  | Bellek Kontrol | 52084 | 55084 | - | Timestamp | int 32 | R
+Kademe 13 Eklendi | 50030 | 53030 | - | Timestamp | int 32 | R |  | SVC Eksik Faz 1 | 48155 | - | - | int 16 | R |  | Bellek Gecersizligi | 52086 | 55086 | - | Timestamp | int 32 | R
+Kademe 14 Eklendi | 50032 | 53032 | - | Timestamp | int 32 | R |  | SVC Eksik Faz 2 | 48156 | - | - | int 16 | R |  | Bellek Yazma Parametre | 52088 | 55088 | - | Timestamp | int 32 | R
+Kademe 15 Eklendi | 50034 | 53034 | - | Timestamp | int 32 | R |  | SVC Eksik Faz 3 | 48157 | - | - | int 16 | R |  | Bellek Yazma Alarm | 52090 | 55090 | - | Timestamp | int 32 | R
+Kademe 16 Eklendi | 50036 | 53036 | - | Timestamp | int 32 | R |  | SVC Baglanti Hatasi | 48158 | - | - | int 16 | R |  | Bellek Yazma Demand | 52092 | 55092 | - | Timestamp | int 32 | R
+Kademe 17 Eklendi | 50038 | 53038 | - | Timestamp | int 32 | R |  | Hedef Kosinus Iptal | 48159 | - | - | int 16 | R |  | Bellek Yazma Enerji | 52094 | 55094 | - | Timestamp | int 32 | R
+Kademe 18 Eklendi | 50040 | 53040 | - | Timestamp | int 32 | R |  | Hedef Enduktif Kosinus | 48160 | - | - | int 16 | R |  | Bellek Yazma RGP | 52096 | 55096 | - | Timestamp | int 32 | R
+Dummy | 50042 | 53042 | - | Timestamp | int 32 | R |  | Hedef Kapasitif Kosinus | 48161 | - | - | int 16 | R |  | Bellek Yazma MinMax | 52098 | 55098 | - | Timestamp | int 32 | R
+Dummy | 50044 | 53044 | - | Timestamp | int 32 | R |  | Kapasitor Ekle L1 | 48162 | - | - | int 16 | R |  | Bellek Yazma Kademe | 52100 | 55100 | - | Timestamp | int 32 | R
+Dummy | 50046 | 53046 | - | Timestamp | int 32 | R |  | Kapasitor Ekle L2 | 48163 | - | - | int 16 | R |  | Bellek Yazma Oran | 52102 | 55102 | - | Timestamp | int 32 | R
+Dummy | 50048 | 53048 | - | Timestamp | int 32 | R |  | Kapasitor Ekle L3 | 48164 | - | - | int 16 | R |  | Bellek Okuma Param | 52104 | 55104 | - | Timestamp | int 32 | R
+Dummy | 50050 | 53050 | - | Timestamp | int 32 | R |  | Reaktor Ekle L1 | 48165 | - | - | int 16 | R |  | Bellek Okuma Alarm | 52106 | 55106 | - | Timestamp | int 32 | R
+Dummy | 50052 | 53052 | - | Timestamp | int 32 | R |  | Reaktor Ekle L2 | 48166 | - | - | int 16 | R |  | Bellek Okuma Demand | 52108 | 55108 | - | Timestamp | int 32 | R
+Dummy | 50054 | 53054 | - | Timestamp | int 32 | R |  | Reaktor Ekle L3 | 48167 | - | - | int 16 | R |  | Bellek Okuma Enerji | 52110 | 55110 | - | Timestamp | int 32 | R
+Dummy | 50056 | 53056 | - | Timestamp | int 32 | R |  | C.T. 1 Orani Girildi | 48168 | - | - | int 16 | R |  | Bellek Okuma RGP | 52112 | 55112 | - | Timestamp | int 32 | R
+Faz 1 Kayboldu | 50058 | 53058 | - | Timestamp | int 32 | R |  | C.T. 2 Orani Girildi | 48169 | - | - | int 16 | R |  | Bellek Okuma MinMax | 52114 | 55114 | - | Timestamp | int 32 | R
+Faz 2 Kayboldu | 50060 | 53060 | - | Timestamp | int 32 | R |  | C.T. 3 Orani Girildi | 48170 | - | - | int 16 | R |  | Bellek Okuma Kademe | 52116 | 55116 | - | Timestamp | int 32 | R
+Faz 3 Kayboldu | 50062 | 53062 | - | Timestamp | int 32 | R |  | C.T. Orani Degisti | 48171 | - | - | int 16 | R |  | Bellek Okuma Oran | 52118 | 55118 | - | Timestamp | int 32 | R
+Dusuk Gerilim L1 | 50064 | 53064 | - | Timestamp | int 32 | R |  | V.T. Orani Degisti | 48172 | - | - | int 16 | R |  | Param. Ver. Uyumsuzlugu | 52120 | 55120 | - | Timestamp | int 32 | R
+Dusuk Gerilim L2 | 50066 | 53066 | - | Timestamp | int 32 | R |  | C.T. 1 Orani Silindi | 48173 | - | - | int 16 | R |  | Dummy | 52122 | 55122 | - | Timestamp | int 32 | R
+Dusuk Gerilim L3 | 50068 | 53068 | - | Timestamp | int 32 | R |  | C.T. 2 Orani Silindi | 48174 | - | - | int 16 | R |  | Dummy | 52124 | 55124 | - | Timestamp | int 32 | R
+Gerilim Fazlari Ayni | 50070 | 53070 | - | Timestamp | int 32 | R |  | C.T. 3 Orani Silindi | 48175 | - | - | int 16 | R |  | Dummy | 52126 | 55126 | - | Timestamp | int 32 | R
+Gerilim Yok L1 | 50072 | 53072 | - | Timestamp | int 32 | R |  | Tanima Sonlandirildi | 48176 | - | - | int 16 | R |  | SMPS Asiri Gerilim | 52128 | 55128 | - | Timestamp | int 32 | R
+Gerilim Yok L2 | 50074 | 53074 | - | Timestamp | int 32 | R |  | RTC Kurtarildi | 48177 | - | - | int 16 | R |  | SMPS Dusuk Gerilim | 52130 | 55130 | - | Timestamp | int 32 | R
+Gerilim Yok L3 | 50076 | 53076 | - | Timestamp | int 32 | R |  | Asiri Harmonik L1 | 48178 | - | - | int 16 | R |  | Modbus_A DMA Timeout | 52132 | 55132 | - | Timestamp | int 32 | R
+SVC'den Kurulum Mod Degisti | 50078 | 53078 | - | Timestamp | int 32 | R |  | Asiri Harmonik L2 | 48179 | - | - | int 16 | R |  | Dummy | 52134 | 55134 | - | Timestamp | int 32 | R
+SVC'siz Kurulum Mod Degisti | 50080 | 53080 | - | Timestamp | int 32 | R |  | Asiri Harmonik L3 | 48180 | - | - | int 16 | R |  | Dummy | 52136 | 55136 | - | Timestamp | int 32 | R
+Kurulum Baslatildi | 50082 | 53082 | - | Timestamp | int 32 | R |  | Kurulumda Kademe Teshisi | 48181 | - | - | int 16 | R |  | Dummy | 52138 | 55138 | - | Timestamp | int 32 | R
+Tanima Baslatildi | 50084 | 53084 | - | Timestamp | int 32 | R |  | Kurulumda Kad. Degisimi L1 | 48182 | - | - | int 16 | R |  | Dummy | 52140 | 55140 | - | Timestamp | int 32 | R
+Kademeler Silindi | 50086 | 53086 | - | Timestamp | int 32 | R |  | Kurulumda Kad. Degisimi L2 | 48183 | - | - | int 16 | R |  | Modbus_A Parity Error | 52142 | 55142 | - | Timestamp | int 32 | R
+Enerjiler Silindi | 50088 | 53088 | - | Timestamp | int 32 | R |  | Kurulumda Kad. Degisimi L3 | 48184 | - | - | int 16 | R |  | Modbus_A Noise Error | 52144 | 55144 | - | Timestamp | int 32 | R
+Min Max Silindi | 50090 | 53090 | - | Timestamp | int 32 | R |  | CT Yonleri Ters, Tanimada | 48185 | - | - | int 16 | R |  | Modbus_A Frame Error | 52146 | 55146 | - | Timestamp | int 32 | R
+Demandlar Silindi | 50092 | 53092 | - | Timestamp | int 32 | R |  | CT Yonu Ters, Tanimada | 48186 | - | - | int 16 | R |  | Modbus_A Overrun Error | 52148 | 55148 | - | Timestamp | int 32 | R
+Oranlar Silindi | 50094 | 53094 | - | Timestamp | int 32 | R |  | CT Yon Degisim Ihtimali | 48187 | - | - | int 16 | R |  | Dummy | 52150 | 55150 | - | Timestamp | int 32 | R
+RGP Silindi | 50096 | 53096 | - | Timestamp | int 32 | R |  | CT 1 Yon Degisim Ihtimali | 48188 | - | - | int 16 | R |  | Dummy | 52152 | 55152 | - | Timestamp | int 32 | R
+RGP Sikistirildi | 50098 | 53098 | - | Timestamp | int 32 | R |  | CT 2 Yon Degisim Ihtimali | 48189 | - | - | int 16 | R |  | Dummy | 52154 | 55154 | - | Timestamp | int 32 | R
+Otomatik Kurulum | 50100 | 53100 | - | Timestamp | int 32 | R |  | CT 3 Yon Degisim Ihtimali | 48190 | - | - | int 16 | R |  | Dummy | 52156 | 55156 | - | Timestamp | int 32 | R
+Akim-Gerilim Eslestirildi | 50102 | 53102 | - | Timestamp | int 32 | R |  | CT Uclari Cevrimli Bagli | 48191 | - | - | int 16 | R |  | Dummy | 52158 | 55158 | - | Timestamp | int 32 | R
+Manuel Kademe Tanindi | 50104 | 53104 | - | Timestamp | int 32 | R |  | CT 1-2 Uclari Cevrimde | 48192 | - | - | int 16 | R |  | Dummy | 52160 | 55160 | - | Timestamp | int 32 | R
+Otomatik Tanima | 50106 | 53106 | - | Timestamp | int 32 | R |  | CT 2-3 Uclari Cevrimde | 48193 | - | - | int 16 | R |  | Dummy | 52162 | 55162 | - | Timestamp | int 32 | R
+Tanima Durduruldu | 50108 | 53108 | - | Timestamp | int 32 | R |  | CT 1-3 Uclari Cevrimde | 48194 | - | - | int 16 | R |  | Dummy | 52164 | 55164 | - | Timestamp | int 32 | R
+Kompanzasyon Basladi | 50110 | 53110 | - | Timestamp | int 32 | R |  | C.T. L1 Baglanti Koptu | 48195 | - | - | int 16 | R |  | Dummy | 52166 | 55166 | - | Timestamp | int 32 | R
+Elle Kademe Girisi | 50112 | 53112 | - | Timestamp | int 32 | R |  | C.T. L2 Baglanti Koptu | 48196 | - | - | int 16 | R |  | PON | 52168 | 55168 | - | Timestamp | int 32 | R
+Manuel Kademe Korundu | 50114 | 53114 | - | Timestamp | int 32 | R |  | C.T. L3 Baglanti Koptu | 48197 | - | - | int 16 | R |  | PDF | 52170 | 55170 | - | Timestamp | int 32 | R
+Manuel Kademe Degisti | 50116 | 53116 | - | Timestamp | int 32 | R |  | Kademe Sigorta Fazlar Atik | 48198 | - | - | int 16 | R |  | PDE | 52172 | 55172 | - | Timestamp | int 32 | R
+Hatali PIN | 50118 | 53118 | - | Timestamp | int 32 | R |  | Kademe Sigorta Atik L1 | 48199 | - | - | int 16 | R |  | SGN | 52174 | 55174 | - | Timestamp | int 32 | R
+PIN Degistirildi | 50120 | 53120 | - | Timestamp | int 32 | R |  | Kademe Sigorta Atik L2 | 48200 | - | - | int 16 | R |  | sGn | 52176 | 55176 | - | Timestamp | int 32 | R
+Ozel PIN Girildi | 50122 | 53122 | - | Timestamp | int 32 | R |  | Kademe Sigorta Atik L3 | 48201 | - | - | int 16 | R |  | sgn | 52178 | 55178 | - | Timestamp | int 32 | R
+PIN Sahtekarligi | 50124 | 53124 | - | Timestamp | int 32 | R |  | C.T. 1 Orani Farkli | 48202 | - | - | int 16 | R |  | SgN | 52180 | 55180 | - | Timestamp | int 32 | R
+Fabrika Ayarlari | 50126 | 53126 | - | Timestamp | int 32 | R |  | C.T. 2 Orani Farkli | 48203 | - | - | int 16 | R |  | E2C | 52182 | 55182 | - | Timestamp | int 32 | R
+Dummy | 50128 | 53128 | - | Timestamp | int 32 | R |  | C.T. 3 Orani Farkli | 48204 | - | - | int 16 | R |  | PLF | 52184 | 55184 | - | Timestamp | int 32 | R
+Uzun Ent. Suresi | 50130 | 53130 | - | Timestamp | int 32 | R |  | Koruma, Ek Yukte CT Hatasi | 48205 | - | - | int 16 | R |  | VER | 52186 | 55186 | - | Timestamp | int 32 | R
+SVC Termik Devrede | 50132 | 53132 | - | Timestamp | int 32 | R |  | Koruma, Tum CT'ler Koptu | 48206 | - | - | int 16 | R |  | OoS | 52188 | 55188 | - | Timestamp | int 32 | R
+SVC Termik Devre Disi | 50134 | 53134 | - | Timestamp | int 32 | R |  | Koruma, Asiri Sicaklik | 48207 | - | - | int 16 | R |  | ooS | 52190 | 55190 | - | Timestamp | int 32 | R
+End. Limit Degistirildi | 50136 | 53136 | - | Timestamp | int 32 | R |  | Koruma, Asiri Ic Besleme | 48208 | - | - | int 16 | R |  | DTP | 52192 | 55192 | - | Timestamp | int 32 | R
+Kap. Limit Degistirildi | 50138 | 53138 | - | Timestamp | int 32 | R |  | Koruma, Dusuk Ic Besleme | 48209 | - | - | int 16 | R |  | RDT | 52194 | 55194 | - | Timestamp | int 32 | R
+End. Cevap Suresi Degisti | 50140 | 53140 | - | Timestamp | int 32 | R |  | Koruma, Jeneratorde | 48210 | - | - | int 16 | R |  | ACZ | 52196 | 55196 | - | Timestamp | int 32 | R
+Kap. Cevap Suresi Degisti | 50142 | 53142 | - | Timestamp | int 32 | R |  | Koruma, Asiri Gerilim L1 | 48211 | - | - | int 16 | R |  | RNS | 52198 | 55198 | - | Timestamp | int 32 | R
+Genel Cevap Suresi Degisti | 50144 | 53144 | - | Timestamp | int 32 | R |  | Koruma, Asiri Gerilim L2 | 48212 | - | - | int 16 | R |  | DNR | 52200 | 55200 | - | Timestamp | int 32 | R
+Normal Cvp Suresi Degisti | 50146 | 53146 | - | Timestamp | int 32 | R |  | Koruma, Asiri Gerilim L3 | 48213 | - | - | int 16 | R |  | DAR | 52202 | 55202 | - | Timestamp | int 32 | R
+Es Yaslandirma Devrede | 50148 | 53148 | - | Timestamp | int 32 | R |  | Koruma, Dusuk Gerilim L1 | 48214 | - | - | int 16 | R |  | CAR | 52204 | 55204 | - | Timestamp | int 32 | R
+Es Yaslandirma Devre Disi | 50150 | 53150 | - | Timestamp | int 32 | R |  | Koruma, Dusuk Gerilim L2 | 48215 | - | - | int 16 | R |  | HWN | 52206 | 55206 | - | Timestamp | int 32 | R
+Jenerator Kontrol Devrede | 50152 | 53152 | - | Timestamp | int 32 | R |  | Koruma, Dusuk Gerilim L3 | 48216 | - | - | int 16 | R |  | RED | 52208 | 55208 | - | Timestamp | int 32 | R
+Jenerator Kontrol DevreDisi | 50154 | 53154 | - | Timestamp | int 32 | R |  | Koruma, Asiri Harmonik L1 | 48217 | - | - | int 16 | R |  | Dummy | 52210 | 55210 | - | Timestamp | int 32 | R
+Kfofsbups!Ifefg!Lptjovt | 50156 | 53156 | - | Timestamp | int 32 | R |  | Koruma, Asiri Harmonik L2 | 48218 | - | - | int 16 | R |  | Dummy | 52212 | 55212 | - | Timestamp | int 32 | R
+Jenerator Devreye Girdi | 50158 | 53158 | - | Timestamp | int 32 | R |  | Koruma, Asiri Harmonik L3 | 48219 | - | - | int 16 | R |  | DoR | 52214 | 55214 | - | Timestamp | int 32 | R
+Jenerator Devreden Cikti | 50160 | 53160 | - | Timestamp | int 32 | R |  | Kad. Ortak 1 Asiri Gerilim | 48220 | - | - | int 16 | R |  | TFTfail | 52216 | 55216 | - | Timestamp | int 32 | R
+Uretimde Kompanzasyon On | 50162 | 53162 | - | Timestamp | int 32 | R |  | Kad. Ortak 2 Asiri Gerilim | 48221 | - | - | int 16 | R |  |  |  |  |  |  |  | 
+Uretimde Kompanzasyon Off | 50164 | 53164 | - | Timestamp | int 32 | R |  | Kad. Ortak 3 Asiri Gerilim | 48222 | - | - | int 16 | R |  |  |  |  |  |  |  | 
+Akim-Gerilim Eslesme On | 50166 | 53166 | - | Timestamp | int 32 | R |  | Dummy | 48223 | - | - | int 16 | R |  |  |  |  |  |  |  | 
+Akim-Gerilim Eslesme Off | 50168 | 53168 | - | Timestamp | int 32 | R |  | Faz Sirasi Degisti | 48224 | - | - | int 16 | R |  |  |  |  |  |  |  | 
+Kadame Teshisi Acik | 50170 | 53170 | - | Timestamp | int 32 | R |  | SVC 1 Teshis Edildi | 48225 | - | - | int 16 | R |  |  |  |  |  |  |  | 
+
+===== PAGE 37 =====
+Kadame Teshisi Kapali | 50172 | 53172 | - | Timestamp | int 32 | R |  | SVC 2 Teshis Edildi | 48226 | - | - | int 16 | R |  | 
+Baglanti Teshisi Acik | 50174 | 53174 | - | Timestamp | int 32 | R |  | SVC 3 Teshis Edildi | 48227 | - | - | int 16 | R |  | 
+Baglanti Teshisi Kapali | 50176 | 53176 | - | Timestamp | int 32 | R |  | Kademe 1 Teshis Edildi | 48228 | - | - | int 16 | R |  | 
+Ortak Kontrol Devrede | 50178 | 53178 | - | Timestamp | int 32 | R |  | Kademe 2 Teshis Edildi | 48229 | - | - | int 16 | R |  | 
+Ortak Kontrol Devre Disi | 50180 | 53180 | - | Timestamp | int 32 | R |  | Kademe 3 Teshis Edildi | 48230 | - | - | int 16 | R |  | 
+Ortak 1 Parametre Degisti | 50182 | 53182 | - | Timestamp | int 32 | R |  | Kademe 4 Teshis Edildi | 48231 | - | - | int 16 | R |  | 
+Ortak 2 Parametre Degisti | 50184 | 53184 | - | Timestamp | int 32 | R |  | Kademe 5 Teshis Edildi | 48232 | - | - | int 16 | R |  | 
+Ortak 3 Parametre Degisti | 50186 | 53186 | - | Timestamp | int 32 | R |  | Kademe 6 Teshis Edildi | 48233 | - | - | int 16 | R |  | 
+Dummy | 50188 | 53188 | - | Timestamp | int 32 | R |  | Kademe 7 Teshis Edildi | 48234 | - | - | int 16 | R |  | 
+Cihaz Acildi | 50190 | 53190 | - | Timestamp | int 32 | R |  | Kademe 8 Teshis Edildi | 48235 | - | - | int 16 | R |  | 
+Cihaz Kapandi | 50192 | 53192 | - | Timestamp | int 32 | R |  | Kademe 9 Teshis Edildi | 48236 | - | - | int 16 | R |  | 
+Kademe Bilgileri Sifirlandi | 50194 | 53194 | - | Timestamp | int 32 | R |  | Kademe 10 Teshis Edildi | 48237 | - | - | int 16 | R |  | 
+Onceki Degerler Sifirlandi | 50196 | 53196 | - | Timestamp | int 32 | R |  | Kademe 11 Teshis Edildi | 48238 | - | - | int 16 | R |  | 
+Tek Kademe Bilgisi Sifirland | 50198 | 53198 | - | Timestamp | int 32 | R |  | Kademe 12 Teshis Edildi | 48239 | - | - | int 16 | R |  | 
+Kapasitor Sokulmus | 50200 | 53200 | - | Timestamp | int 32 | R |  | Kademe 13 Teshis Edildi | 48240 | - | - | int 16 | R |  | 
+Enduktor Sokulmus | 50202 | 53202 | - | Timestamp | int 32 | R |  | Kademe 14 Teshis Edildi | 48241 | - | - | int 16 | R |  | 
+Kapasitor Deger Kaybi | 50204 | 53204 | - | Timestamp | int 32 | R |  | Kademe 15 Teshis Edildi | 48242 | - | - | int 16 | R |  | 
+Daha Buyuk Kapasitor | 50206 | 53206 | - | Timestamp | int 32 | R |  | Kademe 16 Teshis Edildi | 48243 | - | - | int 16 | R |  | 
+Daha Kucuk Reaktor | 50208 | 53208 | - | Timestamp | int 32 | R |  | Kademe 17 Teshis Edildi | 48244 | - | - | int 16 | R |  | 
+Daha Buyuk Reaktor | 50210 | 53210 | - | Timestamp | int 32 | R |  | Kademe 18 Teshis Edildi | 48245 | - | - | int 16 | R |  | 
+End, Kap ile Degistirildi | 50212 | 53212 | - | Timestamp | int 32 | R |  | Dummy | 48246 | - | - | int 16 | R |  | 
+Kap, End ile Degistirildi | 50214 | 53214 | - | Timestamp | int 32 | R |  | Dummy | 48247 | - | - | int 16 | R |  | 
+Dummy | 50216 | 53216 | - | Timestamp | int 32 | R |  | Dummy | 48248 | - | - | int 16 | R |  | 
+Dummy | 50218 | 53218 | - | Timestamp | int 32 | R |  | Dummy | 48249 | - | - | int 16 | R |  | 
+Elle Kademe Kontrol | 50220 | 53220 | - | Timestamp | int 32 | R |  | Dummy | 48250 | - | - | int 16 | R |  | 
+Tarih/Saat Guncellendi | 50222 | 53222 | - | Timestamp | int 32 | R |  | Dummy | 48251 | - | - | int 16 | R |  | 
+Tarih/Saat Degistirildi | 50224 | 53224 | - | Timestamp | int 32 | R |  | Dummy | 48252 | - | - | int 16 | R |  | 
+Tarih/Saat Uzaktan Degisti | 50226 | 53226 | - | Timestamp | int 32 | R |  |  |  |  |  |  |  |  | 
+Dummy | 50228 | 53228 | - | Timestamp | int 32 | R |  | UYARILAR ( Son Oluşma Tarihi) |  |  |  |  |  |  | 
+Baglanti Sekli Degisti | 50230 | 53230 | - | Timestamp | int 32 | R |  | PARAMETRE ADI  | SON ZAMAN ADRES | İLK ZAMAN ADRES | ÇARPAN | BİRİM | DATA TİPİ | W/R | 
+Kurulum Modu Degisti | 50232 | 53232 | - | Timestamp | int 32 | R |  | SVC 1 Degisti | 51000 | 54000 | - | - | int 32 | R | 
+Akim Trafo Yon Degisimi | 50234 | 53234 | - | Timestamp | int 32 | R |  | SVC 2 Degisti | 51002 | 54002 | - | - | int 32 | R | 
+Kurulum Modu Degistirildi | 50236 | 53236 | - | Timestamp | int 32 | R |  | SVC 3 Degisti | 51004 | 54004 | - | - | int 32 | R | 
+Faz-Faz Kontrolu Devrede | 50238 | 53238 | - | Timestamp | int 32 | R |  | Kademe 1 Degisti | 51006 | 54006 | - | - | int 32 | R | 
+Faz-Faz Kontrolu Devre Disi | 50240 | 53240 | - | Timestamp | int 32 | R |  | Kademe 2 Degisti | 51008 | 54008 | - | - | int 32 | R | 
+Gecis Suresi Degisti | 50242 | 53242 | - | Timestamp | int 32 | R |  | Kademe 3 Degisti | 51010 | 54010 | - | - | int 32 | R | 
+Teshis Mumkun | 50244 | 53244 | - | Timestamp | int 32 | R |  | Kademe 4 Degisti | 51012 | 54012 | - | - | int 32 | R | 
+Teshis Mumkun Degil | 50246 | 53246 | - | Timestamp | int 32 | R |  | Kademe 5 Degisti | 51014 | 54014 | - | - | int 32 | R | 
+Dummy | 50248 | 53248 | - | Timestamp | int 32 | R |  | Kademe 6 Degisti | 51016 | 54016 | - | - | int 32 | R | 
+Dummy | 50250 | 53250 | - | Timestamp | int 32 | R |  | Kademe 7 Degisti | 51018 | 54018 | - | - | int 32 | R | 
+SVC Faz Degisti | 50252 | 53252 | - | Timestamp | int 32 | R |  | Kademe 8 Degisti | 51020 | 54020 | - | - | int 32 | R | 
+SVC Faz Duzeltme | 50254 | 53254 | - | Timestamp | int 32 | R |  | Kademe 9 Degisti | 51022 | 54022 | - | - | int 32 | R | 
+Dummy | 50256 | 53256 | - | Timestamp | int 32 | R |  | Kademe 10 Degisti | 51024 | 54024 | - | - | int 32 | R | 
+SVC'ye Sigorta Takin | 50258 | 53258 | - | Timestamp | int 32 | R |  | Kademe 11 Degisti | 51026 | 54026 | - | - | int 32 | R | 
+Grup 1'e Sigorta Takin | 50260 | 53260 | - | Timestamp | int 32 | R |  | Kademe 12 Degisti | 51028 | 54028 | - | - | int 32 | R | 
+Grup 2'ye Sigorta Takin | 50262 | 53262 | - | Timestamp | int 32 | R |  | Kademe 13 Degisti | 51030 | 54030 | - | - | int 32 | R | 
+Grup 3'e Sigorta Takin | 50264 | 53264 | - | Timestamp | int 32 | R |  | Kademe 14 Degisti | 51032 | 54032 | - | - | int 32 | R | 
+Dummy | 50266 | 53266 | - | Timestamp | int 32 | R |  | Kademe 15 Degisti | 51034 | 54034 | - | - | int 32 | R | 
+Tum Kad. Ortaklari Bosta | 50268 | 53268 | - | Timestamp | int 32 | R |  | Kademe 16 Degisti | 51036 | 54036 | - | - | int 32 | R | 
+Dummy | 50270 | 53270 | - | Timestamp | int 32 | R |  | Kademe 17 Degisti | 51038 | 54038 | - | - | int 32 | R | 
+Dummy | 50272 | 53272 | - | Timestamp | int 32 | R |  | Kademe 18 Degisti | 51040 | 54040 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51042 | 54042 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51044 | 54044 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51046 | 54046 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51048 | 54048 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51050 | 54050 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51052 | 54052 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Dummy | 51054 | 54054 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | SVC 1'de Sorun Var | 51056 | 54056 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | SVC 2'de Sorun Var | 51058 | 54058 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | SVC 3'te Sorun Var | 51060 | 54060 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 1'de Sorun Var | 51062 | 54062 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 2'de Sorun Var | 51064 | 54064 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 3'te Sorun Var | 51066 | 54066 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 4'te Sorun Var | 51068 | 54068 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 5'te Sorun Var | 51070 | 54070 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 6'da Sorun Var | 51072 | 54072 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 7'de Sorun Var | 51074 | 54074 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 8'de Sorun Var | 51076 | 54076 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 9'da Sorun Var | 51078 | 54078 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 10'da Sorun Var | 51080 | 54080 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 11'de Sorun Var | 51082 | 54082 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 12'de Sorun Var | 51084 | 54084 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 13'te Sorun Var | 51086 | 54086 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 14'te Sorun Var | 51088 | 54088 | - | - | int 32 | R | 
+ |  |  |  |  |  |  |  | Kademe 15'te Sorun Var | 51090 | 54090 | - | - | int 32 | R | 
+
+===== PAGE 38 =====
+ |  | Kademe 16'da Sorun Var | 51092 | 54092 | - | - | int 32 | R | 
+ |  | Kademe 17'de Sorun Var | 51094 | 54094 | - | - | int 32 | R | 
+ |  | Kademe 18'de Sorun Var | 51096 | 54096 | - | - | int 32 | R | 
+ |  | Dummy | 51098 | 54098 | - | - | int 32 | R | 
+ |  | Dummy | 51100 | 54100 | - | - | int 32 | R | 
+ |  | Dummy | 51102 | 54102 | - | - | int 32 | R | 
+ |  | Dummy | 51104 | 54104 | - | - | int 32 | R | 
+ |  | Dummy | 51106 | 54106 | - | - | int 32 | R | 
+ |  | Dummy | 51108 | 54108 | - | - | int 32 | R | 
+ |  | Dummy | 51110 | 54110 | - | - | int 32 | R | 
+ |  | SVC 1 Hatali | 51112 | 54112 | - | - | int 32 | R | 
+ |  | SVC 2 Hatali | 51114 | 54114 | - | - | int 32 | R | 
+ |  | SVC 3 Hatali | 51116 | 54116 | - | - | int 32 | R | 
+ |  | Kademe 1 Hatali | 51118 | 54118 | - | - | int 32 | R | 
+ |  | Kademe 2 Hatali | 51120 | 54120 | - | - | int 32 | R | 
+ |  | Kademe 3 Hatali | 51122 | 54122 | - | - | int 32 | R | 
+ |  | Kademe 4 Hatali | 51124 | 54124 | - | - | int 32 | R | 
+ |  | Kademe 5 Hatali | 51126 | 54126 | - | - | int 32 | R | 
+ |  | Kademe 6 Hatali | 51128 | 54128 | - | - | int 32 | R | 
+ |  | Kademe 7 Hatali | 51130 | 54130 | - | - | int 32 | R | 
+ |  | Kademe 8 Hatali | 51132 | 54132 | - | - | int 32 | R | 
+ |  | Kademe 9 Hatali | 51134 | 54134 | - | - | int 32 | R | 
+ |  | Kademe 10 Hatali | 51136 | 54136 | - | - | int 32 | R | 
+ |  | Kademe 11 Hatali | 51138 | 54138 | - | - | int 32 | R | 
+ |  | Kademe 12 Hatali | 51140 | 54140 | - | - | int 32 | R | 
+ |  | Kademe 13 Hatali | 51142 | 54142 | - | - | int 32 | R | 
+ |  | Kademe 14 Hatali | 51144 | 54144 | - | - | int 32 | R | 
+ |  | Kademe 15 Hatali | 51146 | 54146 | - | - | int 32 | R | 
+ |  | Kademe 16 Hatali | 51148 | 54148 | - | - | int 32 | R | 
+ |  | Kademe 17 Hatali | 51150 | 54150 | - | - | int 32 | R | 
+ |  | Kademe 18 Hatali | 51152 | 54152 | - | - | int 32 | R | 
+ |  | Dummy | 51154 | 54154 | - | - | int 32 | R | 
+ |  | Dummy | 51156 | 54156 | - | - | int 32 | R | 
+ |  | Dummy | 51158 | 54158 | - | - | int 32 | R | 
+ |  | Dummy | 51160 | 54160 | - | - | int 32 | R | 
+ |  | Dummy | 51162 | 54162 | - | - | int 32 | R | 
+ |  | Dummy | 51164 | 54164 | - | - | int 32 | R | 
+ |  | Dummy | 51166 | 54166 | - | - | int 32 | R | 
+ |  | Kad. Ortak 1 Dusuk Gerilim | 51168 | 54168 | - | - | int 32 | R | 
+ |  | Kad. Ortak 2 Dusuk Gerilim | 51170 | 54170 | - | - | int 32 | R | 
+ |  | Kad. Ortak 3 Dusuk Gerilim | 51172 | 54172 | - | - | int 32 | R | 
+ |  | Dummy | 51174 | 54174 | - | - | int 32 | R | 
+ |  | Dummy | 51176 | 54176 | - | - | int 32 | R | 
+ |  | Dummy | 51178 | 54178 | - | - | int 32 | R | 
+ |  | Hic Kademe Yok | 51180 | 54180 | - | - | int 32 | R | 
+ |  | Kademe Baglanti Hata | 51182 | 54182 | - | - | int 32 | R | 
+ |  | Kademe Grup 1 Hata | 51184 | 54184 | - | - | int 32 | R | 
+ |  | Kademe Grup 1 Faz 1 Hata | 51186 | 54186 | - | - | int 32 | R | 
+ |  | Kademe Grup 1 Faz 2 Hata | 51188 | 54188 | - | - | int 32 | R | 
+ |  | Kademe Grup 1 Faz 3 Hata | 51190 | 54190 | - | - | int 32 | R | 
+ |  | Kademe Grup 2 Hata | 51192 | 54192 | - | - | int 32 | R | 
+ |  | Kademe Grup 2 Faz 1 Hata | 51194 | 54194 | - | - | int 32 | R | 
+ |  | Kademe Grup 2 Faz 2 Hata | 51196 | 54196 | - | - | int 32 | R | 
+ |  | Kademe Grup 2 Faz 3 Hata | 51198 | 54198 | - | - | int 32 | R | 
+ |  | Kademe Grup 3 Hata | 51200 | 54200 | - | - | int 32 | R | 
+ |  | Kademe Grup 3 Faz 1 Hata | 51202 | 54202 | - | - | int 32 | R | 
+ |  | Kademe Grup 3 Faz 2 Hata | 51204 | 54204 | - | - | int 32 | R | 
+ |  | Kademe Grup 3 Faz 3 Hata | 51206 | 54206 | - | - | int 32 | R | 
+ |  | Dummy | 51208 | 54208 | - | - | int 32 | R | 
+ |  | Dummy | 51210 | 54210 | - | - | int 32 | R | 
+ |  | Dummy | 51212 | 54212 | - | - | int 32 | R | 
+ |  | Dummy | 51214 | 54214 | - | - | int 32 | R | 
+ |  | Dummy | 51216 | 54216 | - | - | int 32 | R | 
+ |  | Dummy | 51218 | 54218 | - | - | int 32 | R | 
+ |  | Dummy | 51220 | 54220 | - | - | int 32 | R | 
+ |  | Dummy | 51222 | 54222 | - | - | int 32 | R | 
+ |  | Dummy | 51224 | 54224 | - | - | int 32 | R | 
+ |  | Dummy | 51226 | 54226 | - | - | int 32 | R | 
+ |  | Dummy | 51228 | 54228 | - | - | int 32 | R | 
+ |  | Dummy | 51230 | 54230 | - | - | int 32 | R | 
+ |  | Akim Tasmasi | 51232 | 54232 | - | - | int 32 | R | 
+ |  | Asiri Akim L1 | 51234 | 54234 | - | - | int 32 | R | 
+ |  | Asiri Akim L2 | 51236 | 54236 | - | - | int 32 | R | 
+ |  | Asiri Akim L3 | 51238 | 54238 | - | - | int 32 | R | 
+ |  | Baglanti Zayif L1 | 51240 | 54240 | - | - | int 32 | R | 
+ |  | Baglanti Zayif L2 | 51242 | 54242 | - | - | int 32 | R | 
+
+===== PAGE 39 =====
+ |  | Baglanti Zayif L3 | 51244 | 54244 | - | - | int 32 | R | 
+ |  | Asiri Gerilim L1 | 51246 | 54246 | - | - | int 32 | R | 
+ |  | Asiri Gerilim L2 | 51248 | 54248 | - | - | int 32 | R | 
+ |  | Asiri Gerilim L3 | 51250 | 54250 | - | - | int 32 | R | 
+ |  | Asiri Enduktif | 51252 | 54252 | - | - | int 32 | R | 
+ |  | Asiri Kapasitif | 51254 | 54254 | - | - | int 32 | R | 
+ |  | Kurulum Tamamlanamadi | 51256 | 54256 | - | - | int 32 | R | 
+ |  | Kurulum Durduruldu | 51258 | 54258 | - | - | int 32 | R | 
+ |  | Akim Trafo Oran Hatasi | 51260 | 54260 | - | - | int 32 | R | 
+ |  | A=V Eslesme/CT Cevrim Hata | 51262 | 54262 | - | - | int 32 | R | 
+ |  | Faz-Faz Kontrol Degisti | 51264 | 54264 | - | - | int 32 | R | 
+ |  | Akim-Gerilim Eslesmemis | 51266 | 54266 | - | - | int 32 | R | 
+ |  | Kurulum Iptal Edildi | 51268 | 54268 | - | - | int 32 | R | 
+ |  | Kurulum Atlatildi | 51270 | 54270 | - | - | int 32 | R | 
+ |  | Ek Enduktif Yuk | 51272 | 54272 | - | - | int 32 | R | 
+ |  | Ek Kapasitif Yuk | 51274 | 54274 | - | - | int 32 | R | 
+ |  | Ek Yuk Suresi | 51276 | 54276 | - | - | int 32 | R | 
+ |  | Ek Yuk Silindi | 51278 | 54278 | - | - | int 32 | R | 
+ |  | Ek Yuk Kismen Silindi | 51280 | 54280 | - | - | int 32 | R | 
+ |  | Ek Yuk Tuketildi | 51282 | 54282 | - | - | int 32 | R | 
+ |  | Ek Yuk Kismen Tuketildi | 51284 | 54284 | - | - | int 32 | R | 
+ |  | Ek Yuk Iptal | 51286 | 54286 | - | - | int 32 | R | 
+ |  | Asiri Harmonik | 51288 | 54288 | - | - | int 32 | R | 
+ |  | Asiri Sicaklik | 51290 | 54290 | - | - | int 32 | R | 
+ |  | ModBus Erisim Reddedildi | 51292 | 54292 | - | - | int 32 | R | 
+ |  | RGP Tablosu Dolu | 51294 | 54294 | - | - | int 32 | R | 
+ |  | Dummy | 51296 | 54296 | - | - | int 32 | R | 
+ |  | Dummy | 51298 | 54298 | - | - | int 32 | R | 
+ |  | SVC Isinma/Baglanti Hatasi | 51300 | 54300 | - | - | int 32 | R | 
+ |  | Termik Girise Faz Bagli | 51302 | 54302 | - | - | int 32 | R | 
+ |  | Termik Girise Notr Bagli | 51304 | 54304 | - | - | int 32 | R | 
+ |  | Termik Baglanti Hatasi | 51306 | 54306 | - | - | int 32 | R | 
+ |  | SVC'den Kuruluma Yonlendi | 51308 | 54308 | - | - | int 32 | R | 
+ |  | SVC Eksik Faz 1 | 51310 | 54310 | - | - | int 32 | R | 
+ |  | SVC Eksik Faz 2 | 51312 | 54312 | - | - | int 32 | R | 
+ |  | SVC Eksik Faz 3 | 51314 | 54314 | - | - | int 32 | R | 
+ |  | SVC Baglanti Hatasi | 51316 | 54316 | - | - | int 32 | R | 
+ |  | Hedef Kosinus Iptal | 51318 | 54318 | - | - | int 32 | R | 
+ |  | Hedef Enduktif Kosinus | 51320 | 54320 | - | - | int 32 | R | 
+ |  | Hedef Kapasitif Kosinus | 51322 | 54322 | - | - | int 32 | R | 
+ |  | Kapasitor Ekle L1 | 51324 | 54324 | - | - | int 32 | R | 
+ |  | Kapasitor Ekle L2 | 51326 | 54326 | - | - | int 32 | R | 
+ |  | Kapasitor Ekle L3 | 51328 | 54328 | - | - | int 32 | R | 
+ |  | Reaktor Ekle L1 | 51330 | 54330 | - | - | int 32 | R | 
+ |  | Reaktor Ekle L2 | 51332 | 54332 | - | - | int 32 | R | 
+ |  | Reaktor Ekle L3 | 51334 | 54334 | - | - | int 32 | R | 
+ |  | C.T. 1 Orani Girildi | 51336 | 54336 | - | - | int 32 | R | 
+ |  | C.T. 2 Orani Girildi | 51338 | 54338 | - | - | int 32 | R | 
+ |  | C.T. 3 Orani Girildi | 51340 | 54340 | - | - | int 32 | R | 
+ |  | C.T. Orani Degisti | 51342 | 54342 | - | - | int 32 | R | 
+ |  | V.T. Orani Degisti | 51344 | 54344 | - | - | int 32 | R | 
+ |  | C.T. 1 Orani Silindi | 51346 | 54346 | - | - | int 32 | R | 
+ |  | C.T. 2 Orani Silindi | 51348 | 54348 | - | - | int 32 | R | 
+ |  | C.T. 3 Orani Silindi | 51350 | 54350 | - | - | int 32 | R | 
+ |  | Tanima Sonlandirildi | 51352 | 54352 | - | - | int 32 | R | 
+ |  | RTC Kurtarildi | 51354 | 54354 | - | - | int 32 | R | 
+ |  | Asiri Harmonik L1 | 51356 | 54356 | - | - | int 32 | R | 
+ |  | Asiri Harmonik L2 | 51358 | 54358 | - | - | int 32 | R | 
+ |  | Asiri Harmonik L3 | 51360 | 54360 | - | - | int 32 | R | 
+ |  | Kurulumda Kademe Teshisi | 51362 | 54362 | - | - | int 32 | R | 
+ |  | Kurulumda Kad. Degisimi L1 | 51364 | 54364 | - | - | int 32 | R | 
+ |  | Kurulumda Kad. Degisimi L2 | 51366 | 54366 | - | - | int 32 | R | 
+ |  | Kurulumda Kad. Degisimi L3 | 51368 | 54368 | - | - | int 32 | R | 
+ |  | CT Yonleri Ters, Tanimada | 51370 | 54370 | - | - | int 32 | R | 
+ |  | CT Yonu Ters, Tanimada | 51372 | 54372 | - | - | int 32 | R | 
+ |  | CT Yon Degisim Ihtimali | 51374 | 54374 | - | - | int 32 | R | 
+ |  | CT 1 Yon Degisim Ihtimali | 51376 | 54376 | - | - | int 32 | R | 
+ |  | CT 2 Yon Degisim Ihtimali | 51378 | 54378 | - | - | int 32 | R | 
+ |  | CT 3 Yon Degisim Ihtimali | 51380 | 54380 | - | - | int 32 | R | 
+ |  | CT Uclari Cevrimli Bagli | 51382 | 54382 | - | - | int 32 | R | 
+ |  | CT 1-2 Uclari Cevrimde | 51384 | 54384 | - | - | int 32 | R | 
+ |  | CT 2-3 Uclari Cevrimde | 51386 | 54386 | - | - | int 32 | R | 
+ |  | CT 1-3 Uclari Cevrimde | 51388 | 54388 | - | - | int 32 | R | 
+ |  | C.T. L1 Baglanti Koptu | 51390 | 54390 | - | - | int 32 | R | 
+ |  | C.T. L2 Baglanti Koptu | 51392 | 54392 | - | - | int 32 | R | 
+ |  | C.T. L3 Baglanti Koptu | 51394 | 54394 | - | - | int 32 | R | 
+
+===== PAGE 40 =====
+ |  | Kademe Sigorta Fazlar Atik | 51396 | 54396 | - | - | int 32 | R | 
+ |  | Kademe Sigorta Atik L1 | 51398 | 54398 | - | - | int 32 | R | 
+ |  | Kademe Sigorta Atik L2 | 51400 | 54400 | - | - | int 32 | R | 
+ |  | Kademe Sigorta Atik L3 | 51402 | 54402 | - | - | int 32 | R | 
+ |  | C.T. 1 Orani Farkli | 51404 | 54404 | - | - | int 32 | R | 
+ |  | C.T. 2 Orani Farkli | 51406 | 54406 | - | - | int 32 | R | 
+ |  | C.T. 3 Orani Farkli | 51408 | 54408 | - | - | int 32 | R | 
+ |  | Koruma, Ek Yukte CT Hatasi | 51410 | 54410 | - | - | int 32 | R | 
+ |  | Koruma, Tum CT'ler Koptu | 51412 | 54412 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Sicaklik | 51414 | 54414 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Ic Besleme | 51416 | 54416 | - | - | int 32 | R | 
+ |  | Koruma, Dusuk Ic Besleme | 51418 | 54418 | - | - | int 32 | R | 
+ |  | Koruma, Jeneratorde | 51420 | 54420 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Gerilim L1 | 51422 | 54422 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Gerilim L2 | 51424 | 54424 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Gerilim L3 | 51426 | 54426 | - | - | int 32 | R | 
+ |  | Koruma, Dusuk Gerilim L1 | 51428 | 54428 | - | - | int 32 | R | 
+ |  | Koruma, Dusuk Gerilim L2 | 51430 | 54430 | - | - | int 32 | R | 
+ |  | Koruma, Dusuk Gerilim L3 | 51432 | 54432 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Harmonik L1 | 51434 | 54434 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Harmonik L2 | 51436 | 54436 | - | - | int 32 | R | 
+ |  | Koruma, Asiri Harmonik L3 | 51438 | 54438 | - | - | int 32 | R | 
+ |  | Kad. Ortak 1 Asiri Gerilim | 51440 | 54440 | - | - | int 32 | R | 
+ |  | Kad. Ortak 2 Asiri Gerilim | 51442 | 54442 | - | - | int 32 | R | 
+ |  | Kad. Ortak 3 Asiri Gerilim | 51444 | 54444 | - | - | int 32 | R | 
+ |  | Dummy | 51446 | 54446 | - | - | int 32 | R | 
+ |  | Faz Sirasi Degisti | 51448 | 54448 | - | - | int 32 | R | 
+ |  | SVC 1 Teshis Edildi | 51450 | 54450 | - | - | int 32 | R | 
+ |  | SVC 2 Teshis Edildi | 51452 | 54452 | - | - | int 32 | R | 
+ |  | SVC 3 Teshis Edildi | 51454 | 54454 | - | - | int 32 | R | 
+ |  | Kademe 1 Teshis Edildi | 51456 | 54456 | - | - | int 32 | R | 
+ |  | Kademe 2 Teshis Edildi | 51458 | 54458 | - | - | int 32 | R | 
+ |  | Kademe 3 Teshis Edildi | 51460 | 54460 | - | - | int 32 | R | 
+ |  | Kademe 4 Teshis Edildi | 51462 | 54462 | - | - | int 32 | R | 
+ |  | Kademe 5 Teshis Edildi | 51464 | 54464 | - | - | int 32 | R | 
+ |  | Kademe 6 Teshis Edildi | 51466 | 54466 | - | - | int 32 | R | 
+ |  | Kademe 7 Teshis Edildi | 51468 | 54468 | - | - | int 32 | R | 
+ |  | Kademe 8 Teshis Edildi | 51470 | 54470 | - | - | int 32 | R | 
+ |  | Kademe 9 Teshis Edildi | 51472 | 54472 | - | - | int 32 | R | 
+ |  | Kademe 10 Teshis Edildi | 51474 | 54474 | - | - | int 32 | R | 
+ |  | Kademe 11 Teshis Edildi | 51476 | 54476 | - | - | int 32 | R | 
+ |  | Kademe 12 Teshis Edildi | 51478 | 54478 | - | - | int 32 | R | 
+ |  | Kademe 13 Teshis Edildi | 51480 | 54480 | - | - | int 32 | R | 
+ |  | Kademe 14 Teshis Edildi | 51482 | 54482 | - | - | int 32 | R | 
+ |  | Kademe 15 Teshis Edildi | 51484 | 54484 | - | - | int 32 | R | 
+ |  | Kademe 16 Teshis Edildi | 51486 | 54486 | - | - | int 32 | R | 
+ |  | Kademe 17 Teshis Edildi | 51488 | 54488 | - | - | int 32 | R | 
+ |  | Kademe 18 Teshis Edildi | 51490 | 54490 | - | - | int 32 | R | 
+ |  | Dummy | 51492 | 54492 | - | - | int 32 | R | 
+ |  | Dummy | 51494 | 54494 | - | - | int 32 | R | 
+ |  | Dummy | 51496 | 54496 | - | - | int 32 | R | 
+ |  | Dummy | 51498 | 54498 | - | - | int 32 | R | 
+ |  | Dummy | 51500 | 54500 | - | - | int 32 | R | 
+ |  | Dummy | 51502 | 54502 | - | - | int 32 | R | 
+ |  | Dummy | 51504 | 54504 | - | - | int 32 | R | 
+
+===== PAGE 41 =====
+Adres | Komut |  | W/R | 
+9000 | Cihaz Durumu |  |  | grup 1 tanıma 43521
+grup 2 tanıma 43522
+grup 3 tanıma 43523
+43520+kademe no
+9001 | Enerjileri Sil | 0xAA55 | 43605 | 
+9002 | Min Max ları Sil | 0xAA55 | 43605 | 
+9003 | Demandları Sil | 0xAA55 | 43605 | 
+9004 | Tüm Alarmları Sil | 0xAA55 | 43605 | 
+9005 | RGP Sil | 0xAA55 | 43605 | 
+9006 | Dummy (Rezerved) | 0xAA55 | 43605 | 
+9007 | Kademe Tanıma Başlat(Akıllı) | 0xAA55 | 43605 | 
+9008 | Kademe Tanıma Başlat(Sıralı) | 0xAA55 | 43605 | 
+9009 | Kademe Tanıma Başlat(Hızlı) | 0xAA55 | 43605 | 
+9010 | SVC Tanımayı Başlat | 0xAA55 | 43605 | 
+9011 | Tek Kademe Tanıma |  | Kademe No. | 
+9012 | Kademe Tanımayı Sonlandır | 0xAA55 | 43605 | 
+9013 | Kuruluma Başla | 0xAA55 | 43605 | 
+9014 | Kurulumu Sonlandır | 0xAA55 | 43605 | 
+9015 | Kademe Çekme Sayısı ve Süresini Sil | 0xAA55 | 43605 | 
+9016 | Kademe Detaylarını Sil | 0xAA55 | 43605 | 
+9017 | Dummy (Rezerved) |  |  | 
+9018 | Dummy (Rezerved) |  |  | 
+9019 | Kademe Reset | 0xAA55 | 43605 | 
+9020 | Dummy (Rezerved) |  |  | 
+9021 | Dummy (Rezerved) |  |  | 
+9022 | Sistem Password Reset | 0xAA55 | 43605 | 
+9023 | Dummy (Rezerved) |  |  | 
+9024 | Fabrika Ayarlarına Dön | 0xAA55 | 43605 | 
+9025 | Cihaz Reset | 0xAA55 | 43605 | 
+9026 | SD Card Kayıt Başlat | 0xAA55 | 43605 | 
+9027 | SD Card Kayıt Durdur | 0xAA55 | 43605 | 
+9028 | SD Card Formatla | 0xAA55 | 43605 | 
+
+===== PAGE 42 =====
+9029 | SD Card Algıla | 0xAA55 | 43605 | 
+9030 | SD Card Çıkar | 0xAA55 | 43605 | 
+9031 | USB Format | 0xAA55 | 43605 | 
+9032 | USB Algıla | 0xAA55 | 43605 | 
+9033 | USB Çıkar | 0xAA55 | 43605 | 
+9040 | Olayları Sil | 0xAA55 | 43605 | 
+9041 | Uyarıları Sil | 0xAA55 | 43605 | 
+
+===== PAGE 43 =====
+SÜREYE GÖRE SIRALAMIŞ |  |  |  |  |  |  | ENERJİYE GÖRE SIRALAMIŞ |  |  |  |  | 
+PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R |  | PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R
+RGP Örnek Sayısı | 42000 | 1 | - | int 32 | R |  | RGP Örnek Sayısı | 45000 | 1 | - | int 32 | R
+RGP Güç Çözünürlüğü | 42002 | 1 | VAr | int 32 | R |  | RGP Güç Çözünürlüğü | 45002 | 1 | VAr | int 32 | R
+RGP Fark Yüzdesi | 42004 | 1 | % | int 32 | R |  | RGP Fark Yüzdesi | 45004 | 1 | % | int 32 | R
+RGP Max Fark Yüzdesi | 42006 | 1 | % | int 32 | R |  | RGP Max Fark Yüzdesi | 45006 | 1 | % | int 32 | R
+RGP Anlık Süre  | 42008 | 1 | % | int 32 | R |  | RGP Anlık Süre  | 45008 | 1 | % | int 32 | R
+RGP Anlık Q1 | 42010 | 1 | VAr | int 32 | R |  | RGP Anlık Q1 | 45010 | 1 | VAr | int 32 | R
+RGP Anlık Q2 | 42012 | 1 | VAr | int 32 | R |  | RGP Anlık Q2 | 45012 | 1 | VAr | int 32 | R
+RGP Anlık Q3 | 42014 | 1 | VAr | int 32 | R |  | RGP Anlık Q3 | 45014 | 1 | VAr | int 32 | R
+RGP 1 Süre  | 42016 | 1 | % | int 32 | R |  | RGP 1 Süre  | 45016 | 1 | % | int 32 | R
+RGP 1 Q1 | 42018 | 1 | VAr | int 32 | R |  | RGP 1 Q1 | 45018 | 1 | VAr | int 32 | R
+RGP 1 Q2 | 42020 | 1 | VAr | int 32 | R |  | RGP 1 Q2 | 45020 | 1 | VAr | int 32 | R
+RGP 1 Q3 | 42022 | 1 | VAr | int 32 | R |  | RGP 1 Q3 | 45022 | 1 | VAr | int 32 | R
+RGP 2 Süre  | 42024 | 1 | % | int 32 | R |  | RGP 2 Süre  | 45024 | 1 | % | int 32 | R
+RGP 2 Q1 | 42026 | 1 | VAr | int 32 | R |  | RGP 2 Q1 | 45026 | 1 | VAr | int 32 | R
+RGP 2 Q2 | 42028 | 1 | VAr | int 32 | R |  | RGP 2 Q2 | 45028 | 1 | VAr | int 32 | R
+RGP 2 Q3 | 42030 | 1 | VAr | int 32 | R |  | RGP 2 Q3 | 45030 | 1 | VAr | int 32 | R
+RGP 3 Süre | 42032 | 1 | % | int 32 | R |  | RGP 3 Süre | 45032 | 1 | % | int 32 | R
+RGP 3 Q1 | 42034 | 1 | VAr | int 32 | R |  | RGP 3 Q1 | 45034 | 1 | VAr | int 32 | R
+RGP 3 Q2 | 42036 | 1 | VAr | int 32 | R |  | RGP 3 Q2 | 45036 | 1 | VAr | int 32 | R
+RGP 3 Q3 | 42038 | 1 | VAr | int 32 | R |  | RGP 3 Q3 | 45038 | 1 | VAr | int 32 | R
+RGP 4 Süre | 42040 | 1 | % | int 32 | R |  | RGP 4 Süre | 45040 | 1 | % | int 32 | R
+RGP 4 Q1 | 42042 | 1 | VAr | int 32 | R |  | RGP 4 Q1 | 45042 | 1 | VAr | int 32 | R
+RGP 4 Q2 | 42044 | 1 | VAr | int 32 | R |  | RGP 4 Q2 | 45044 | 1 | VAr | int 32 | R
+RGP 4 Q3 | 42046 | 1 | VAr | int 32 | R |  | RGP 4 Q3 | 45046 | 1 | VAr | int 32 | R
+RGP 5 Süre | 42048 | 1 | % | int 32 | R |  | RGP 5 Süre | 45048 | 1 | % | int 32 | R
+RGP 5 Q1 | 42050 | 1 | VAr | int 32 | R |  | RGP 5 Q1 | 45050 | 1 | VAr | int 32 | R
+RGP 5 Q2 | 42052 | 1 | VAr | int 32 | R |  | RGP 5 Q2 | 45052 | 1 | VAr | int 32 | R
+RGP 5 Q3 | 42054 | 1 | VAr | int 32 | R |  | RGP 5 Q3 | 45054 | 1 | VAr | int 32 | R
+RGP 6 Süre | 42056 | 1 | % | int 32 | R |  | RGP 6 Süre | 45056 | 1 | % | int 32 | R
+RGP 6 Q1 | 42058 | 1 | VAr | int 32 | R |  | RGP 6 Q1 | 45058 | 1 | VAr | int 32 | R
+RGP 6 Q2 | 42060 | 1 | VAr | int 32 | R |  | RGP 6 Q2 | 45060 | 1 | VAr | int 32 | R
+
+===== PAGE 44 =====
+RGP 6 Q3 | 42062 | 1 | VAr | int 32 | R |  | RGP 6 Q3 | 45062 | 1 | VAr | int 32 | R
+RGP  7 Süre | 42064 | 1 | % | int 32 | R |  | RGP  7 Süre | 45064 | 1 | % | int 32 | R
+RGP 7 Q1 | 42066 | 1 | VAr | int 32 | R |  | RGP 7 Q1 | 45066 | 1 | VAr | int 32 | R
+RGP 7 Q2 | 42068 | 1 | VAr | int 32 | R |  | RGP 7 Q2 | 45068 | 1 | VAr | int 32 | R
+RGP 7 Q3 | 42070 | 1 | VAr | int 32 | R |  | RGP 7 Q3 | 45070 | 1 | VAr | int 32 | R
+RGP 8 Süre | 42072 | 1 | % | int 32 | R |  | RGP 8 Süre | 45072 | 1 | % | int 32 | R
+RGP 8 Q1 | 42074 | 1 | VAr | int 32 | R |  | RGP 8 Q1 | 45074 | 1 | VAr | int 32 | R
+RGP 8 Q2 | 42076 | 1 | VAr | int 32 | R |  | RGP 8 Q2 | 45076 | 1 | VAr | int 32 | R
+RGP 8 Q3 | 42078 | 1 | VAr | int 32 | R |  | RGP 8 Q3 | 45078 | 1 | VAr | int 32 | R
+RGP 9 Süre  | 42080 | 1 | % | int 32 | R |  | RGP 9 Süre  | 45080 | 1 | % | int 32 | R
+RGP 9 Q1 | 42082 | 1 | VAr | int 32 | R |  | RGP 9 Q1 | 45082 | 1 | VAr | int 32 | R
+RGP 9 Q2 | 42084 | 1 | VAr | int 32 | R |  | RGP 9 Q2 | 45084 | 1 | VAr | int 32 | R
+RGP 9 Q3 | 42086 | 1 | VAr | int 32 | R |  | RGP 9 Q3 | 45086 | 1 | VAr | int 32 | R
+RGP 10 Süre  | 42088 | 1 | % | int 32 | R |  | RGP 10 Süre  | 45088 | 1 | % | int 32 | R
+RGP 10 Q1 | 42090 | 1 | VAr | int 32 | R |  | RGP 10 Q1 | 45090 | 1 | VAr | int 32 | R
+RGP 10 Q2 | 42092 | 1 | VAr | int 32 | R |  | RGP 10 Q2 | 45092 | 1 | VAr | int 32 | R
+RGP 10 Q3 | 42094 | 1 | VAr | int 32 | R |  | RGP 10 Q3 | 45094 | 1 | VAr | int 32 | R
+RGP 11 Süre | 42096 | 1 | % | int 32 | R |  | RGP 11 Süre | 45096 | 1 | % | int 32 | R
+RGP 11 Q1 | 42098 | 1 | VAr | int 32 | R |  | RGP 11 Q1 | 45098 | 1 | VAr | int 32 | R
+RGP 11 Q2 | 42100 | 1 | VAr | int 32 | R |  | RGP 11 Q2 | 45100 | 1 | VAr | int 32 | R
+RGP 11 Q3 | 42102 | 1 | VAr | int 32 | R |  | RGP 11 Q3 | 45102 | 1 | VAr | int 32 | R
+RGP 12 Süre | 42104 | 1 | % | int 32 | R |  | RGP 12 Süre | 45104 | 1 | % | int 32 | R
+RGP 12 Q1 | 42106 | 1 | VAr | int 32 | R |  | RGP 12 Q1 | 45106 | 1 | VAr | int 32 | R
+RGP 12 Q2 | 42108 | 1 | VAr | int 32 | R |  | RGP 12 Q2 | 45108 | 1 | VAr | int 32 | R
+RGP 12 Q3 | 42110 | 1 | VAr | int 32 | R |  | RGP 12 Q3 | 45110 | 1 | VAr | int 32 | R
+RGP 13 Süre | 42112 | 1 | % | int 32 | R |  | RGP 13 Süre | 45112 | 1 | % | int 32 | R
+RGP 13 Q1 | 42114 | 1 | VAr | int 32 | R |  | RGP 13 Q1 | 45114 | 1 | VAr | int 32 | R
+RGP 13 Q2 | 42116 | 1 | VAr | int 32 | R |  | RGP 13 Q2 | 45116 | 1 | VAr | int 32 | R
+RGP 13 Q3 | 42118 | 1 | VAr | int 32 | R |  | RGP 13 Q3 | 45118 | 1 | VAr | int 32 | R
+RGP 14 Süre | 42120 | 1 | % | int 32 | R |  | RGP 14 Süre | 45120 | 1 | % | int 32 | R
+RGP 14 Q1 | 42122 | 1 | VAr | int 32 | R |  | RGP 14 Q1 | 45122 | 1 | VAr | int 32 | R
+RGP 14 Q2 | 42124 | 1 | VAr | int 32 | R |  | RGP 14 Q2 | 45124 | 1 | VAr | int 32 | R
+RGP 14 Q3 | 42126 | 1 | VAr | int 32 | R |  | RGP 14 Q3 | 45126 | 1 | VAr | int 32 | R
+
+===== PAGE 45 =====
+RGP 15 Süre | 42128 | 1 | % | int 32 | R |  | RGP 15 Süre | 45128 | 1 | % | int 32 | R
+RGP 15 Q1 | 42130 | 1 | VAr | int 32 | R |  | RGP 15 Q1 | 45130 | 1 | VAr | int 32 | R
+RGP 15 Q2 | 42132 | 1 | VAr | int 32 | R |  | RGP 15 Q2 | 45132 | 1 | VAr | int 32 | R
+RGP 15 Q3 | 42134 | 1 | VAr | int 32 | R |  | RGP 15 Q3 | 45134 | 1 | VAr | int 32 | R
+RGP 16 Süre | 42136 | 1 | % | int 32 | R |  | RGP 16 Süre | 45136 | 1 | % | int 32 | R
+RGP 17 Q1 | 42138 | 1 | VAr | int 32 | R |  | RGP 17 Q1 | 45138 | 1 | VAr | int 32 | R
+RGP 17 Q2 | 42140 | 1 | VAr | int 32 | R |  | RGP 17 Q2 | 45140 | 1 | VAr | int 32 | R
+RGP 17 Q3 | 42142 | 1 | VAr | int 32 | R |  | RGP 17 Q3 | 45142 | 1 | VAr | int 32 | R
+RGP 18 Süre | 42144 | 1 | % | int 32 | R |  | RGP 18 Süre | 45144 | 1 | % | int 32 | R
+RGP 18 Q1 | 42146 | 1 | VAr | int 32 | R |  | RGP 18 Q1 | 45146 | 1 | VAr | int 32 | R
+RGP 18 Q2 | 42148 | 1 | VAr | int 32 | R |  | RGP 18 Q2 | 45148 | 1 | VAr | int 32 | R
+RGP 18 Q3 | 42150 | 1 | VAr | int 32 | R |  | RGP 18 Q3 | 45150 | 1 | VAr | int 32 | R
+RGP 19 Süre | 42152 | 1 | % | int 32 | R |  | RGP 19 Süre | 45152 | 1 | % | int 32 | R
+RGP 19 Q1 | 42154 | 1 | VAr | int 32 | R |  | RGP 19 Q1 | 45154 | 1 | VAr | int 32 | R
+RGP 19 Q2 | 42156 | 1 | VAr | int 32 | R |  | RGP 19 Q2 | 45156 | 1 | VAr | int 32 | R
+RGP 19 Q3 | 42158 | 1 | VAr | int 32 | R |  | RGP 19 Q3 | 45158 | 1 | VAr | int 32 | R
+RGP 20 Süre  | 42160 | 1 | % | int 32 | R |  | RGP 20 Süre  | 45160 | 1 | % | int 32 | R
+RGP 20 Q1 | 42162 | 1 | VAr | int 32 | R |  | RGP 20 Q1 | 45162 | 1 | VAr | int 32 | R
+RGP 20 Q2 | 42164 | 1 | VAr | int 32 | R |  | RGP 20 Q2 | 45164 | 1 | VAr | int 32 | R
+RGP 20 Q3 | 42166 | 1 | VAr | int 32 | R |  | RGP 20 Q3 | 45166 | 1 | VAr | int 32 | R
+ |  |  |  |  |  |  |  |  |  |  |  | 
+ENDÜKTİFE GÖRE SIRALANMIŞ |  |  |  |  |  |  | ORANA GÖRE SIRALANMIŞ |  |  |  |  | 
+PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R |  | PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R
+RGP Örnek Sayısı | 43000 | 1 | - | int 32 | R |  | RGP Örnek Sayısı | 46000 | 1 | - | int 32 | R
+RGP Güç Çözünürlüğü | 43002 | 1 | VAr | int 32 | R |  | RGP Güç Çözünürlüğü | 46002 | 1 | VAr | int 32 | R
+RGP Fark Yüzdesi | 43004 | 1 | % | int 32 | R |  | RGP Fark Yüzdesi | 46004 | 1 | % | int 32 | R
+RGP Max Fark Yüzdesi | 43006 | 1 | % | int 32 | R |  | RGP Max Fark Yüzdesi | 46006 | 1 | % | int 32 | R
+RGP Anlık Süre  | 43008 | 1 | % | int 32 | R |  | RGP Anlık Süre  | 46008 | 1 | % | int 32 | R
+RGP Anlık Q1 | 43010 | 1 | VAr | int 32 | R |  | RGP Anlık Q1 | 46010 | 1 | VAr | int 32 | R
+RGP Anlık Q2 | 43012 | 1 | VAr | int 32 | R |  | RGP Anlık Q2 | 46012 | 1 | VAr | int 32 | R
+RGP Anlık Q3 | 43014 | 1 | VAr | int 32 | R |  | RGP Anlık Q3 | 46014 | 1 | VAr | int 32 | R
+RGP 1 Süre  | 43016 | 1 | % | int 32 | R |  | RGP 1 Süre  | 46016 | 1 | % | int 32 | R
+RGP 1 Q1 | 43018 | 1 | VAr | int 32 | R |  | RGP 1 Q1 | 46018 | 1 | VAr | int 32 | R
+
+===== PAGE 46 =====
+RGP 1 Q2 | 43020 | 1 | VAr | int 32 | R |  | RGP 1 Q2 | 46020 | 1 | VAr | int 32 | R
+RGP 1 Q3 | 43022 | 1 | VAr | int 32 | R |  | RGP 1 Q3 | 46022 | 1 | VAr | int 32 | R
+RGP 2 Süre  | 43024 | 1 | % | int 32 | R |  | RGP 2 Süre  | 46024 | 1 | % | int 32 | R
+RGP 2 Q1 | 43026 | 1 | VAr | int 32 | R |  | RGP 2 Q1 | 46026 | 1 | VAr | int 32 | R
+RGP 2 Q2 | 43028 | 1 | VAr | int 32 | R |  | RGP 2 Q2 | 46028 | 1 | VAr | int 32 | R
+RGP 2 Q3 | 43030 | 1 | VAr | int 32 | R |  | RGP 2 Q3 | 46030 | 1 | VAr | int 32 | R
+RGP 3 Süre | 43032 | 1 | % | int 32 | R |  | RGP 3 Süre | 46032 | 1 | % | int 32 | R
+RGP 3 Q1 | 43034 | 1 | VAr | int 32 | R |  | RGP 3 Q1 | 46034 | 1 | VAr | int 32 | R
+RGP 3 Q2 | 43036 | 1 | VAr | int 32 | R |  | RGP 3 Q2 | 46036 | 1 | VAr | int 32 | R
+RGP 3 Q3 | 43038 | 1 | VAr | int 32 | R |  | RGP 3 Q3 | 46038 | 1 | VAr | int 32 | R
+RGP 4 Süre | 43040 | 1 | % | int 32 | R |  | RGP 4 Süre | 46040 | 1 | % | int 32 | R
+RGP 4 Q1 | 43042 | 1 | VAr | int 32 | R |  | RGP 4 Q1 | 46042 | 1 | VAr | int 32 | R
+RGP 4 Q2 | 43044 | 1 | VAr | int 32 | R |  | RGP 4 Q2 | 46044 | 1 | VAr | int 32 | R
+RGP 4 Q3 | 43046 | 1 | VAr | int 32 | R |  | RGP 4 Q3 | 46046 | 1 | VAr | int 32 | R
+RGP 5 Süre | 43048 | 1 | % | int 32 | R |  | RGP 5 Süre | 46048 | 1 | % | int 32 | R
+RGP 5 Q1 | 43050 | 1 | VAr | int 32 | R |  | RGP 5 Q1 | 46050 | 1 | VAr | int 32 | R
+RGP 5 Q2 | 43052 | 1 | VAr | int 32 | R |  | RGP 5 Q2 | 46052 | 1 | VAr | int 32 | R
+RGP 5 Q3 | 43054 | 1 | VAr | int 32 | R |  | RGP 5 Q3 | 46054 | 1 | VAr | int 32 | R
+RGP 6 Süre | 43056 | 1 | % | int 32 | R |  | RGP 6 Süre | 46056 | 1 | % | int 32 | R
+RGP 6 Q1 | 43058 | 1 | VAr | int 32 | R |  | RGP 6 Q1 | 46058 | 1 | VAr | int 32 | R
+RGP 6 Q2 | 43060 | 1 | VAr | int 32 | R |  | RGP 6 Q2 | 46060 | 1 | VAr | int 32 | R
+RGP 6 Q3 | 43062 | 1 | VAr | int 32 | R |  | RGP 6 Q3 | 46062 | 1 | VAr | int 32 | R
+RGP  7 Süre | 43064 | 1 | % | int 32 | R |  | RGP  7 Süre | 46064 | 1 | % | int 32 | R
+RGP 7 Q1 | 43066 | 1 | VAr | int 32 | R |  | RGP 7 Q1 | 46066 | 1 | VAr | int 32 | R
+RGP 7 Q2 | 43068 | 1 | VAr | int 32 | R |  | RGP 7 Q2 | 46068 | 1 | VAr | int 32 | R
+RGP 7 Q3 | 43070 | 1 | VAr | int 32 | R |  | RGP 7 Q3 | 46070 | 1 | VAr | int 32 | R
+RGP 8 Süre | 43072 | 1 | % | int 32 | R |  | RGP 8 Süre | 46072 | 1 | % | int 32 | R
+RGP 8 Q1 | 43074 | 1 | VAr | int 32 | R |  | RGP 8 Q1 | 46074 | 1 | VAr | int 32 | R
+RGP 8 Q2 | 43076 | 1 | VAr | int 32 | R |  | RGP 8 Q2 | 46076 | 1 | VAr | int 32 | R
+RGP 8 Q3 | 43078 | 1 | VAr | int 32 | R |  | RGP 8 Q3 | 46078 | 1 | VAr | int 32 | R
+RGP 9 Süre  | 43080 | 1 | % | int 32 | R |  | RGP 9 Süre  | 46080 | 1 | % | int 32 | R
+RGP 9 Q1 | 43082 | 1 | VAr | int 32 | R |  | RGP 9 Q1 | 46082 | 1 | VAr | int 32 | R
+RGP 9 Q2 | 43084 | 1 | VAr | int 32 | R |  | RGP 9 Q2 | 46084 | 1 | VAr | int 32 | R
+
+===== PAGE 47 =====
+RGP 9 Q3 | 43086 | 1 | VAr | int 32 | R |  | RGP 9 Q3 | 46086 | 1 | VAr | int 32 | R
+RGP 10 Süre  | 43088 | 1 | % | int 32 | R |  | RGP 10 Süre  | 46088 | 1 | % | int 32 | R
+RGP 10 Q1 | 43090 | 1 | VAr | int 32 | R |  | RGP 10 Q1 | 46090 | 1 | VAr | int 32 | R
+RGP 10 Q2 | 43092 | 1 | VAr | int 32 | R |  | RGP 10 Q2 | 46092 | 1 | VAr | int 32 | R
+RGP 10 Q3 | 43094 | 1 | VAr | int 32 | R |  | RGP 10 Q3 | 46094 | 1 | VAr | int 32 | R
+RGP 11 Süre | 43096 | 1 | % | int 32 | R |  | RGP 11 Süre | 46096 | 1 | % | int 32 | R
+RGP 11 Q1 | 43098 | 1 | VAr | int 32 | R |  | RGP 11 Q1 | 46098 | 1 | VAr | int 32 | R
+RGP 11 Q2 | 43100 | 1 | VAr | int 32 | R |  | RGP 11 Q2 | 46100 | 1 | VAr | int 32 | R
+RGP 11 Q3 | 43102 | 1 | VAr | int 32 | R |  | RGP 11 Q3 | 46102 | 1 | VAr | int 32 | R
+RGP 12 Süre | 43104 | 1 | % | int 32 | R |  | RGP 12 Süre | 46104 | 1 | % | int 32 | R
+RGP 12 Q1 | 43106 | 1 | VAr | int 32 | R |  | RGP 12 Q1 | 46106 | 1 | VAr | int 32 | R
+RGP 12 Q2 | 43108 | 1 | VAr | int 32 | R |  | RGP 12 Q2 | 46108 | 1 | VAr | int 32 | R
+RGP 12 Q3 | 43110 | 1 | VAr | int 32 | R |  | RGP 12 Q3 | 46110 | 1 | VAr | int 32 | R
+RGP 13 Süre | 43112 | 1 | % | int 32 | R |  | RGP 13 Süre | 46112 | 1 | % | int 32 | R
+RGP 13 Q1 | 43114 | 1 | VAr | int 32 | R |  | RGP 13 Q1 | 46114 | 1 | VAr | int 32 | R
+RGP 13 Q2 | 43116 | 1 | VAr | int 32 | R |  | RGP 13 Q2 | 46116 | 1 | VAr | int 32 | R
+RGP 13 Q3 | 43118 | 1 | VAr | int 32 | R |  | RGP 13 Q3 | 46118 | 1 | VAr | int 32 | R
+RGP 14 Süre | 43120 | 1 | % | int 32 | R |  | RGP 14 Süre | 46120 | 1 | % | int 32 | R
+RGP 14 Q1 | 43122 | 1 | VAr | int 32 | R |  | RGP 14 Q1 | 46122 | 1 | VAr | int 32 | R
+RGP 14 Q2 | 43124 | 1 | VAr | int 32 | R |  | RGP 14 Q2 | 46124 | 1 | VAr | int 32 | R
+RGP 14 Q3 | 43126 | 1 | VAr | int 32 | R |  | RGP 14 Q3 | 46126 | 1 | VAr | int 32 | R
+RGP 15 Süre | 43128 | 1 | % | int 32 | R |  | RGP 15 Süre | 46128 | 1 | % | int 32 | R
+RGP 15 Q1 | 43130 | 1 | VAr | int 32 | R |  | RGP 15 Q1 | 46130 | 1 | VAr | int 32 | R
+RGP 15 Q2 | 43132 | 1 | VAr | int 32 | R |  | RGP 15 Q2 | 46132 | 1 | VAr | int 32 | R
+RGP 15 Q3 | 43134 | 1 | VAr | int 32 | R |  | RGP 15 Q3 | 46134 | 1 | VAr | int 32 | R
+RGP 16 Süre | 43136 | 1 | % | int 32 | R |  | RGP 16 Süre | 46136 | 1 | % | int 32 | R
+RGP 17 Q1 | 43138 | 1 | VAr | int 32 | R |  | RGP 17 Q1 | 46138 | 1 | VAr | int 32 | R
+RGP 17 Q2 | 43140 | 1 | VAr | int 32 | R |  | RGP 17 Q2 | 46140 | 1 | VAr | int 32 | R
+RGP 17 Q3 | 43142 | 1 | VAr | int 32 | R |  | RGP 17 Q3 | 46142 | 1 | VAr | int 32 | R
+RGP 18 Süre | 43144 | 1 | % | int 32 | R |  | RGP 18 Süre | 46144 | 1 | % | int 32 | R
+RGP 18 Q1 | 43146 | 1 | VAr | int 32 | R |  | RGP 18 Q1 | 46146 | 1 | VAr | int 32 | R
+RGP 18 Q2 | 43148 | 1 | VAr | int 32 | R |  | RGP 18 Q2 | 46148 | 1 | VAr | int 32 | R
+RGP 18 Q3 | 43150 | 1 | VAr | int 32 | R |  | RGP 18 Q3 | 46150 | 1 | VAr | int 32 | R
+
+===== PAGE 48 =====
+RGP 19 Süre | 43152 | 1 | % | int 32 | R |  | RGP 19 Süre | 46152 | 1 | % | int 32 | R
+RGP 19 Q1 | 43154 | 1 | VAr | int 32 | R |  | RGP 19 Q1 | 46154 | 1 | VAr | int 32 | R
+RGP 19 Q2 | 43156 | 1 | VAr | int 32 | R |  | RGP 19 Q2 | 46156 | 1 | VAr | int 32 | R
+RGP 19 Q3 | 43158 | 1 | VAr | int 32 | R |  | RGP 19 Q3 | 46158 | 1 | VAr | int 32 | R
+RGP 20 Süre  | 43160 | 1 | % | int 32 | R |  | RGP 20 Süre  | 46160 | 1 | % | int 32 | R
+RGP 20 Q1 | 43162 | 1 | VAr | int 32 | R |  | RGP 20 Q1 | 46162 | 1 | VAr | int 32 | R
+RGP 20 Q2 | 43164 | 1 | VAr | int 32 | R |  | RGP 20 Q2 | 46164 | 1 | VAr | int 32 | R
+RGP 20 Q3 | 43166 | 1 | VAr | int 32 | R |  | RGP 20 Q3 | 46166 | 1 | VAr | int 32 | R
+ |  |  |  |  |  |  |  |  |  |  |  | 
+KAPASİTİFE GÖRE SIRALANMIŞ |  |  |  |  |  |  |  |  |  |  |  | 
+PARAMETRE ADI  | ADRES | ÇARPAN | BİRİM | DATA TİPİ  | W/R |  |  |  |  |  |  | 
+RGP Örnek Sayısı | 44000 | 1 | - | int 32 | R |  |  |  |  |  |  | 
+RGP Güç Çözünürlüğü | 44002 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP Fark Yüzdesi | 44004 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP Max Fark Yüzdesi | 44006 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP Anlık Süre  | 44008 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP Anlık Q1 | 44010 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP Anlık Q2 | 44012 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP Anlık Q3 | 44014 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 1 Süre  | 44016 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP 1 Q1 | 44018 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 1 Q2 | 44020 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 1 Q3 | 44022 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 2 Süre  | 44024 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP 2 Q1 | 44026 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 2 Q2 | 44028 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 2 Q3 | 44030 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 3 Süre | 44032 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP 3 Q1 | 44034 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 3 Q2 | 44036 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 3 Q3 | 44038 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+RGP 4 Süre | 44040 | 1 | % | int 32 | R |  |  |  |  |  |  | 
+RGP 4 Q1 | 44042 | 1 | VAr | int 32 | R |  |  |  |  |  |  | 
+
+===== PAGE 49 =====
+RGP 4 Q2 | 44044 | 1 | VAr | int 32 | R |  | 
+RGP 4 Q3 | 44046 | 1 | VAr | int 32 | R |  | 
+RGP 5 Süre | 44048 | 1 | % | int 32 | R |  | 
+RGP 5 Q1 | 44050 | 1 | VAr | int 32 | R |  | 
+RGP 5 Q2 | 44052 | 1 | VAr | int 32 | R |  | 
+RGP 5 Q3 | 44054 | 1 | VAr | int 32 | R |  | 
+RGP 6 Süre | 44056 | 1 | % | int 32 | R |  | 
+RGP 6 Q1 | 44058 | 1 | VAr | int 32 | R |  | 
+RGP 6 Q2 | 44060 | 1 | VAr | int 32 | R |  | 
+RGP 6 Q3 | 44062 | 1 | VAr | int 32 | R |  | 
+RGP  7 Süre | 44064 | 1 | % | int 32 | R |  | 
+RGP 7 Q1 | 44066 | 1 | VAr | int 32 | R |  | 
+RGP 7 Q2 | 44068 | 1 | VAr | int 32 | R |  | 
+RGP 7 Q3 | 44070 | 1 | VAr | int 32 | R |  | 
+RGP 8 Süre | 44072 | 1 | % | int 32 | R |  | 
+RGP 8 Q1 | 44074 | 1 | VAr | int 32 | R |  | 
+RGP 8 Q2 | 44076 | 1 | VAr | int 32 | R |  | 
+RGP 8 Q3 | 44078 | 1 | VAr | int 32 | R |  | 
+RGP 9 Süre  | 44080 | 1 | % | int 32 | R |  | 
+RGP 9 Q1 | 44082 | 1 | VAr | int 32 | R |  | 
+RGP 9 Q2 | 44084 | 1 | VAr | int 32 | R |  | 
+RGP 9 Q3 | 44086 | 1 | VAr | int 32 | R |  | 
+RGP 10 Süre  | 44088 | 1 | % | int 32 | R |  | 
+RGP 10 Q1 | 44090 | 1 | VAr | int 32 | R |  | 
+RGP 10 Q2 | 44092 | 1 | VAr | int 32 | R |  | 
+RGP 10 Q3 | 44094 | 1 | VAr | int 32 | R |  | 
+RGP 11 Süre | 44096 | 1 | % | int 32 | R |  | 
+RGP 11 Q1 | 44098 | 1 | VAr | int 32 | R |  | 
+RGP 11 Q2 | 44100 | 1 | VAr | int 32 | R |  | 
+RGP 11 Q3 | 44102 | 1 | VAr | int 32 | R |  | 
+RGP 12 Süre | 44104 | 1 | % | int 32 | R |  | 
+RGP 12 Q1 | 44106 | 1 | VAr | int 32 | R |  | 
+RGP 12 Q2 | 44108 | 1 | VAr | int 32 | R |  | 
+
+===== PAGE 50 =====
+RGP 12 Q3 | 44110 | 1 | VAr | int 32 | R |  | 
+RGP 13 Süre | 44112 | 1 | % | int 32 | R |  | 
+RGP 13 Q1 | 44114 | 1 | VAr | int 32 | R |  | 
+RGP 13 Q2 | 44116 | 1 | VAr | int 32 | R |  | 
+RGP 13 Q3 | 44118 | 1 | VAr | int 32 | R |  | 
+RGP 14 Süre | 44120 | 1 | % | int 32 | R |  | 
+RGP 14 Q1 | 44122 | 1 | VAr | int 32 | R |  | 
+RGP 14 Q2 | 44124 | 1 | VAr | int 32 | R |  | 
+RGP 14 Q3 | 44126 | 1 | VAr | int 32 | R |  | 
+RGP 15 Süre | 44128 | 1 | % | int 32 | R |  | 
+RGP 15 Q1 | 44130 | 1 | VAr | int 32 | R |  | 
+RGP 15 Q2 | 44132 | 1 | VAr | int 32 | R |  | 
+RGP 15 Q3 | 44134 | 1 | VAr | int 32 | R |  | 
+RGP 16 Süre | 44136 | 1 | % | int 32 | R |  | 
+RGP 17 Q1 | 44138 | 1 | VAr | int 32 | R |  | 
+RGP 17 Q2 | 44140 | 1 | VAr | int 32 | R |  | 
+RGP 17 Q3 | 44142 | 1 | VAr | int 32 | R |  | 
+RGP 18 Süre | 44144 | 1 | % | int 32 | R |  | 
+RGP 18 Q1 | 44146 | 1 | VAr | int 32 | R |  | 
+RGP 18 Q2 | 44148 | 1 | VAr | int 32 | R |  | 
+RGP 18 Q3 | 44150 | 1 | VAr | int 32 | R |  | 
+RGP 19 Süre | 44152 | 1 | % | int 32 | R |  | 
+RGP 19 Q1 | 44154 | 1 | VAr | int 32 | R |  | 
+RGP 19 Q2 | 44156 | 1 | VAr | int 32 | R |  | 
+RGP 19 Q3 | 44158 | 1 | VAr | int 32 | R |  | 
+RGP 20 Süre  | 44160 | 1 | % | int 32 | R |  | 
+RGP 20 Q1 | 44162 | 1 | VAr | int 32 | R |  | 
+RGP 20 Q2 | 44164 | 1 | VAr | int 32 | R |  | 
+RGP 20 Q3 | 44166 | 1 | VAr | int 32 | R |  | 
+
+===== PAGE 51 =====
+  | Adres | Çarpan | Birim | Boyut | W/R
+Seri No | 100 | - | - | int32 | R
+Ürün ID ve Versiyon | 102 | - | - | int32 | R
+Kart ID ve Versiyon | 104 | - | - | int32 | R
+Parametre-Sistem Version | 106 | - | - | int32 | R
+Ülke kodu | 108 | - | - | int32 | R
+Firma Kodu | 110 | - | - | int32 | R
+Cihaz Besleme Tipi | 112 | - | - | int32 | R
+Ekran Tipi | 114 | - | - | int32 | R
+Keyboard Tipi | 116 | - | - | int32 | R
+Kutu Tipi | 118 | - | - | int32 | R
+Klemens Tipi | 120 | - | - | int32 | R
+Connections | 122 | - | - | int32 | R
+Storage | 124 | - | - | int32 | R
