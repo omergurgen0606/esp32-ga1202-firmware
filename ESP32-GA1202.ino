@@ -129,6 +129,26 @@ PubSubClient mqttClient(espClient);
 static const uint32_t LOOP_PERIYODU_MS = 2000;
 static const uint32_t ASGARI_BEKLEME_MS = 200;
 
+// Blok okuma tablolarinin tipleri. BILEREK dosyanin bu kadar basinda:
+// Arduino'nun .ino on-islemcisi fonksiyon prototiplerini ilk fonksiyondan
+// ONCE uretiyor, struct'lar asagida tanimli olursa prototipler "RegDef does
+// not name a type" ile patliyor.
+struct RegDef {
+  const char *anahtar;
+  uint16_t adres;    // mutlak Modbus adresi (Tepe tablosunda: base'e BAGIL)
+  float olcek;       // negatif = "bu alan isaretli" (bkz. blok16Oku)
+  uint8_t basamak;   // JSON'da kac ondalik basamak yazilacak
+};
+
+// Cok parcali okumalarda ayni JSON buffer'ina ekleme yapilabilsin diye
+// offset/ilk durumu disaridan tasiniyor.
+struct JsonYazici {
+  char *buf;
+  size_t bufSize;
+  size_t offset;
+  bool ilk;
+};
+
 // Excel/register haritasindaki "Signed 32" degerler, buffer'da 2 ardisik
 // 16-bit register olarak gelir. Isaretli (negatif olabilen) 32-bit'e cevirir.
 int32_t readS32(uint16_t bufIndex) {
@@ -153,6 +173,11 @@ int32_t readS32(uint16_t bufIndex) {
 // bir relay/+/... abonelik seti eklenmesi gerekiyor (bkz. README.md).
 String deviceId;
 String liveTopic, statusTopic, cmdTopic, otaTopic, wifiTopic, infoTopic, kademelerTopic;
+String toplamTopic, tepeTuketimTopic, tepeUretimTopic;
+String enerjiTuketimTopic, enerjiUretimTopic, paramTopic;
+// Bir parametre yazildiktan sonra bir sonraki donguda parametreleri yeniden
+// okumak icin bayrak (bkz. onMqttMessage sonu).
+volatile bool paramHemenOku = false;
 int wifiDegisimSonucu = 0;
 
 // OTA guvenlik agi: yeni firmware yazildiktan hemen sonra "pending" olarak
@@ -178,6 +203,12 @@ void setupDeviceId() {
   wifiTopic      = "relay/" + deviceId + "/wifi";
   infoTopic      = "relay/" + deviceId + "/info";
   kademelerTopic = "relay/" + deviceId + "/kademeler";
+  toplamTopic        = "relay/" + deviceId + "/toplam";
+  tepeTuketimTopic   = "relay/" + deviceId + "/tepe/tuketim";
+  tepeUretimTopic    = "relay/" + deviceId + "/tepe/uretim";
+  enerjiTuketimTopic = "relay/" + deviceId + "/enerji/tuketim";
+  enerjiUretimTopic  = "relay/" + deviceId + "/enerji/uretim";
+  paramTopic         = "relay/" + deviceId + "/parametreler";
 }
 
 void preTransmission()  { digitalWrite(RE_DE_PIN, HIGH); }
@@ -491,6 +522,268 @@ void buildKademelerJson(char *buf, size_t bufSize) {
       i > 0 ? "," : "", k.gucL1, k.gucL2, k.gucL3, (long)k.calismaSuresi, (long)k.anahtarlamaSayisi);
   }
   snprintf(buf + offset, bufSize - offset, "]}");
+}
+
+// ==================== TABLO GUDUMLU BLOK OKUMA ====================
+// Register haritasinin geri kalani (Toplam/Ortalama, Tepe Degerleri,
+// Enerjiler, Parametreler) yuzlerce alan iceriyor. Her birini ayri struct
+// alani + elle yazilmis snprintf satiri yapmak ~800 satir kod ve her
+// satirda bir yazim hatasi riski demekti. Bunun yerine her blok bir
+// {anahtar, adres, olcek} tablosu; tek bir generic okuyucu bloklari
+// okuyup JSON'a ceviriyor. Yeni bir alan eklemek tek satir.
+static void jsonBasla(JsonYazici &y, char *buf, size_t bufSize) {
+  y.buf = buf; y.bufSize = bufSize; y.offset = 0; y.ilk = true;
+  if (bufSize > 1) { buf[0] = '{'; y.offset = 1; buf[1] = '\0'; }
+}
+
+static void jsonBitir(JsonYazici &y) {
+  if (y.offset + 2 < y.bufSize) {
+    y.buf[y.offset++] = '}';
+    y.buf[y.offset] = '\0';
+  }
+}
+
+// 32-bit (int32, 2 register) bir blogu okuyup tablodaki alanlari JSON'a ekler.
+// Tablo TUM blogun alanlarini icerebilir; sadece [basAdres, basAdres+regSayisi)
+// araligina dusenler bu cagrida yazilir, digerleri sonraki parcada.
+static bool blok32Oku(uint16_t basAdres, uint16_t regSayisi,
+                      const RegDef *tanimlar, size_t tanimSayisi, JsonYazici &y) {
+  uint8_t sonuc = node.readHoldingRegisters(basAdres, regSayisi);
+  if (sonuc != node.ku8MBSuccess) return false;
+  for (size_t i = 0; i < tanimSayisi; i++) {
+    const RegDef &d = tanimlar[i];
+    if (d.adres < basAdres) continue;
+    uint16_t off = d.adres - basAdres;
+    if (off + 1 >= regSayisi) continue;
+    float deger = readS32(off) * d.olcek;
+    y.offset += snprintf(y.buf + y.offset, y.bufSize - y.offset,
+                         "%s\"%s\":%.*f", y.ilk ? "" : ",", d.anahtar, d.basamak, deger);
+    y.ilk = false;
+  }
+  return true;
+}
+
+// 16-bit (Uint16, tek register) blok -- Parametreler sayfasi bu tipte.
+static bool blok16Oku(uint16_t basAdres, uint16_t regSayisi,
+                      const RegDef *tanimlar, size_t tanimSayisi, JsonYazici &y) {
+  uint8_t sonuc = node.readHoldingRegisters(basAdres, regSayisi);
+  if (sonuc != node.ku8MBSuccess) return false;
+  for (size_t i = 0; i < tanimSayisi; i++) {
+    const RegDef &d = tanimlar[i];
+    if (d.adres < basAdres) continue;
+    uint16_t off = d.adres - basAdres;
+    if (off >= regSayisi) continue;
+    // Zaman Dilimi (249) gibi birkac alan isaretli; 32768'den buyuk ham
+    // degeri negatife ceviriyoruz ki -12..+12 araligi dogru gozuksun.
+    int32_t ham = (int32_t)node.getResponseBuffer(off);
+    if (d.olcek < 0) { if (ham > 32767) ham -= 65536; }
+    float olcek = d.olcek < 0 ? -d.olcek : d.olcek;
+    y.offset += snprintf(y.buf + y.offset, y.bufSize - y.offset,
+                         "%s\"%s\":%.*f", y.ilk ? "" : ",", d.anahtar, d.basamak, ham * olcek);
+    y.ilk = false;
+  }
+  return true;
+}
+
+// ==================== TOPLAM / ORTALAMA (10410-10500) ====================
+// Kaynak: "Anlik Toplam Ve Ortalama Degerler" sayfasi.
+static const RegDef TOPLAM_REGS[] = {
+  {"p_toplam_tuketim", 10410, 1, 0}, {"q_toplam_tuketim", 10412, 1, 0},
+  {"ql_toplam_tuketim", 10414, 1, 0}, {"qc_toplam_tuketim", 10416, 1, 0},
+  {"s_toplam_tuketim", 10418, 1, 0},
+  {"p_toplam_uretim", 10430, 1, 0}, {"q_toplam_uretim", 10432, 1, 0},
+  {"ql_toplam_uretim", 10434, 1, 0}, {"qc_toplam_uretim", 10436, 1, 0},
+  {"s_toplam_uretim", 10438, 1, 0},
+  {"i_ort_tuketim", 10452, 1, 0}, {"p_ort_tuketim", 10454, 1, 0},
+  {"cos_ort_tuketim", 10456, 0.001, 3}, {"tan_ort_tuketim", 10458, 0.001, 3},
+  {"pf_ort_tuketim", 10460, 0.001, 3},
+  {"i_ort_uretim", 10472, 1, 0}, {"p_ort_uretim", 10474, 1, 0},
+  {"cos_ort_uretim", 10476, 0.001, 3}, {"tan_ort_uretim", 10478, 0.001, 3},
+  {"pf_ort_uretim", 10480, 0.001, 3},
+  {"v_ort_ln", 10492, 0.1, 1}, {"v_ort_ll", 10494, 0.1, 1},
+  {"f_ort", 10496, 0.01, 2}, {"thdi_ort", 10498, 0.1, 1}, {"thdv_ort", 10500, 0.1, 1},
+};
+
+bool readToplamJson(char *buf, size_t bufSize) {
+  JsonYazici y; jsonBasla(y, buf, bufSize);
+  const size_t n = sizeof(TOPLAM_REGS) / sizeof(TOPLAM_REGS[0]);
+  // ModbusMaster 64 register siniri -- iki parca.
+  if (!blok32Oku(10410, 64, TOPLAM_REGS, n, y)) return false;
+  hatBekle(30);
+  if (!blok32Oku(10474, 28, TOPLAM_REGS, n, y)) return false;
+  jsonBitir(y);
+  return true;
+}
+
+// ==================== TEPE DEGERLERI (Min/Max) ====================
+// Tuketim blogu 11010'da, Uretim blogu 11260'ta basliyor ve IC DUZENLERI
+// BIREBIR AYNI (THDV her ikisinde de base+90, frekans base+126). Bu yuzden
+// tablo BAGIL offset tutuyor, tek tablo iki blogu da okuyor.
+static const RegDef TEPE_REGS[] = {
+  {"v_ln_min_1", 0, 0.1, 1}, {"v_ln_min_2", 2, 0.1, 1}, {"v_ln_min_3", 4, 0.1, 1},
+  {"v_n_min", 6, 0.1, 1},
+  {"v_ln_max_1", 8, 0.1, 1}, {"v_ln_max_2", 10, 0.1, 1}, {"v_ln_max_3", 12, 0.1, 1},
+  {"v_n_max", 14, 0.1, 1},
+  {"v_ll_min_12", 16, 0.1, 1}, {"v_ll_min_23", 18, 0.1, 1}, {"v_ll_min_31", 20, 0.1, 1},
+  {"v_ll_max_12", 22, 0.1, 1}, {"v_ll_max_23", 24, 0.1, 1}, {"v_ll_max_31", 26, 0.1, 1},
+  {"i_min_1", 28, 1, 0}, {"i_min_2", 30, 1, 0}, {"i_min_3", 32, 1, 0}, {"i_n_min", 34, 1, 0},
+  {"i_max_1", 36, 1, 0}, {"i_max_2", 38, 1, 0}, {"i_max_3", 40, 1, 0}, {"i_n_max", 42, 1, 0},
+  {"p_min_1", 44, 1, 0}, {"p_min_2", 46, 1, 0}, {"p_min_3", 48, 1, 0},
+  {"p_max_1", 50, 1, 0}, {"p_max_2", 52, 1, 0}, {"p_max_3", 54, 1, 0},
+  {"q_min_1", 56, 1, 0}, {"q_min_2", 58, 1, 0}, {"q_min_3", 60, 1, 0},
+  {"q_max_1", 62, 1, 0}, {"q_max_2", 64, 1, 0}, {"q_max_3", 66, 1, 0},
+  {"s_min_1", 68, 1, 0}, {"s_min_2", 70, 1, 0}, {"s_min_3", 72, 1, 0},
+  {"s_max_1", 74, 1, 0}, {"s_max_2", 76, 1, 0}, {"s_max_3", 78, 1, 0},
+  {"thdv_min_1", 90, 0.1, 1}, {"thdv_min_2", 92, 0.1, 1}, {"thdv_min_3", 94, 0.1, 1},
+  {"thdv_max_1", 96, 0.1, 1}, {"thdv_max_2", 98, 0.1, 1}, {"thdv_max_3", 100, 0.1, 1},
+  {"thdi_min_1", 102, 0.1, 1}, {"thdi_min_2", 104, 0.1, 1}, {"thdi_min_3", 106, 0.1, 1},
+  {"thdi_max_1", 108, 0.1, 1}, {"thdi_max_2", 110, 0.1, 1}, {"thdi_max_3", 112, 0.1, 1},
+  {"f_min", 126, 0.01, 2}, {"f_max", 128, 0.01, 2},
+  {"v_dengesizlik_min", 130, 0.1, 1}, {"v_dengesizlik_max", 132, 0.1, 1},
+  {"i_dengesizlik_min", 134, 0.1, 1}, {"i_dengesizlik_max", 136, 0.1, 1},
+};
+
+// Bagil tabloyu mutlak adrese cevirerek okuyor (gecici tablo yerine offset
+// kaydirmasiyla: tablo zaten bagil, blok32Oku'ya bagil "basAdres" veriliyor).
+bool readTepeJson(uint16_t base, char *buf, size_t bufSize) {
+  JsonYazici y; jsonBasla(y, buf, bufSize);
+  const size_t n = sizeof(TEPE_REGS) / sizeof(TEPE_REGS[0]);
+  // Tablo bagil oldugu icin blok32Oku'ya da bagil basAdres veriyoruz; gercek
+  // Modbus adresi base + bagil.
+  struct { uint16_t bagil; uint16_t adet; } parcalar[] = {{0, 64}, {64, 64}, {128, 12}};
+  for (auto &p : parcalar) {
+    uint8_t sonuc = node.readHoldingRegisters(base + p.bagil, p.adet);
+    if (sonuc != node.ku8MBSuccess) return false;
+    for (size_t i = 0; i < n; i++) {
+      const RegDef &d = TEPE_REGS[i];
+      if (d.adres < p.bagil) continue;
+      uint16_t off = d.adres - p.bagil;
+      if (off + 1 >= p.adet) continue;
+      y.offset += snprintf(y.buf + y.offset, y.bufSize - y.offset,
+                           "%s\"%s\":%.*f", y.ilk ? "" : ",", d.anahtar, d.basamak,
+                           readS32(off) * d.olcek);
+      y.ilk = false;
+    }
+    hatBekle(30);
+  }
+  jsonBitir(y);
+  return true;
+}
+
+// ==================== ENERJILER (uint64) ====================
+// Kaynak: "Enerji Degerleri (Tuketim/Uretim)" sayfalari. Bu blok int32 DEGIL,
+// uint64: her alan 4 register. Sayaclar kWh/kVARh cinsinden, carpan 1.
+struct EnerjiAlan { const char *anahtar; uint16_t bagil; };
+static const EnerjiAlan ENERJI_ALANLARI[] = {
+  {"aktif_toplam", 0}, {"enduktif_toplam", 4}, {"kapasitif_toplam", 8},
+  {"aktif_l1", 12}, {"aktif_l2", 16}, {"aktif_l3", 20},
+  {"enduktif_l1", 24}, {"enduktif_l2", 28}, {"enduktif_l3", 32},
+  {"kapasitif_l1", 36}, {"kapasitif_l2", 40}, {"kapasitif_l3", 44},
+};
+
+// uint64: 4 ardisik register. WORDS_HIGH_FIRST duzeni int32'dekiyle ayni
+// mantikta, kelime ciftleri sirasiyla en anlamliden en az anlamliya.
+static double readU64(uint16_t off) {
+  uint64_t v = 0;
+  for (int i = 0; i < 4; i++) {
+    uint16_t w = node.getResponseBuffer(WORDS_HIGH_FIRST ? off + i : off + 3 - i);
+    v = (v << 16) | w;
+  }
+  return (double)v;
+}
+
+bool readEnerjiJson(uint16_t base, char *buf, size_t bufSize) {
+  JsonYazici y; jsonBasla(y, buf, bufSize);
+  uint8_t sonuc = node.readHoldingRegisters(base, 48);
+  if (sonuc != node.ku8MBSuccess) return false;
+  for (auto &a : ENERJI_ALANLARI) {
+    y.offset += snprintf(y.buf + y.offset, y.bufSize - y.offset,
+                         "%s\"%s\":%.0f", y.ilk ? "" : ",", a.anahtar, readU64(a.bagil));
+    y.ilk = false;
+  }
+  jsonBitir(y);
+  return true;
+}
+
+// ==================== PARAMETRELER (200-429, Uint16, cogu W/R) ====================
+// Kaynak: "Parametre" sayfalari. Cihazin TUM ayarlari burada. Sirket Adi_1..20
+// (320-339) bilerek disarida: 20 adet ham karakter kodu, sayisal olarak
+// anlamsiz. Negatif olcek "bu alan isaretli" demek (bkz. blok16Oku).
+static const RegDef PARAM_REGS[] = {
+  {"parametre_versiyonu", 200, 1, 0}, {"calisma_suresi", 201, 1, 0},
+  {"reset_durumu", 202, 1, 0}, {"power_down_counter", 203, 1, 0},
+  {"modbus_adresi", 206, 1, 0}, {"modbus_hizi", 210, 1, 0},
+  {"okuma_koruma_biti", 214, 1, 0}, {"yazma_koruma_biti", 215, 1, 0},
+  {"okuma_sifresi_onay", 216, 1, 0}, {"yazma_sifresi_onay", 217, 1, 0},
+  {"akim_trafo_orani", 221, 1, 0}, {"hat_voltaji", 222, 1, 0},
+  {"olcum_voltaji", 223, 1, 0}, {"demand_periyodu", 226, 1, 0},
+  {"modbus_akim_hassasiyeti", 227, 1, 0}, {"enerji_periyodu", 228, 1, 0},
+  {"reset_bilinmeyen", 240, 1, 0}, {"reset_power_on", 241, 1, 0},
+  {"reset_brown_out", 242, 1, 0}, {"reset_watchdog", 243, 1, 0},
+  {"reset_software", 244, 1, 0}, {"reset_mclr", 245, 1, 0},
+  {"reset_option_byte", 246, 1, 0}, {"reset_v18_power", 247, 1, 0},
+  {"zaman_dilimi", 249, -1, 0},
+  {"ekran_ornek_sayisi", 252, 1, 0}, {"ekran_yuzdelik_fark", 253, 1, 0},
+  {"ekran_tazeleme_araligi", 254, 1, 0}, {"ekran_koruyucu", 256, 1, 0},
+  {"ekran_koruyucu_bekleme", 257, 1, 0}, {"ekran_parlaklik", 258, 1, 0},
+  {"dil", 260, 1, 0}, {"erisim_seviyesi", 261, 1, 0},
+  {"erisim_kontrol", 262, 1, 0},
+  {"harmonik_profili", 265, 1, 0}, {"harmonik_limiti", 266, 1, 0},
+  {"harmonik_analizi", 267, 1, 0},
+  {"rgp_guc_cozunurlugu", 316, 1, 0}, {"rgp_maksimum_fark", 317, 1, 0},
+  {"rgp_yuzdesi", 318, 1, 0},
+  {"asiri_gerilim_koruma", 341, 1, 0}, {"dusuk_gerilim_koruma", 342, 1, 0},
+  {"asiri_harmonik_koruma", 343, 1, 0}, {"asiri_sicaklik_koruma", 344, 1, 0},
+  {"dusuk_gerilim_degeri", 345, 1, 0}, {"asiri_harmonik_degeri", 347, 1, 0},
+  {"asiri_sicaklik_degeri", 348, 1, 0},
+  {"ozel_ct_orani_l1", 350, 1, 0}, {"ozel_ct_orani_l2", 351, 1, 0},
+  {"ozel_ct_orani_l3", 352, 1, 0},
+  {"jenerator", 353, 1, 0}, {"kademe_desarj_suresi", 354, 1, 0},
+  {"akim_yonu_eslesme", 356, 1, 0},
+  {"enduktif_limit", 357, 1, 0}, {"kapasitif_limit", 358, 1, 0},
+  {"histerisis_enduktif", 359, 1, 0}, {"histerisis_kapasitif", 360, 1, 0},
+  {"histerisis_normal", 361, 1, 0},
+  {"enduktif_cevap_suresi", 362, 1, 0}, {"kapasitif_cevap_suresi", 363, 1, 0},
+  {"normal_cevap_suresi", 364, 1, 0},
+  {"kademe_ortak_kontrol", 365, 1, 0},
+  {"hedef_cos_hat", 366, -1, 0}, {"hedef_cos_jenerator", 367, -1, 0},
+  {"ek_guc_suresi", 368, 1, 0}, {"ek_reaktif_guc_3faz", 369, -1, 0},
+  {"ek_reaktif_guc_l1", 370, -1, 0}, {"ek_reaktif_guc_l2", 371, -1, 0},
+  {"ek_reaktif_guc_l3", 372, -1, 0},
+  {"aktif_svc_orani", 378, 1, 0}, {"normal_svc_yuzdesi", 379, 1, 0},
+  {"reaktif_svc_yuzdesi", 380, 1, 0}, {"termik_kontrol", 381, 1, 0},
+  {"kademe_ortak1_tipi", 383, 1, 0}, {"kademe_ortak1_olcme_gerilim", 384, 1, 0},
+  {"kademe_ortak1_yuzdelik", 385, 1, 0},
+  {"kademe_ortak2_tipi", 386, 1, 0}, {"kademe_ortak2_olcme_gerilim", 387, 1, 0},
+  {"kademe_ortak2_yuzdelik", 388, 1, 0},
+  {"kademe_ortak3_tipi", 389, 1, 0}, {"kademe_ortak3_olcme_gerilim", 390, 1, 0},
+  {"kademe_ortak3_yuzdelik", 391, 1, 0},
+  {"faz_faz_kontrolu", 394, 1, 0}, {"akim_gerilim_eslestirme", 395, 1, 0},
+  {"es_yaslandirma_kontrol", 400, 1, 0}, {"es_yaslandirma_yuzdelik", 401, 1, 0},
+  {"es_yaslandirma_sure", 402, 1, 0},
+  {"kademe_ara_suresi", 403, 1, 0}, {"kademeler_daimi_kontrol", 404, 1, 0},
+  {"olcme_hatasi_tanima", 405, 1, 0}, {"kademe_faz_hatasi", 406, 1, 0},
+  {"kademe_deger_kaybi", 407, 1, 0},
+  {"kurulum_modu", 410, 1, 0}, {"kurulum_tekrar_sayisi", 411, 1, 0},
+  {"baglanti_sekli", 412, 1, 0}, {"kurulum_daimi_kontrol", 413, 1, 0},
+  {"olcme_hatasi_kurulum", 414, 1, 0},
+  {"modbus_modu", 425, 1, 0}, {"modbus_data_bits", 426, 1, 0},
+  {"modbus_parity", 427, 1, 0}, {"modbus_stop_bits", 428, 1, 0},
+  {"modbus_sessizlik_suresi", 429, 1, 0},
+};
+
+bool readParamJson(char *buf, size_t bufSize) {
+  JsonYazici y; jsonBasla(y, buf, bufSize);
+  const size_t n = sizeof(PARAM_REGS) / sizeof(PARAM_REGS[0]);
+  struct { uint16_t bas; uint16_t adet; } parcalar[] = {
+    {200, 64}, {264, 64}, {328, 64}, {392, 38},
+  };
+  for (auto &p : parcalar) {
+    if (!blok16Oku(p.bas, p.adet, PARAM_REGS, n, y)) return false;
+    hatBekle(30);
+  }
+  jsonBitir(y);
+  return true;
 }
 
 // ==================== YAZMA KOMUTLARI (referans) ====================
@@ -834,6 +1127,11 @@ void onMqttMessage(char* topic, byte* payload, unsigned int length) {
   Serial.print(deneme <= 3 ? deneme : 3);
   Serial.print(" sonuc=");
   Serial.println(result == node.ku8MBSuccess ? "OK" : "HATA");
+  // Yazma basarili olduysa parametreleri HEMEN yeniden oku: panel, 5 dakikalik
+  // normal tazeleme turunu beklemeden yeni degeri gorsun. Kullanici bir ayari
+  // degistirip ekranda eski degeri gormeye devam ederse, dogal refleks ayni
+  // yazmayi tekrar denemek olur -- bu da cihaza gereksiz yazma demek.
+  if (result == node.ku8MBSuccess) paramHemenOku = true;
 }
 
 String extractJsonString(const String &body, const String &key) {
@@ -1070,9 +1368,10 @@ void setup() {
   mqttClient.setServer(mqtt_server, mqtt_port);
   mqttClient.setCallback(onMqttMessage);
   mqttClient.setKeepAlive(60);
-  // Kademeler payload'i (12 kademeye kadar) 1024'u asabiliyor -- ANL21'deki
-  // harmonik/tepe-deger payload'lariyla ayni sebepten genisletildi.
-  mqttClient.setBufferSize(2048);
+  // En buyuk payload parametreler (~105 alan, ~2.5 KB); kademeler ve tepe
+  // degerleri de 1 KB'i asiyor. Bu sinir asilirsa PubSubClient mesaji SESSIZCE
+  // dusuruyor (ANL13'te saatlerce "veri neden gelmiyor" aramasina yol acmisti).
+  mqttClient.setBufferSize(4096);
 
   delay(30);
   deviceInfoOk = readDeviceInfo();
@@ -1189,6 +1488,71 @@ void loop() {
       Serial.println(buf);
     } else {
       Serial.println("Kademeler okuma hatasi!");
+    }
+  }
+
+  // Okuma siklıklari kasitli olarak kademeli: RS-485 tek bir hat ve her
+  // istek onu mesgul ediyor. Hizli degisen veri sik, yavas degisen veri
+  // seyrek okunuyor -- ANL21'deki ayni yaklasim.
+  //
+  // Toplam/Ortalama: ~10 sn (2sn x 5, kademelerle ayni tur ama kaydirilmis
+  // ki ayni dongude iki agir okuma ust uste binmesin).
+  if (loopCount % 5 == 2) {
+    hatBekle(30);
+    char buf[900];
+    if (readToplamJson(buf, sizeof(buf))) {
+      mqttClient.publish(toplamTopic.c_str(), buf);
+    } else {
+      Serial.println("Toplam/Ortalama okuma hatasi!");
+    }
+  }
+
+  // Enerji sayaclari: ~30 sn. Kumulatif degerler, daha sik okumanin faydasi yok.
+  if (loopCount % 15 == 3) {
+    hatBekle(30);
+    char buf[700];
+    if (readEnerjiJson(13020, buf, sizeof(buf))) {
+      mqttClient.publish(enerjiTuketimTopic.c_str(), buf);
+    } else {
+      Serial.println("Enerji (tuketim) okuma hatasi!");
+    }
+    hatBekle(30);
+    if (readEnerjiJson(13280, buf, sizeof(buf))) {
+      mqttClient.publish(enerjiUretimTopic.c_str(), buf);
+    } else {
+      Serial.println("Enerji (uretim) okuma hatasi!");
+    }
+  }
+
+  // Tepe (min/max) degerleri: ~60 sn. Cihaz bunlari kendi biriktiriyor,
+  // bizim sik okumamiz degeri degistirmiyor.
+  if (loopCount % 30 == 7) {
+    hatBekle(30);
+    char buf[1600];
+    if (readTepeJson(11010, buf, sizeof(buf))) {
+      mqttClient.publish(tepeTuketimTopic.c_str(), buf);
+    } else {
+      Serial.println("Tepe (tuketim) okuma hatasi!");
+    }
+    hatBekle(30);
+    if (readTepeJson(11260, buf, sizeof(buf))) {
+      mqttClient.publish(tepeUretimTopic.c_str(), buf);
+    } else {
+      Serial.println("Tepe (uretim) okuma hatasi!");
+    }
+  }
+
+  // Parametreler (ayarlar): ~5 dk. Yalnizca biri elle degistirdiginde
+  // degisir; ayrica yazma komutundan HEMEN sonra da bir kez okunuyor
+  // (bkz. onMqttMessage) ki panel yeni degeri beklemeden gostersin.
+  if (loopCount % 150 == 11 || paramHemenOku) {
+    paramHemenOku = false;
+    hatBekle(30);
+    char buf[3000];
+    if (readParamJson(buf, sizeof(buf))) {
+      mqttClient.publish(paramTopic.c_str(), buf, true);
+    } else {
+      Serial.println("Parametre okuma hatasi!");
     }
   }
 
