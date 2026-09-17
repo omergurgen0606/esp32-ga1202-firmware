@@ -24,7 +24,7 @@
 // dosyasindan geldi; GA1202 icin ayni turden bir kaynak (Grup Arge'nin
 // teknik dokumani ya da cihaza bir Modbus poll araciyla baglanip
 // register'lari elle kesfetme) gerekiyor. Bkz. README.md.
-#define FW_VERSION "0.1.0"
+#define FW_VERSION "0.2.1"
 
 #define RE_DE_PIN 4
 #define RXD2 16
@@ -772,18 +772,59 @@ static const RegDef PARAM_REGS[] = {
   {"modbus_sessizlik_suresi", 429, 1, 0},
 };
 
+// Parametre alani SEYREK: 200-429 arasinda kullanilmayan adresler var
+// (204-205, 207-209, 229-239, 268-315 ...). Cihaz, istenen aralikta gecersiz
+// tek bir adres olsa bile tum okumayi "illegal data address" ile reddediyor --
+// ilk surumde 64'luk bloklar halinde okunuyordu ve HICBIRI donmedi, parametre
+// kategorisi hic yayinlanmadi.
+//
+// Cozum iki katmanli: (1) bloklar gercek kumeler halinde, bosluklarin uzerinden
+// atlayarak; (2) bir kume okunamazsa TUM islem iptal edilmiyor, o kume atlanip
+// digerlerine devam ediliyor. Boylece tek bir haritalama hatasi butun ayarlar
+// sayfasini karartmiyor -- eksik alan "—" gorunur, gerisi calismaya devam eder.
+struct ParamKume { uint16_t bas; uint16_t adet; };
+static const ParamKume PARAM_KUMELERI[] = {
+  {200, 4},    // Parametre versiyonu .. Power down counter
+  {206, 1},    // Modbus adresi
+  {210, 1},    // Modbus hizi
+  {214, 4},    // Koruma bitleri + sifre onaylari
+  {221, 3},    // Akim trafo orani, hat/olcum voltaji
+  {226, 3},    // Demand periyodu, akim hassasiyeti, enerji periyodu
+  {240, 8},    // Reset sayaclari
+  {249, 6},    // Zaman dilimi, timestamp, ekran ornek/yuzdelik
+  {256, 3},    // Ekran koruyucu, bekleme, parlaklik
+  {260, 3},    // Dil, erisim seviyesi, erisim kontrol
+  {265, 3},    // Harmonik profili/limiti/analizi
+  {316, 3},    // RGP
+  {341, 8},    // Korumalar ve esik degerleri
+  {350, 5},    // Ozel CT oranlari, jenerator, desarj suresi
+  {356, 17},   // Akim yonu .. ek reaktif guc L3
+  {378, 4},    // SVC oranlari, termik kontrol
+  {383, 9},    // Kademe ortak 1-3
+  {394, 2},    // Faz-faz ve akim-gerilim kontrolu
+  {400, 8},    // Es yaslandirma .. kademe deger kaybi
+  {410, 5},    // Kurulum
+  {425, 5},    // Modbus modu/parity/stop/sessizlik
+};
+
 bool readParamJson(char *buf, size_t bufSize) {
   JsonYazici y; jsonBasla(y, buf, bufSize);
   const size_t n = sizeof(PARAM_REGS) / sizeof(PARAM_REGS[0]);
-  struct { uint16_t bas; uint16_t adet; } parcalar[] = {
-    {200, 64}, {264, 64}, {328, 64}, {392, 38},
-  };
-  for (auto &p : parcalar) {
-    if (!blok16Oku(p.bas, p.adet, PARAM_REGS, n, y)) return false;
-    hatBekle(30);
+  int basarili = 0, basarisiz = 0;
+  for (auto &k : PARAM_KUMELERI) {
+    if (blok16Oku(k.bas, k.adet, PARAM_REGS, n, y)) basarili++;
+    else basarisiz++;
+    hatBekle(20);
+  }
+  if (basarisiz > 0) {
+    Serial.print("Parametre: ");
+    Serial.print(basarisiz);
+    Serial.print(" kume okunamadi, ");
+    Serial.print(basarili);
+    Serial.println(" kume okundu.");
   }
   jsonBitir(y);
-  return true;
+  return basarili > 0;
 }
 
 // ==================== YAZMA KOMUTLARI (referans) ====================
@@ -1371,7 +1412,7 @@ void setup() {
   // En buyuk payload parametreler (~105 alan, ~2.5 KB); kademeler ve tepe
   // degerleri de 1 KB'i asiyor. Bu sinir asilirsa PubSubClient mesaji SESSIZCE
   // dusuruyor (ANL13'te saatlerce "veri neden gelmiyor" aramasina yol acmisti).
-  mqttClient.setBufferSize(4096);
+  mqttClient.setBufferSize(6144);
 
   delay(30);
   deviceInfoOk = readDeviceInfo();
@@ -1548,7 +1589,7 @@ void loop() {
   if (loopCount % 150 == 11 || paramHemenOku) {
     paramHemenOku = false;
     hatBekle(30);
-    char buf[3000];
+    char buf[4096];
     if (readParamJson(buf, sizeof(buf))) {
       mqttClient.publish(paramTopic.c_str(), buf, true);
     } else {
