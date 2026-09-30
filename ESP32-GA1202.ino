@@ -10,6 +10,7 @@
 #include <esp_random.h>
 #include <esp_mac.h>
 #include <esp_ota_ops.h>
+#include "secrets.h"
 
 // Grup Arge GA1202 -- reaktif guc kontrol rolesi (kompanzasyon rolesi) icin
 // ESP32 Modbus gateway'i. Bu dosya, ANL13/ANL21 guc analizoru gateway'leriyle
@@ -1448,7 +1449,7 @@ void loop() {
     }
     if (!ok) {
       ok = mqttClient.connect(
-        deviceId.c_str(), "esp32user", "***REDACTED-MQTT-PASSWORD***",
+        deviceId.c_str(), MQTT_SHARED_USER, MQTT_SHARED_PASSWORD,
         statusTopic.c_str(), 1, true, "offline");
     }
     if (ok) {
